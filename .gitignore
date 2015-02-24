@@ -1,6 +1,7 @@
 *.plist
 /AppDelegate.m
 AppDelegate.m
+misc/
 *.swp
 # Xcode
 #
