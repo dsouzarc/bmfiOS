@@ -6,6 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogInViewController">
             <connections>
+                <outlet property="confirmPasswordTextField" destination="Wce-Oy-TGn" id="ypt-oC-ekh"/>
+                <outlet property="emailAddressTextField" destination="ElY-qs-zDR" id="Yy7-Q6-k6G"/>
+                <outlet property="passwordTextField" destination="Zce-Fn-2I1" id="Gjw-Rc-1wn"/>
+                <outlet property="phoneNumberTextField" destination="ZFA-2d-rFB" id="4dD-2X-gQu"/>
+                <outlet property="userNameTextField" destination="bfY-62-t9q" id="Dll-ea-qhN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="ZgH-NA-6Ne"/>
             </connections>
         </placeholder>
@@ -70,8 +75,20 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bzZ-PT-UmU">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <items>
+                        <navigationItem title="Sign Up" id="SwT-2f-hVz">
+                            <barButtonItem key="rightBarButtonItem" title="Done" id="kZQ-RA-4TW">
+                                <connections>
+                                    <action selector="signUpForAccount:" destination="-1" id="9ny-dB-bMt"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Create a Bring Me Food Account" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nrg-A4-4dB">
-                    <rect key="frame" x="76" y="17" width="253" height="27"/>
+                    <rect key="frame" x="86" y="60" width="253" height="27"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
