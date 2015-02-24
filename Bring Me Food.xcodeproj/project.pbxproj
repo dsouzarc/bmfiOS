@@ -146,17 +146,16 @@
 			children = (
 				947582161A9C126300487720 /* AppDelegate.h */,
 				947582171A9C126300487720 /* AppDelegate.m */,
-				947584471A9CDE0D00487720 /* UICKeyChainStore.h */,
-				947584481A9CDE0D00487720 /* UICKeyChainStore.m */,
 				947582191A9C126300487720 /* ViewController.h */,
 				9475821A1A9C126300487720 /* ViewController.m */,
 				9475821C1A9C126300487720 /* Main.storyboard */,
 				9475821F1A9C126300487720 /* Images.xcassets */,
 				947582211A9C126300487720 /* LaunchScreen.xib */,
-				947582121A9C126300487720 /* Supporting Files */,
 				947582381A9C130B00487720 /* LogInViewController.h */,
 				947582391A9C130B00487720 /* LogInViewController.m */,
 				9475823A1A9C130B00487720 /* LogInViewController.xib */,
+				9475844A1A9CDE7A00487720 /* 3rd Party Libraries */,
+				947582121A9C126300487720 /* Supporting Files */,
 			);
 			path = "Bring Me Food";
 			sourceTree = "<group>";
@@ -210,6 +209,15 @@
 				947582411A9C156900487720 /* ParseUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9475844A1A9CDE7A00487720 /* 3rd Party Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				947584471A9CDE0D00487720 /* UICKeyChainStore.h */,
+				947584481A9CDE0D00487720 /* UICKeyChainStore.m */,
+			);
+			name = "3rd Party Libraries";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
