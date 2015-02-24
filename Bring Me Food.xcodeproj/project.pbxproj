@@ -34,6 +34,7 @@
 		9475825C1A9C160500487720 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9475825B1A9C160500487720 /* libsqlite3.dylib */; };
 		947584431A9C1A4700487720 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947584411A9C1A4700487720 /* FacebookSDK.framework */; };
 		947584441A9C1A4700487720 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947584421A9C1A4700487720 /* FBAudienceNetwork.framework */; };
+		947584491A9CDE0D00487720 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 947584481A9CDE0D00487720 /* UICKeyChainStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,8 @@
 		9475825B1A9C160500487720 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		947584411A9C1A4700487720 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		947584421A9C1A4700487720 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
+		947584471A9CDE0D00487720 /* UICKeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICKeyChainStore.h; sourceTree = "<group>"; };
+		947584481A9CDE0D00487720 /* UICKeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICKeyChainStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +146,8 @@
 			children = (
 				947582161A9C126300487720 /* AppDelegate.h */,
 				947582171A9C126300487720 /* AppDelegate.m */,
+				947584471A9CDE0D00487720 /* UICKeyChainStore.h */,
+				947584481A9CDE0D00487720 /* UICKeyChainStore.m */,
 				947582191A9C126300487720 /* ViewController.h */,
 				9475821A1A9C126300487720 /* ViewController.m */,
 				9475821C1A9C126300487720 /* Main.storyboard */,
@@ -312,6 +317,7 @@
 				9475823B1A9C130B00487720 /* LogInViewController.m in Sources */,
 				9475821B1A9C126300487720 /* ViewController.m in Sources */,
 				947582181A9C126300487720 /* AppDelegate.m in Sources */,
+				947584491A9CDE0D00487720 /* UICKeyChainStore.m in Sources */,
 				947582151A9C126300487720 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,6 +527,7 @@
 				947582341A9C126300487720 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		947582351A9C126300487720 /* Build configuration list for PBXNativeTarget "Bring Me FoodTests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +536,7 @@
 				947582371A9C126300487720 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
