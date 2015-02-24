@@ -9,6 +9,7 @@
 #import "LogInViewController.h"
 
 @interface LogInViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailAddressTextField;
@@ -37,7 +38,7 @@
     NSString *name = self.userNameTextField.text;
     NSString *phoneNumber = self.phoneNumberTextField.text;
     NSString *email = self.emailAddressTextField.text;
-    NSString *password = self.passwordTextField;
+    NSString *password = self.passwordTextField.text;
     NSString *confirmedPassword = self.confirmPasswordTextField.text;
     
     if(![self validName:name]) {
@@ -90,6 +91,15 @@
 }
 
 - (BOOL) validPhoneNumber:(NSString*) phoneNumber {
+    phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@"(" withString:@""];
+    phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@")" withString:@""];
+    phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    if(phoneNumber.length < 10) {
+        return NO;
+    }
+    
     return YES;
 }
 
@@ -110,6 +120,11 @@
 }
 
 - (BOOL) validPassword:(NSString*) password confirmPassword:(NSString*)confirmedPassword {
+    
+    if(![password isEqualToString:confirmedPassword]) {
+        return NO;
+    }
+    
     return YES;
 }
 
