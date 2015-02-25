@@ -7,6 +7,7 @@
 //
 
 #import "LogInViewController.h"
+#import "PQFCirclesInTriangle.h"
 
 @interface LogInViewController ()
 
@@ -15,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailAddressTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
+
+@property (strong, nonatomic) PQFCirclesInTriangle *loadingCircles;
 
 - (IBAction)signUpForAccount:(id)sender;
 
@@ -34,6 +37,10 @@
 
 
 - (IBAction)signUpForAccount:(id)sender {
+    
+    self.loadingCircles = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
+    
+    [self.loadingCircles show];
     
     NSString *name = self.userNameTextField.text;
     NSString *phoneNumber = self.phoneNumberTextField.text;
@@ -76,6 +83,8 @@
         [alert show];
         return;
     }
+    
+
 }
 
 - (BOOL) validName:(NSString*) nameString {

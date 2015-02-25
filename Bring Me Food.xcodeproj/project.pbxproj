@@ -11,6 +11,10 @@
 		946068B61A9D13A0006664A2 /* phone1-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 946068B21A9D13A0006664A2 /* phone1-50.png */; };
 		946068B71A9D13A0006664A2 /* user_male_circle_filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 946068B31A9D13A0006664A2 /* user_male_circle_filled-50.png */; };
 		946068B91A9D164D006664A2 /* lock_filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 946068B81A9D164D006664A2 /* lock_filled-50.png */; };
+		946068CE1A9D55BC006664A2 /* PQFBarsInCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 946068C81A9D55BC006664A2 /* PQFBarsInCircle.m */; };
+		946068CF1A9D55BC006664A2 /* PQFBouncingBalls.m in Sources */ = {isa = PBXBuildFile; fileRef = 946068CA1A9D55BC006664A2 /* PQFBouncingBalls.m */; };
+		946068D01A9D55BC006664A2 /* PQFCirclesInTriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 946068CC1A9D55BC006664A2 /* PQFCirclesInTriangle.m */; };
+		946068D41A9D55EE006664A2 /* UIColor+FlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 946068D31A9D55EE006664A2 /* UIColor+FlatColors.m */; };
 		947582151A9C126300487720 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 947582141A9C126300487720 /* main.m */; };
 		947582181A9C126300487720 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 947582171A9C126300487720 /* AppDelegate.m */; };
 		9475821B1A9C126300487720 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475821A1A9C126300487720 /* ViewController.m */; };
@@ -61,6 +65,15 @@
 		946068B21A9D13A0006664A2 /* phone1-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone1-50.png"; sourceTree = "<group>"; };
 		946068B31A9D13A0006664A2 /* user_male_circle_filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_male_circle_filled-50.png"; sourceTree = "<group>"; };
 		946068B81A9D164D006664A2 /* lock_filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock_filled-50.png"; sourceTree = "<group>"; };
+		946068C71A9D55BC006664A2 /* PQFBarsInCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQFBarsInCircle.h; sourceTree = "<group>"; };
+		946068C81A9D55BC006664A2 /* PQFBarsInCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQFBarsInCircle.m; sourceTree = "<group>"; };
+		946068C91A9D55BC006664A2 /* PQFBouncingBalls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQFBouncingBalls.h; sourceTree = "<group>"; };
+		946068CA1A9D55BC006664A2 /* PQFBouncingBalls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQFBouncingBalls.m; sourceTree = "<group>"; };
+		946068CB1A9D55BC006664A2 /* PQFCirclesInTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQFCirclesInTriangle.h; sourceTree = "<group>"; };
+		946068CC1A9D55BC006664A2 /* PQFCirclesInTriangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQFCirclesInTriangle.m; sourceTree = "<group>"; };
+		946068CD1A9D55BC006664A2 /* PQFCustomLoaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQFCustomLoaders.h; sourceTree = "<group>"; };
+		946068D21A9D55EE006664A2 /* UIColor+FlatColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatColors.h"; sourceTree = "<group>"; };
+		946068D31A9D55EE006664A2 /* UIColor+FlatColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatColors.m"; sourceTree = "<group>"; };
 		9475820F1A9C126300487720 /* Bring Me Food.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bring Me Food.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		947582131A9C126300487720 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		947582141A9C126300487720 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -158,9 +171,34 @@
 			name = "Misc Icons";
 			sourceTree = "<group>";
 		};
+		946068C61A9D55BC006664A2 /* PQFCustomLoaders */ = {
+			isa = PBXGroup;
+			children = (
+				946068C71A9D55BC006664A2 /* PQFBarsInCircle.h */,
+				946068C81A9D55BC006664A2 /* PQFBarsInCircle.m */,
+				946068C91A9D55BC006664A2 /* PQFBouncingBalls.h */,
+				946068CA1A9D55BC006664A2 /* PQFBouncingBalls.m */,
+				946068CB1A9D55BC006664A2 /* PQFCirclesInTriangle.h */,
+				946068CC1A9D55BC006664A2 /* PQFCirclesInTriangle.m */,
+				946068CD1A9D55BC006664A2 /* PQFCustomLoaders.h */,
+			);
+			path = PQFCustomLoaders;
+			sourceTree = "<group>";
+		};
+		946068D11A9D55EE006664A2 /* UIColor+FlatColors */ = {
+			isa = PBXGroup;
+			children = (
+				946068D21A9D55EE006664A2 /* UIColor+FlatColors.h */,
+				946068D31A9D55EE006664A2 /* UIColor+FlatColors.m */,
+			);
+			path = "UIColor+FlatColors";
+			sourceTree = "<group>";
+		};
 		947582061A9C126300487720 = {
 			isa = PBXGroup;
 			children = (
+				946068D11A9D55EE006664A2 /* UIColor+FlatColors */,
+				946068C61A9D55BC006664A2 /* PQFCustomLoaders */,
 				9475844B1A9CFDE700487720 /* Chameleon */,
 				947582111A9C126300487720 /* Bring Me Food */,
 				9475822B1A9C126300487720 /* Bring Me FoodTests */,
@@ -391,8 +429,12 @@
 				9475845C1A9CFDE700487720 /* UIViewController+Chameleon.m in Sources */,
 				947582181A9C126300487720 /* AppDelegate.m in Sources */,
 				947584491A9CDE0D00487720 /* UICKeyChainStore.m in Sources */,
+				946068CE1A9D55BC006664A2 /* PQFBarsInCircle.m in Sources */,
 				947582151A9C126300487720 /* main.m in Sources */,
+				946068D41A9D55EE006664A2 /* UIColor+FlatColors.m in Sources */,
 				947584591A9CFDE700487720 /* NSArray+Chameleon.m in Sources */,
+				946068D01A9D55BC006664A2 /* PQFCirclesInTriangle.m in Sources */,
+				946068CF1A9D55BC006664A2 /* PQFBouncingBalls.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
