@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogInViewController">
             <connections>
                 <outlet property="confirmPasswordTextField" destination="Wce-Oy-TGn" id="ypt-oC-ekh"/>
+                <outlet property="doneButton" destination="kZQ-RA-4TW" id="Fwr-Rj-hJn"/>
                 <outlet property="emailAddressTextField" destination="ElY-qs-zDR" id="Yy7-Q6-k6G"/>
                 <outlet property="passwordTextField" destination="Zce-Fn-2I1" id="Gjw-Rc-1wn"/>
                 <outlet property="phoneNumberTextField" destination="ZFA-2d-rFB" id="4dD-2X-gQu"/>

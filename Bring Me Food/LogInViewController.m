@@ -8,6 +8,7 @@
 
 #import "LogInViewController.h"
 #import "PQFCirclesInTriangle.h"
+#import <Parse/Parse.h>
 
 @interface LogInViewController ()
 
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
 
 @property (strong, nonatomic) PQFCirclesInTriangle *loadingCircles;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 
 - (IBAction)signUpForAccount:(id)sender;
 
@@ -37,10 +39,6 @@
 
 
 - (IBAction)signUpForAccount:(id)sender {
-    
-    self.loadingCircles = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
-    
-    [self.loadingCircles show];
     
     NSString *name = self.userNameTextField.text;
     NSString *phoneNumber = self.phoneNumberTextField.text;
@@ -84,7 +82,24 @@
         return;
     }
     
-
+    self.loadingCircles = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
+    [self.loadingCircles show];
+    
+    PFObject *newUser = [PFObject objectWithClassName:@"User"];
+    newUser[@"phoneNumber"] = phoneNumber;
+    newUser[@"emailAddress"] = email;
+    newUser[@"encryptedPassword"] = password;
+    newUser[@"name"] = name;
+    
+    [newUser saveInBackgroundWithBlock:^(BOOL success, NSError *error) {
+        if(success) {
+            NSLog(@"Success!");
+            
+            //[self.loadingCircles hide];
+        }
+        
+    }];
+    
 }
 
 - (BOOL) validName:(NSString*) nameString {
@@ -131,6 +146,10 @@
 - (BOOL) validPassword:(NSString*) password confirmPassword:(NSString*)confirmedPassword {
     
     if(![password isEqualToString:confirmedPassword]) {
+        return NO;
+    }
+    
+    if(password.length < 5) {
         return NO;
     }
     
