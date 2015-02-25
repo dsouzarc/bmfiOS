@@ -83,7 +83,11 @@
     }
     
     self.loadingCircles = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
+    self.loadingCircles.label.text = @"Creating account...";
+    self.loadingCircles.borderWidth = 5.0;
+    self.loadingCircles.maxDiam = 200.0;
     [self.loadingCircles show];
+    
     
     PFObject *newUser = [PFObject objectWithClassName:@"User"];
     newUser[@"phoneNumber"] = phoneNumber;
