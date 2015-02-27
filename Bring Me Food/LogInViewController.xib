@@ -11,6 +11,7 @@
                 <outlet property="emailAddressTextField" destination="ElY-qs-zDR" id="Yy7-Q6-k6G"/>
                 <outlet property="passwordTextField" destination="Zce-Fn-2I1" id="Gjw-Rc-1wn"/>
                 <outlet property="phoneNumberTextField" destination="ZFA-2d-rFB" id="4dD-2X-gQu"/>
+                <outlet property="signInLabel" destination="S3l-dB-i69" id="AKz-Hf-HPn"/>
                 <outlet property="userNameTextField" destination="bfY-62-t9q" id="Dll-ea-qhN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="ZgH-NA-6Ne"/>
             </connections>

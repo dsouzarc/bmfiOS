@@ -8,6 +8,7 @@
 
 #import "LogInViewController.h"
 #import "PQFCirclesInTriangle.h"
+#import "LogInToExistingAccountViewController.h"
 #import <Parse/Parse.h>
 
 @interface LogInViewController ()
@@ -18,10 +19,14 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
 
-@property (strong, nonatomic) PQFCirclesInTriangle *loadingCircles;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+@property (weak, nonatomic) IBOutlet UILabel *signInLabel;
+
+@property (strong, nonatomic) PQFCirclesInTriangle *loadingCircles;
 
 - (IBAction)signUpForAccount:(id)sender;
+
+@property (strong, nonatomic) LogInToExistingAccountViewController *loginPopupVC;
 
 @end
 
@@ -29,6 +34,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+ 
+    self.signInLabel.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(signInLabelClicked)];
+    [self.signInLabel addGestureRecognizer:tapGesture];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -37,6 +48,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)signInLabelClicked
+{
+    self.loginPopupVC = [[LogInToExistingAccountViewController alloc] initWithNibName:@"LogInToExistingAccountViewController" bundle:[NSBundle mainBundle]];
+    [self.loginPopupVC showInView:self.view shouldAnimate:YES];
+}
 
 - (IBAction)signUpForAccount:(id)sender {
     
