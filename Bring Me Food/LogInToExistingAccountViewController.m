@@ -6,10 +6,11 @@
 //  Copyright (c) 2015 Ryan D'souza. All rights reserved.
 //
 
+#import <Parse/Parse.h>
 #import "LogInToExistingAccountViewController.h"
 #import "PQFBouncingBalls.h"
 
-@interface LogInToExistingAccountViewController ()
+@interface LogInToExistingAccountViewController () <UITextFieldDelegate>
 
 - (IBAction)loginButtonClicked:(id)sender;
 
@@ -36,7 +37,25 @@
     self.loadingAnimation.loaderColor = [UIColor blueColor];
     [self.loadingAnimation show];
     
-    
+    [PFCloud callFunctionInBackground:@"login"
+                       withParameters:@{@"username": self.usernameTextField.text,
+                                        @"password": self.passwordTextField.text}
+                        block:^(NSString *result, NSError *error) {
+                            
+                            if(!error) {
+                                if([result containsString:@"YES"]) {
+                                    NSLog(@"Logged in!");
+                                }
+                                else {
+                                    NSLog(@"Incorrect username/password");
+                                }
+                            }
+                            else {
+                                NSLog(@"Error: %@", error);
+                            }
+                            
+                        }
+     ];
 }
 
 - (void)viewDidLoad
@@ -45,7 +64,11 @@
     self.popupView.layer.cornerRadius = 5;
     self.popupView.layer.shadowOpacity = 0.8;
     self.popupView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+    
     [super viewDidLoad];
+    
+    self.usernameTextField.delegate = self;
+    self.passwordTextField.delegate = self;
 }
 
 - (void) showAnimate
@@ -86,19 +109,29 @@
         }
     }];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)exitButton:(id)sender {
+    [self closePopup:sender];
 }
-*/
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    //Add some glow effect
+    textField.layer.cornerRadius=8.0f;
+    textField.layer.masksToBounds=YES;
+    textField.layer.borderColor=[[UIColor blueColor]CGColor];
+    textField.layer.borderWidth= 2.0f;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    //Remove the flow effect
+    textField.layer.borderColor=[[UIColor clearColor]CGColor];
+}
 
 @end

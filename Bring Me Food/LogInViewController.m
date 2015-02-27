@@ -10,8 +10,9 @@
 #import "PQFCirclesInTriangle.h"
 #import "LogInToExistingAccountViewController.h"
 #import <Parse/Parse.h>
+#import <QuartzCore/QuartzCore.h>
 
-@interface LogInViewController ()
+@interface LogInViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
@@ -34,9 +35,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
- 
-    self.signInLabel.userInteractionEnabled = YES;
     
+    self.phoneNumberTextField.delegate = self;
+    self.userNameTextField.delegate = self;
+    self.emailAddressTextField.delegate = self;
+    self.passwordTextField.delegate = self;
+    self.confirmPasswordTextField.delegate = self;
+    
+    self.signInLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(signInLabelClicked)];
     [self.signInLabel addGestureRecognizer:tapGesture];
     
@@ -105,7 +111,7 @@
     [self.loadingCircles show];
     
     
-    PFObject *newUser = [PFObject objectWithClassName:@"User"];
+    PFObject *newUser = [PFObject objectWithClassName:@"BMFUser"];
     newUser[@"phoneNumber"] = phoneNumber;
     newUser[@"emailAddress"] = email;
     newUser[@"encryptedPassword"] = password;
@@ -174,6 +180,21 @@
     }
     
     return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    //Add some glow effect
+    textField.layer.cornerRadius=8.0f;
+    textField.layer.masksToBounds=YES;
+    textField.layer.borderColor=[[UIColor whiteColor]CGColor];
+    textField.layer.borderWidth= 2.0f;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    //Remove the flow effect
+    textField.layer.borderColor=[[UIColor clearColor]CGColor];
 }
 
 @end

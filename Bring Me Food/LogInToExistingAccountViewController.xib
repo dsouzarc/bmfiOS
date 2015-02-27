@@ -6,8 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogInToExistingAccountViewController">
             <connections>
-                <outlet property="passwordTextField" destination="WF1-wx-MN8" id="mWy-n0-Gwi"/>
+                <outlet property="passwordTextField" destination="wYB-x9-Orq" id="d8e-3N-qqZ"/>
                 <outlet property="popupView" destination="G18-S5-LQn" id="7Rf-Cg-teP"/>
+                <outlet property="usernameTextField" destination="WF1-wx-MN8" id="MG6-bh-HO5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="I3T-tT-9QO"/>
             </connections>
         </placeholder>
@@ -27,10 +28,10 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="user_dark_male4-50.png" translatesAutoresizingMaskIntoConstraints="NO" id="tsZ-tv-63i">
                             <rect key="frame" x="15" y="165" width="38" height="35"/>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wYB-x9-Orq">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" highlighted="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wYB-x9-Orq">
                             <rect key="frame" x="61" y="237" width="221" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ess-Dx-Og1">
                             <rect key="frame" x="122" y="318" width="46" height="32"/>
@@ -78,16 +79,28 @@
                         <constraint firstItem="wYB-x9-Orq" firstAttribute="centerY" secondItem="W2k-RH-XYt" secondAttribute="centerY" id="wUg-Rx-nfZ"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fDJ-XV-xqA">
+                    <rect key="frame" x="0.0" y="-5" width="46" height="30"/>
+                    <state key="normal" title="X">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="exitButton:" destination="-1" eventType="touchUpInside" id="rPY-hz-YQB"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="fDJ-XV-xqA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Bd0-g6-pa6"/>
                 <constraint firstItem="G18-S5-LQn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="42" id="N4m-s4-MsX"/>
+                <constraint firstItem="fDJ-XV-xqA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-5" id="VxY-Yu-tjM"/>
                 <constraint firstAttribute="centerX" secondItem="G18-S5-LQn" secondAttribute="centerX" id="f0L-ht-dJZ"/>
                 <constraint firstAttribute="centerY" secondItem="G18-S5-LQn" secondAttribute="centerY" id="iLV-34-7cS"/>
                 <constraint firstAttribute="trailing" secondItem="G18-S5-LQn" secondAttribute="trailing" constant="43" id="uxZ-Wp-vBz"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="339.5" y="305.5"/>
+            <point key="canvasLocation" x="332.5" y="310.5"/>
         </view>
     </objects>
     <resources>
