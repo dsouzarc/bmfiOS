@@ -28,6 +28,28 @@
 
 - (IBAction)loginButtonClicked:(id)sender {
     
+    if(self.usernameTextField.text.length <= 5) {
+        UIAlertView *problem = [[UIAlertView alloc]
+                                initWithTitle:@"Invalid field"
+                                message:@"Please enter a valid username"
+                                delegate:nil
+                                cancelButtonTitle:@"Okay"
+                                otherButtonTitles: nil];
+        [problem show];
+        return;
+    }
+    
+    if(self.passwordTextField.text.length <= 5) {
+        UIAlertView *problem = [[UIAlertView alloc]
+                                initWithTitle:@"Invalid field"
+                                message:@"Please enter a valid password"
+                                delegate:nil
+                                cancelButtonTitle:@"Okay"
+                                otherButtonTitles: nil];
+        [problem show];
+        return;
+    }
+    
     self.loadingAnimation = [[PQFBouncingBalls alloc] initLoaderOnView:self.view];
     self.loadingAnimation.label.text = @"Logging in...";
     self.loadingAnimation.label.textColor = [UIColor blueColor];
@@ -47,13 +69,29 @@
                                     NSLog(@"Logged in!");
                                 }
                                 else {
-                                    NSLog(@"Incorrect username/password");
+                                    UIAlertView *problem = [[UIAlertView alloc]
+                                                            initWithTitle:@"Invalid Credentials"
+                                                            message:@"Username and Password Combo not found"
+                                                            delegate:nil
+                                                            cancelButtonTitle:@"Re-enter"
+                                                            otherButtonTitles: nil];
+                                    [problem show];
+                                    [self.loadingAnimation hide];
+                                    return;
                                 }
                             }
                             else {
                                 NSLog(@"Error: %@", error);
+                                UIAlertView *problem = [[UIAlertView alloc]
+                                                        initWithTitle:@"Uh-oh"
+                                                        message:@"Something went wrong while trying to log you in"
+                                                        delegate:nil
+                                                        cancelButtonTitle:@"Try again"
+                                                        otherButtonTitles: nil];
+                                [self.loadingAnimation hide];
+                                [problem show];
+                                return;
                             }
-                            
                         }
      ];
 }
