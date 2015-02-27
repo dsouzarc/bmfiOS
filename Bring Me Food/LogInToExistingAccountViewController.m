@@ -7,8 +7,13 @@
 //
 
 #import "LogInToExistingAccountViewController.h"
+#import "PQFBouncingBalls.h"
 
 @interface LogInToExistingAccountViewController ()
+
+- (IBAction)loginButtonClicked:(id)sender;
+
+@property (nonatomic, strong) PQFBouncingBalls *loadingAnimation;
 
 @end
 
@@ -17,8 +22,21 @@
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    
     return self;
+}
+
+- (IBAction)loginButtonClicked:(id)sender {
+    
+    self.loadingAnimation = [[PQFBouncingBalls alloc] initLoaderOnView:self.view];
+    self.loadingAnimation.label.text = @"Logging in...";
+    self.loadingAnimation.label.textColor = [UIColor blueColor];
+    self.loadingAnimation.jumpAmount = 50;
+    self.loadingAnimation.separation = 40;
+    self.loadingAnimation.zoomAmount = 40;
+    self.loadingAnimation.loaderColor = [UIColor blueColor];
+    [self.loadingAnimation show];
+    
+    
 }
 
 - (void)viewDidLoad
@@ -28,7 +46,6 @@
     self.popupView.layer.shadowOpacity = 0.8;
     self.popupView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void) showAnimate
