@@ -9,6 +9,7 @@
 #import <Parse/Parse.h>
 #import "LogInToExistingAccountViewController.h"
 #import "PQFBouncingBalls.h"
+#import "MainViewController.h"
 
 @interface LogInToExistingAccountViewController () <UITextFieldDelegate>
 
@@ -67,6 +68,13 @@
                             if(!error) {
                                 if([result containsString:@"YES"]) {
                                     NSLog(@"Logged in!");
+                                    
+                                    MainViewController *mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:[NSBundle mainBundle]];
+                                    
+                                    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+                                    [appDelegate.window setRootViewController:mainViewController];
+                                    
+                                    [self closePopup:sender];
                                 }
                                 else {
                                     UIAlertView *problem = [[UIAlertView alloc]
@@ -107,6 +115,7 @@
     
     self.usernameTextField.delegate = self;
     self.passwordTextField.delegate = self;
+    
 }
 
 - (void) showAnimate

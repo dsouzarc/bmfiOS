@@ -58,6 +58,8 @@
 {
     self.loginPopupVC = [[LogInToExistingAccountViewController alloc] initWithNibName:@"LogInToExistingAccountViewController" bundle:[NSBundle mainBundle]];
     [self.loginPopupVC showInView:self.view shouldAnimate:YES];
+    
+    NSLog(@"BACK");
 }
 
 - (IBAction)signUpForAccount:(id)sender {
