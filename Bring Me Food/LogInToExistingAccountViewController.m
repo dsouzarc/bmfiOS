@@ -71,9 +71,10 @@
                                     
                                     MainViewController *mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:[NSBundle mainBundle]];
                                     
+                                    mainViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                                    
                                     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
                                     [appDelegate.window setRootViewController:mainViewController];
-                                    
                                     [self closePopup:sender];
                                 }
                                 else {

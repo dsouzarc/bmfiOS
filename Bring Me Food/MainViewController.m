@@ -7,8 +7,16 @@
 //
 
 #import "MainViewController.h"
+#import "NewOrderViewController.h"
+#import "ExistingOrdersViewController.h"
 
-@interface MainViewController ()
+@interface MainViewController () <UITabBarControllerDelegate>
+
+@property (nonatomic, retain) UIWindow * window;
+@property (nonatomic, retain) UITabBarController *tabBarController;
+
+@property (nonatomic, strong) NewOrderViewController *_newOrderViewController;
+@property (nonatomic, strong) ExistingOrdersViewController *_existingOrdersViewController;
 
 @end
 
@@ -16,7 +24,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window makeKeyAndVisible];
+
+    self.tabBarController = [[UITabBarController alloc] init];
+    self.tabBarController.viewControllers = [self initializeTabBarItems];
+    self.window.rootViewController = self.tabBarController;
+    
+}
+
+- (NSArray*) initializeTabBarItems
+{
+    self._newOrderViewController = [[NewOrderViewController alloc]
+                                        initWithNibName:@"NewOrderViewController" bundle:nil];
+    self._newOrderViewController.tabBarItem.title = @"New Order";
+    
+    self._existingOrdersViewController = [[ExistingOrdersViewController alloc] initWithNibName:@"ExistingOrdersViewController" bundle:nil];
+    self._existingOrdersViewController.tabBarItem.title = @"Existing Orders";
+    
+    return @[self._existingOrdersViewController, self._newOrderViewController];
 }
 
 - (void)didReceiveMemoryWarning {
