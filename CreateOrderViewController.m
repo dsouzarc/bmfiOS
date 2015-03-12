@@ -1,18 +1,18 @@
 //
-//  NewOrderViewController.m
+//  CreateOrderViewController.m
 //  Bring Me Food
 //
-//  Created by Ryan D'souza on 2/28/15.
+//  Created by Ryan D'souza on 3/3/15.
 //  Copyright (c) 2015 Ryan D'souza. All rights reserved.
 //
 
-#import "NewOrderViewController.h"
+#import "CreateOrderViewController.h"
 
-@interface NewOrderViewController ()
+@interface CreateOrderViewController ()
 
 @end
 
-@implementation NewOrderViewController
+@implementation CreateOrderViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,6 +22,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    return self;
 }
 
 /*

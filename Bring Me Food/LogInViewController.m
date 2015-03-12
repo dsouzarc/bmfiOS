@@ -112,8 +112,23 @@
     self.loadingCircles.maxDiam = 200.0;
     [self.loadingCircles show];
     
+    PFUser *newUser = [PFUser user];
+    newUser.username = phoneNumber;
+    newUser.password = password;
+    newUser.email = email;
+    newUser[@"name"] = name;
+    newUser[@"phoneNumber"] = phoneNumber;
     
-    PFObject *newUser = [PFObject objectWithClassName:@"BMFUser"];
+    [newUser signUpInBackgroundWithBlock:^(BOOL success, NSError *error) {
+        if(!error) {
+            NSLog(@"Success!");
+        }
+        else {
+            NSLog(error.description);
+        }
+    }];
+    
+    /*PFObject *newUser = [PFObject objectWithClassName:@"BMFUser"];
     newUser[@"phoneNumber"] = phoneNumber;
     newUser[@"emailAddress"] = email;
     newUser[@"encryptedPassword"] = password;
@@ -126,7 +141,7 @@
             //[self.loadingCircles hide];
         }
         
-    }];
+    }];*/
     
 }
 

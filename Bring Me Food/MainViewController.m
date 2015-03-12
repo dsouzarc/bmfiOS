@@ -7,7 +7,6 @@
 //
 
 #import "MainViewController.h"
-#import "NewOrderViewController.h"
 #import "ExistingOrdersViewController.h"
 
 @interface MainViewController () <UITabBarControllerDelegate>
@@ -15,7 +14,6 @@
 @property (nonatomic, retain) UIWindow * window;
 @property (nonatomic, retain) UITabBarController *tabBarController;
 
-@property (nonatomic, strong) NewOrderViewController *_newOrderViewController;
 @property (nonatomic, strong) ExistingOrdersViewController *_existingOrdersViewController;
 
 @end
@@ -36,14 +34,11 @@
 
 - (NSArray*) initializeTabBarItems
 {
-    self._newOrderViewController = [[NewOrderViewController alloc]
-                                        initWithNibName:@"NewOrderViewController" bundle:nil];
-    self._newOrderViewController.tabBarItem.title = @"New Order";
-    
+
     self._existingOrdersViewController = [[ExistingOrdersViewController alloc] initWithNibName:@"ExistingOrdersViewController" bundle:nil];
     self._existingOrdersViewController.tabBarItem.title = @"Existing Orders";
     
-    return @[self._existingOrdersViewController, self._newOrderViewController];
+    return @[self._existingOrdersViewController];
 }
 
 - (void)didReceiveMemoryWarning {

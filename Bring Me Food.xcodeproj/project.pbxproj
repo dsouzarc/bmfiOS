@@ -11,8 +11,6 @@
 		9443CCEC1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9443CCEA1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.xib */; };
 		9443CCEE1AA0F18F00C5CC70 /* lock_dark-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9443CCED1AA0F18F00C5CC70 /* lock_dark-50.png */; };
 		9443CCF01AA0F23600C5CC70 /* user_dark_male4-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9443CCEF1AA0F23600C5CC70 /* user_dark_male4-50.png */; };
-		9456EDB21AA2A95A003D167E /* NewOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9456EDB01AA2A95A003D167E /* NewOrderViewController.m */; };
-		9456EDB31AA2A95A003D167E /* NewOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9456EDB11AA2A95A003D167E /* NewOrderViewController.xib */; };
 		9456EDB71AA2A9CC003D167E /* ExistingOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9456EDB51AA2A9CC003D167E /* ExistingOrdersViewController.m */; };
 		9456EDB81AA2A9CC003D167E /* ExistingOrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9456EDB61AA2A9CC003D167E /* ExistingOrdersViewController.xib */; };
 		946068B41A9D13A0006664A2 /* message-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 946068B01A9D13A0006664A2 /* message-50.png */; };
@@ -76,9 +74,6 @@
 		9443CCEA1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogInToExistingAccountViewController.xib; sourceTree = "<group>"; };
 		9443CCED1AA0F18F00C5CC70 /* lock_dark-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock_dark-50.png"; sourceTree = "<group>"; };
 		9443CCEF1AA0F23600C5CC70 /* user_dark_male4-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_dark_male4-50.png"; sourceTree = "<group>"; };
-		9456EDAF1AA2A95A003D167E /* NewOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewOrderViewController.h; path = ../NewOrderViewController.h; sourceTree = "<group>"; };
-		9456EDB01AA2A95A003D167E /* NewOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewOrderViewController.m; path = ../NewOrderViewController.m; sourceTree = "<group>"; };
-		9456EDB11AA2A95A003D167E /* NewOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewOrderViewController.xib; path = ../NewOrderViewController.xib; sourceTree = "<group>"; };
 		9456EDB41AA2A9CC003D167E /* ExistingOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExistingOrdersViewController.h; sourceTree = "<group>"; };
 		9456EDB51AA2A9CC003D167E /* ExistingOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExistingOrdersViewController.m; sourceTree = "<group>"; };
 		9456EDB61AA2A9CC003D167E /* ExistingOrdersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExistingOrdersViewController.xib; sourceTree = "<group>"; };
@@ -245,9 +240,6 @@
 		947582111A9C126300487720 /* Bring Me Food */ = {
 			isa = PBXGroup;
 			children = (
-				9456EDAF1AA2A95A003D167E /* NewOrderViewController.h */,
-				9456EDB01AA2A95A003D167E /* NewOrderViewController.m */,
-				9456EDB11AA2A95A003D167E /* NewOrderViewController.xib */,
 				9456EDB41AA2A9CC003D167E /* ExistingOrdersViewController.h */,
 				9456EDB51AA2A9CC003D167E /* ExistingOrdersViewController.m */,
 				9456EDB61AA2A9CC003D167E /* ExistingOrdersViewController.xib */,
@@ -440,7 +432,6 @@
 				9475823C1A9C130B00487720 /* LogInViewController.xib in Resources */,
 				9475821E1A9C126300487720 /* Main.storyboard in Resources */,
 				94F2D3331AA40E160055DAC3 /* MainViewController.xib in Resources */,
-				9456EDB31AA2A95A003D167E /* NewOrderViewController.xib in Resources */,
 				946068B61A9D13A0006664A2 /* phone1-50.png in Resources */,
 				9443CCF01AA0F23600C5CC70 /* user_dark_male4-50.png in Resources */,
 				947582231A9C126300487720 /* LaunchScreen.xib in Resources */,
@@ -473,7 +464,6 @@
 				9475845C1A9CFDE700487720 /* UIViewController+Chameleon.m in Sources */,
 				947582181A9C126300487720 /* AppDelegate.m in Sources */,
 				947584491A9CDE0D00487720 /* UICKeyChainStore.m in Sources */,
-				9456EDB21AA2A95A003D167E /* NewOrderViewController.m in Sources */,
 				9443CCEB1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.m in Sources */,
 				946068CE1A9D55BC006664A2 /* PQFBarsInCircle.m in Sources */,
 				947582151A9C126300487720 /* main.m in Sources */,
