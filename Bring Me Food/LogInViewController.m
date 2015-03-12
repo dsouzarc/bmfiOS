@@ -11,6 +11,7 @@
 #import "LogInToExistingAccountViewController.h"
 #import <Parse/Parse.h>
 #import <QuartzCore/QuartzCore.h>
+#import "UICKeyChainStore.h"
 
 @interface LogInViewController () <UITextFieldDelegate>
 
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *signInLabel;
 
 @property (strong, nonatomic) PQFCirclesInTriangle *loadingCircles;
+@property (strong, nonatomic) UICKeyChainStore *keyChain;
 
 - (IBAction)signUpForAccount:(id)sender;
 
@@ -32,6 +34,17 @@
 @end
 
 @implementation LogInViewController
+
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if(self) {
+        self.keyChain = [[UICKeyChainStore alloc] init];
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -121,6 +134,12 @@
     
     [newUser signUpInBackgroundWithBlock:^(BOOL success, NSError *error) {
         if(!error) {
+            self.keyChain[@"username"] = phoneNumber;
+            self.keyChain[@"password"] = password;
+            self.keyChain[@"phoneNumber"] = phoneNumber;
+            self.keyChain[@"name"] = name;
+            self.keyChain[@"emailAddress"] = email;
+            
             [self.loadingCircles hide];
             NSLog(@"Success!");
         }

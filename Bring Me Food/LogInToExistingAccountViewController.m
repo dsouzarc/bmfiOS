@@ -8,14 +8,16 @@
 
 #import <Parse/Parse.h>
 #import "LogInToExistingAccountViewController.h"
+#import "UICKeyChainStore.h"
 #import "PQFBouncingBalls.h"
-#import "MainViewController.h"
+#import "ExistingOrdersViewController.h"
 
 @interface LogInToExistingAccountViewController () <UITextFieldDelegate>
 
 - (IBAction)loginButtonClicked:(id)sender;
 
 @property (nonatomic, strong) PQFBouncingBalls *loadingAnimation;
+@property (nonatomic, strong) UICKeyChainStore *keyChain;
 
 @end
 
@@ -24,6 +26,10 @@
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if(self) {
+        self.keyChain = [[UICKeyChainStore alloc] init];
+    }
     return self;
 }
 
@@ -60,7 +66,41 @@
     self.loadingAnimation.loaderColor = [UIColor blueColor];
     [self.loadingAnimation show];
     
-    [PFCloud callFunctionInBackground:@"login"
+    [PFUser logInWithUsernameInBackground:self.usernameTextField.text
+                                 password:self.passwordTextField.text
+                                    block:^(PFUser *user, NSError *error) {
+                                        if (user) {
+                                            
+                                            PFQuery *query = [PFUser query];
+                                            [query whereKey:@"username" equalTo:self.usernameTextField.text];
+                                            
+                                            [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+                                                if(!error) {
+                                                    PFObject *first = (PFObject*)results[0];
+                                                    
+                                                    self.keyChain[@"username"] = self.usernameTextField.text;
+                                                    self.keyChain[@"password"] = self.passwordTextField.text;
+                                                    self.keyChain[@"phoneNumber"] = self.usernameTextField.text;
+                                                    self.keyChain[@"name"] = first[@"name"];
+                                                    self.keyChain[@"emailAddress"] = first[@"email"];
+                                                }
+                                            }];
+                                            
+                                            ExistingOrdersViewController *existingOrders = [[ExistingOrdersViewController alloc] initWithNibName:@"ExistingOrdersViewController" bundle:nil];
+                                        }
+                                        else {
+                                            UIAlertView *problem = [[UIAlertView alloc]
+                                                                    initWithTitle:@"Invalid Credentials"
+                                                                    message:@"Username and Password Combo not found"
+                                                                    delegate:nil
+                                                                    cancelButtonTitle:@"Re-enter"
+                                                                    otherButtonTitles: nil];
+                                            [problem show];
+                                            [self.loadingAnimation hide];
+                                        }
+                                    }];
+    
+    /*[PFCloud callFunctionInBackground:@"login"
                        withParameters:@{@"username": self.usernameTextField.text,
                                         @"password": self.passwordTextField.text}
                         block:^(NSString *result, NSError *error) {
@@ -102,7 +142,7 @@
                                 return;
                             }
                         }
-     ];
+     ];*/
 }
 
 - (void)viewDidLoad
