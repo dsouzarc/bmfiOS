@@ -54,8 +54,6 @@
 		9475845A1A9CFDE700487720 /* UIColor+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 947584531A9CFDE700487720 /* UIColor+Chameleon.m */; };
 		9475845B1A9CFDE700487720 /* UIColor+CIELAB.m in Sources */ = {isa = PBXBuildFile; fileRef = 947584551A9CFDE700487720 /* UIColor+CIELAB.m */; };
 		9475845C1A9CFDE700487720 /* UIViewController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 947584571A9CFDE700487720 /* UIViewController+Chameleon.m */; };
-		94F2D3321AA40E160055DAC3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F2D3301AA40E160055DAC3 /* MainViewController.m */; };
-		94F2D3331AA40E160055DAC3 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F2D3311AA40E160055DAC3 /* MainViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,9 +136,6 @@
 		947584551A9CFDE700487720 /* UIColor+CIELAB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CIELAB.m"; sourceTree = "<group>"; };
 		947584561A9CFDE700487720 /* UIViewController+Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Chameleon.h"; sourceTree = "<group>"; };
 		947584571A9CFDE700487720 /* UIViewController+Chameleon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Chameleon.m"; sourceTree = "<group>"; };
-		94F2D32F1AA40E160055DAC3 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		94F2D3301AA40E160055DAC3 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		94F2D3311AA40E160055DAC3 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,9 +254,6 @@
 				9443CCE81AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.h */,
 				9443CCE91AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.m */,
 				9443CCEA1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.xib */,
-				94F2D32F1AA40E160055DAC3 /* MainViewController.h */,
-				94F2D3301AA40E160055DAC3 /* MainViewController.m */,
-				94F2D3311AA40E160055DAC3 /* MainViewController.xib */,
 			);
 			path = "Bring Me Food";
 			sourceTree = "<group>";
@@ -431,7 +423,6 @@
 				9443CCEE1AA0F18F00C5CC70 /* lock_dark-50.png in Resources */,
 				9475823C1A9C130B00487720 /* LogInViewController.xib in Resources */,
 				9475821E1A9C126300487720 /* Main.storyboard in Resources */,
-				94F2D3331AA40E160055DAC3 /* MainViewController.xib in Resources */,
 				946068B61A9D13A0006664A2 /* phone1-50.png in Resources */,
 				9443CCF01AA0F23600C5CC70 /* user_dark_male4-50.png in Resources */,
 				947582231A9C126300487720 /* LaunchScreen.xib in Resources */,
@@ -468,7 +459,6 @@
 				946068CE1A9D55BC006664A2 /* PQFBarsInCircle.m in Sources */,
 				947582151A9C126300487720 /* main.m in Sources */,
 				9456EDB71AA2A9CC003D167E /* ExistingOrdersViewController.m in Sources */,
-				94F2D3321AA40E160055DAC3 /* MainViewController.m in Sources */,
 				946068D41A9D55EE006664A2 /* UIColor+FlatColors.m in Sources */,
 				947584591A9CFDE700487720 /* NSArray+Chameleon.m in Sources */,
 				946068D01A9D55BC006664A2 /* PQFCirclesInTriangle.m in Sources */,

@@ -83,10 +83,17 @@
                                                     self.keyChain[@"phoneNumber"] = self.usernameTextField.text;
                                                     self.keyChain[@"name"] = first[@"name"];
                                                     self.keyChain[@"emailAddress"] = first[@"email"];
+                                                    
+                                                    NSLog(self.keyChain[@"password"]);
                                                 }
                                             }];
                                             
                                             ExistingOrdersViewController *existingOrders = [[ExistingOrdersViewController alloc] initWithNibName:@"ExistingOrdersViewController" bundle:nil];
+                                            existingOrders.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                                            
+                                            AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+                                            [appDelegate.window setRootViewController:existingOrders];
+                                            [self closePopup:sender];
                                         }
                                         else {
                                             UIAlertView *problem = [[UIAlertView alloc]
