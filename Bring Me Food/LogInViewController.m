@@ -121,28 +121,19 @@
     
     [newUser signUpInBackgroundWithBlock:^(BOOL success, NSError *error) {
         if(!error) {
+            [self.loadingCircles hide];
             NSLog(@"Success!");
         }
         else {
-            NSLog(error.description);
+            [self.loadingCircles hide];
+            UIAlertView *existing = [[UIAlertView alloc]
+                                     initWithTitle:@"Problem signing up"
+                                     message:@"It seems like you already have an account"
+                                     delegate:nil cancelButtonTitle:@"Ok"
+                                     otherButtonTitles:nil, nil];
+            [existing show];
         }
     }];
-    
-    /*PFObject *newUser = [PFObject objectWithClassName:@"BMFUser"];
-    newUser[@"phoneNumber"] = phoneNumber;
-    newUser[@"emailAddress"] = email;
-    newUser[@"encryptedPassword"] = password;
-    newUser[@"name"] = name;
-    
-    [newUser saveInBackgroundWithBlock:^(BOOL success, NSError *error) {
-        if(success) {
-            NSLog(@"Success!");
-            
-            //[self.loadingCircles hide];
-        }
-        
-    }];*/
-    
 }
 
 - (BOOL) validName:(NSString*) nameString {
