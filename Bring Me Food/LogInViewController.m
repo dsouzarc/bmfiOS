@@ -8,6 +8,7 @@
 
 #import "LogInViewController.h"
 #import "PQFCirclesInTriangle.h"
+#import "ExistingOrdersViewController.h"
 #import "LogInToExistingAccountViewController.h"
 #import <Parse/Parse.h>
 #import <QuartzCore/QuartzCore.h>
@@ -140,8 +141,10 @@
             self.keyChain[@"name"] = name;
             self.keyChain[@"emailAddress"] = email;
             
+            ExistingOrdersViewController *existingOrders = [[ExistingOrdersViewController alloc] initWithNibName:@"ExistingOrdersViewController" bundle:[NSBundle mainBundle]];
+            self.view.window.rootViewController = existingOrders;
+            
             [self.loadingCircles hide];
-            NSLog(@"Success!");
         }
         else {
             [self.loadingCircles hide];
