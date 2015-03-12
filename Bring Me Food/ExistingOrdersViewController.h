@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ExistingOrdersViewController : UIViewController
+@interface ExistingOrdersViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end
