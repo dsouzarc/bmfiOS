@@ -15,6 +15,8 @@
 		9456EDB81AA2A9CC003D167E /* ExistingOrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9456EDB61AA2A9CC003D167E /* ExistingOrdersViewController.xib */; };
 		94591ED71AB2554C00D62C0A /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 94591ED61AB2554C00D62C0A /* Order.m */; };
 		94591EDA1AB255E500D62C0A /* RestaurantItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 94591ED91AB255E500D62C0A /* RestaurantItem.m */; };
+		94591EDE1AB26A6800D62C0A /* CreateOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94591EDC1AB26A6800D62C0A /* CreateOrderViewController.m */; };
+		94591EDF1AB26A6800D62C0A /* CreateOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94591EDD1AB26A6800D62C0A /* CreateOrderViewController.xib */; };
 		946068B41A9D13A0006664A2 /* message-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 946068B01A9D13A0006664A2 /* message-50.png */; };
 		946068B61A9D13A0006664A2 /* phone1-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 946068B21A9D13A0006664A2 /* phone1-50.png */; };
 		946068B71A9D13A0006664A2 /* user_male_circle_filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 946068B31A9D13A0006664A2 /* user_male_circle_filled-50.png */; };
@@ -81,6 +83,9 @@
 		94591ED61AB2554C00D62C0A /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		94591ED81AB255E500D62C0A /* RestaurantItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantItem.h; sourceTree = "<group>"; };
 		94591ED91AB255E500D62C0A /* RestaurantItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantItem.m; sourceTree = "<group>"; };
+		94591EDB1AB26A6800D62C0A /* CreateOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateOrderViewController.h; sourceTree = "<group>"; };
+		94591EDC1AB26A6800D62C0A /* CreateOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateOrderViewController.m; sourceTree = "<group>"; };
+		94591EDD1AB26A6800D62C0A /* CreateOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateOrderViewController.xib; sourceTree = "<group>"; };
 		946068B01A9D13A0006664A2 /* message-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-50.png"; sourceTree = "<group>"; };
 		946068B21A9D13A0006664A2 /* phone1-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone1-50.png"; sourceTree = "<group>"; };
 		946068B31A9D13A0006664A2 /* user_male_circle_filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_male_circle_filled-50.png"; sourceTree = "<group>"; };
@@ -241,6 +246,9 @@
 		947582111A9C126300487720 /* Bring Me Food */ = {
 			isa = PBXGroup;
 			children = (
+				94591EDB1AB26A6800D62C0A /* CreateOrderViewController.h */,
+				94591EDC1AB26A6800D62C0A /* CreateOrderViewController.m */,
+				94591EDD1AB26A6800D62C0A /* CreateOrderViewController.xib */,
 				94591ED51AB2554C00D62C0A /* Order.h */,
 				94591ED61AB2554C00D62C0A /* Order.m */,
 				94591ED81AB255E500D62C0A /* RestaurantItem.h */,
@@ -432,6 +440,7 @@
 				946068B71A9D13A0006664A2 /* user_male_circle_filled-50.png in Resources */,
 				9443CCEE1AA0F18F00C5CC70 /* lock_dark-50.png in Resources */,
 				9475823C1A9C130B00487720 /* LogInViewController.xib in Resources */,
+				94591EDF1AB26A6800D62C0A /* CreateOrderViewController.xib in Resources */,
 				9475821E1A9C126300487720 /* Main.storyboard in Resources */,
 				946068B61A9D13A0006664A2 /* phone1-50.png in Resources */,
 				9443CCF01AA0F23600C5CC70 /* user_dark_male4-50.png in Resources */,
@@ -459,6 +468,7 @@
 			files = (
 				9475823B1A9C130B00487720 /* LogInViewController.m in Sources */,
 				94591ED71AB2554C00D62C0A /* Order.m in Sources */,
+				94591EDE1AB26A6800D62C0A /* CreateOrderViewController.m in Sources */,
 				9475845B1A9CFDE700487720 /* UIColor+CIELAB.m in Sources */,
 				9475821B1A9C126300487720 /* ViewController.m in Sources */,
 				9475845A1A9CFDE700487720 /* UIColor+Chameleon.m in Sources */,

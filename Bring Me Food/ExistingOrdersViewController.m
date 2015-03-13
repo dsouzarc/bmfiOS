@@ -7,6 +7,7 @@
 //
 
 #import "ExistingOrdersViewController.h"
+#import "CreateOrderViewController.h"
 
 @interface ExistingOrdersViewController ()
 - (IBAction)createNewOrder:(id)sender;
@@ -31,6 +32,10 @@
 }
 
 - (IBAction)createNewOrder:(id)sender {
+    CreateOrderViewController *createOrder = [[CreateOrderViewController alloc] initWithNibName:@"CreateOrderViewController" bundle:[NSBundle mainBundle]];
+    [self setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+    [self presentViewController:createOrder animated:YES completion:nil];
     
+    //self.view.window.rootViewController = createOrder;
 }
 @end
