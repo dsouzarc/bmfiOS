@@ -11,6 +11,7 @@
 		9430E89B1AB3A0030038738F /* SPGooglePlacesAutocompleteQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 9430E8951AB3A0030038738F /* SPGooglePlacesAutocompleteQuery.m */; };
 		9430E89C1AB3A0030038738F /* SPGooglePlacesAutocompleteUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9430E8971AB3A0030038738F /* SPGooglePlacesAutocompleteUtilities.m */; };
 		9430E89D1AB3A0030038738F /* SPGooglePlacesPlaceDetailQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 9430E8991AB3A0030038738F /* SPGooglePlacesPlaceDetailQuery.m */; };
+		9430E89F1AB3A3A40038738F /* ApiConfigurations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9430E89E1AB3A3A40038738F /* ApiConfigurations.plist */; };
 		9443CCEB1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9443CCE91AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.m */; };
 		9443CCEC1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9443CCEA1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.xib */; };
 		9443CCEE1AA0F18F00C5CC70 /* lock_dark-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9443CCED1AA0F18F00C5CC70 /* lock_dark-50.png */; };
@@ -84,6 +85,7 @@
 		9430E8971AB3A0030038738F /* SPGooglePlacesAutocompleteUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGooglePlacesAutocompleteUtilities.m; sourceTree = "<group>"; };
 		9430E8981AB3A0030038738F /* SPGooglePlacesPlaceDetailQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGooglePlacesPlaceDetailQuery.h; sourceTree = "<group>"; };
 		9430E8991AB3A0030038738F /* SPGooglePlacesPlaceDetailQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGooglePlacesPlaceDetailQuery.m; sourceTree = "<group>"; };
+		9430E89E1AB3A3A40038738F /* ApiConfigurations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiConfigurations.plist; sourceTree = "<group>"; };
 		9443CCE81AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInToExistingAccountViewController.h; sourceTree = "<group>"; };
 		9443CCE91AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInToExistingAccountViewController.m; sourceTree = "<group>"; };
 		9443CCEA1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogInToExistingAccountViewController.xib; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				9443CCE81AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.h */,
 				9443CCE91AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.m */,
 				9443CCEA1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.xib */,
+				9430E89E1AB3A3A40038738F /* ApiConfigurations.plist */,
 			);
 			path = "Bring Me Food";
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				TargetAttributes = {
 					9475820E1A9C126300487720 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = Q7N3L673D8;
 					};
 					947582271A9C126300487720 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -474,6 +478,7 @@
 				9475821E1A9C126300487720 /* Main.storyboard in Resources */,
 				946068B61A9D13A0006664A2 /* phone1-50.png in Resources */,
 				9443CCF01AA0F23600C5CC70 /* user_dark_male4-50.png in Resources */,
+				9430E89F1AB3A3A40038738F /* ApiConfigurations.plist in Resources */,
 				947582231A9C126300487720 /* LaunchScreen.xib in Resources */,
 				946068B41A9D13A0006664A2 /* message-50.png in Resources */,
 				9443CCEC1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.xib in Resources */,
@@ -640,6 +645,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -659,6 +665,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

@@ -7,10 +7,12 @@
 //
 
 #import "CreateOrderViewController.h"
+#import "SPGooglePlacesAutocompleteQuery.h"
 
 @interface CreateOrderViewController ()
 
 - (IBAction)cancelOrder:(id)sender;
+
 
 @end
 
@@ -18,6 +20,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    SPGooglePlacesAutocompleteQuery *query = [[SPGooglePlacesAutocompleteQuery alloc] initWithApiKey:[self getGoogleAPIKey]];
+    
+    query.input = @"23 Silvers Lane";
+    query.types = SPPlaceTypeGeocode;
+    
+    [query fetchPlaces:^(NSArray *places, NSError *error) {
+        if(!error) {
+            NSLog(@"Places: %@", places);
+        }
+        else {
+            NSLog(error.description);
+        }
+    }];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -29,6 +45,13 @@
 
 - (IBAction)cancelOrder:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (NSString*)getGoogleAPIKey {
+    NSString *plist = [[NSBundle mainBundle] pathForResource:@"ApiConfigurations" ofType:@"plist"];
+    NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:plist];
+    
+    return config[@"GoogleAPIKey"];
 }
 
 @end
