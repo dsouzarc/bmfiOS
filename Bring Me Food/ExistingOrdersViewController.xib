@@ -15,36 +15,40 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="beU-CY-DEi">
-                    <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                    <rect key="frame" x="8" y="52" width="359" height="607"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="G9L-ac-5ZB"/>
                         <outlet property="delegate" destination="-1" id="IMz-Nl-c2f"/>
                     </connections>
                 </tableView>
-                <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FkP-Bm-NLh">
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tka-rU-qk5">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <items>
-                        <navigationItem title="Existing Orders" id="fmk-E5-miX">
-                            <barButtonItem key="rightBarButtonItem" systemItem="add" id="bpb-uL-uU3"/>
+                        <navigationItem title="Existing Orders" id="XHB-89-2nd">
+                            <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="kWW-VM-xRW"/>
+                            <barButtonItem key="rightBarButtonItem" systemItem="add" id="uNS-WN-bHn">
+                                <connections>
+                                    <action selector="createNewOrder:" destination="-1" id="aWz-d9-Cnq"/>
+                                </connections>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="beU-CY-DEi" firstAttribute="top" secondItem="FkP-Bm-NLh" secondAttribute="bottom" id="5gy-gb-uBb"/>
-                <constraint firstAttribute="trailing" secondItem="FkP-Bm-NLh" secondAttribute="trailing" id="7YI-N8-BiD"/>
-                <constraint firstItem="FkP-Bm-NLh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9id-aR-3Yp"/>
-                <constraint firstAttribute="trailing" secondItem="beU-CY-DEi" secondAttribute="trailing" id="O8R-Wt-Ssk"/>
-                <constraint firstItem="FkP-Bm-NLh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QCa-o9-q9g"/>
-                <constraint firstAttribute="centerX" secondItem="beU-CY-DEi" secondAttribute="centerX" id="bRM-hz-kJx"/>
-                <constraint firstAttribute="bottom" secondItem="beU-CY-DEi" secondAttribute="bottom" id="d9X-fd-tQW"/>
-                <constraint firstItem="beU-CY-DEi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iOL-ZU-8xr"/>
-                <constraint firstAttribute="centerY" secondItem="beU-CY-DEi" secondAttribute="centerY" id="wuR-Ts-Vxl"/>
+                <constraint firstItem="tka-rU-qk5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="1gT-C1-2Im"/>
+                <constraint firstAttribute="bottom" secondItem="beU-CY-DEi" secondAttribute="bottom" constant="8" id="5AW-xu-wVB"/>
+                <constraint firstItem="tka-rU-qk5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6jY-CU-qRw"/>
+                <constraint firstAttribute="trailing" secondItem="beU-CY-DEi" secondAttribute="trailing" constant="8" id="Kli-8w-f9S"/>
+                <constraint firstAttribute="trailing" secondItem="tka-rU-qk5" secondAttribute="trailing" id="NHi-T8-qIO"/>
+                <constraint firstAttribute="centerX" secondItem="beU-CY-DEi" secondAttribute="centerX" id="PPN-1n-FI0"/>
+                <constraint firstItem="beU-CY-DEi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="mS1-aa-onh"/>
+                <constraint firstAttribute="centerY" secondItem="beU-CY-DEi" secondAttribute="centerY" id="t0v-Iw-UOv"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="339.5" y="304.5"/>
+            <point key="canvasLocation" x="342.5" y="305.5"/>
         </view>
     </objects>
 </document>
