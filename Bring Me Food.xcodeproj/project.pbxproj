@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9430E89A1AB3A0030038738F /* SPGooglePlacesAutocompletePlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 9430E8931AB3A0030038738F /* SPGooglePlacesAutocompletePlace.m */; };
+		9430E89B1AB3A0030038738F /* SPGooglePlacesAutocompleteQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 9430E8951AB3A0030038738F /* SPGooglePlacesAutocompleteQuery.m */; };
+		9430E89C1AB3A0030038738F /* SPGooglePlacesAutocompleteUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9430E8971AB3A0030038738F /* SPGooglePlacesAutocompleteUtilities.m */; };
+		9430E89D1AB3A0030038738F /* SPGooglePlacesPlaceDetailQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 9430E8991AB3A0030038738F /* SPGooglePlacesPlaceDetailQuery.m */; };
 		9443CCEB1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9443CCE91AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.m */; };
 		9443CCEC1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9443CCEA1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.xib */; };
 		9443CCEE1AA0F18F00C5CC70 /* lock_dark-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9443CCED1AA0F18F00C5CC70 /* lock_dark-50.png */; };
@@ -71,6 +75,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9430E8911AB3A0030038738F /* SPGooglePlacesAutocomplete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGooglePlacesAutocomplete.h; sourceTree = "<group>"; };
+		9430E8921AB3A0030038738F /* SPGooglePlacesAutocompletePlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGooglePlacesAutocompletePlace.h; sourceTree = "<group>"; };
+		9430E8931AB3A0030038738F /* SPGooglePlacesAutocompletePlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGooglePlacesAutocompletePlace.m; sourceTree = "<group>"; };
+		9430E8941AB3A0030038738F /* SPGooglePlacesAutocompleteQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGooglePlacesAutocompleteQuery.h; sourceTree = "<group>"; };
+		9430E8951AB3A0030038738F /* SPGooglePlacesAutocompleteQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGooglePlacesAutocompleteQuery.m; sourceTree = "<group>"; };
+		9430E8961AB3A0030038738F /* SPGooglePlacesAutocompleteUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGooglePlacesAutocompleteUtilities.h; sourceTree = "<group>"; };
+		9430E8971AB3A0030038738F /* SPGooglePlacesAutocompleteUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGooglePlacesAutocompleteUtilities.m; sourceTree = "<group>"; };
+		9430E8981AB3A0030038738F /* SPGooglePlacesPlaceDetailQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGooglePlacesPlaceDetailQuery.h; sourceTree = "<group>"; };
+		9430E8991AB3A0030038738F /* SPGooglePlacesPlaceDetailQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGooglePlacesPlaceDetailQuery.m; sourceTree = "<group>"; };
 		9443CCE81AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInToExistingAccountViewController.h; sourceTree = "<group>"; };
 		9443CCE91AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInToExistingAccountViewController.m; sourceTree = "<group>"; };
 		9443CCEA1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogInToExistingAccountViewController.xib; sourceTree = "<group>"; };
@@ -185,6 +198,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9430E8901AB3A0030038738F /* SPGooglePlacesAutocomplete */ = {
+			isa = PBXGroup;
+			children = (
+				9430E8911AB3A0030038738F /* SPGooglePlacesAutocomplete.h */,
+				9430E8921AB3A0030038738F /* SPGooglePlacesAutocompletePlace.h */,
+				9430E8931AB3A0030038738F /* SPGooglePlacesAutocompletePlace.m */,
+				9430E8941AB3A0030038738F /* SPGooglePlacesAutocompleteQuery.h */,
+				9430E8951AB3A0030038738F /* SPGooglePlacesAutocompleteQuery.m */,
+				9430E8961AB3A0030038738F /* SPGooglePlacesAutocompleteUtilities.h */,
+				9430E8971AB3A0030038738F /* SPGooglePlacesAutocompleteUtilities.m */,
+				9430E8981AB3A0030038738F /* SPGooglePlacesPlaceDetailQuery.h */,
+				9430E8991AB3A0030038738F /* SPGooglePlacesPlaceDetailQuery.m */,
+			);
+			path = SPGooglePlacesAutocomplete;
+			sourceTree = "<group>";
+		};
 		946068BA1A9D18DE006664A2 /* Misc Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +359,7 @@
 		9475844A1A9CDE7A00487720 /* 3rd Party Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				9430E8901AB3A0030038738F /* SPGooglePlacesAutocomplete */,
 				947584471A9CDE0D00487720 /* UICKeyChainStore.h */,
 				947584481A9CDE0D00487720 /* UICKeyChainStore.m */,
 			);
@@ -475,13 +505,17 @@
 				947584581A9CFDE700487720 /* ChameleonStatusBar.m in Sources */,
 				9475845C1A9CFDE700487720 /* UIViewController+Chameleon.m in Sources */,
 				947582181A9C126300487720 /* AppDelegate.m in Sources */,
+				9430E89A1AB3A0030038738F /* SPGooglePlacesAutocompletePlace.m in Sources */,
 				947584491A9CDE0D00487720 /* UICKeyChainStore.m in Sources */,
+				9430E89D1AB3A0030038738F /* SPGooglePlacesPlaceDetailQuery.m in Sources */,
+				9430E89B1AB3A0030038738F /* SPGooglePlacesAutocompleteQuery.m in Sources */,
 				9443CCEB1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.m in Sources */,
 				946068CE1A9D55BC006664A2 /* PQFBarsInCircle.m in Sources */,
 				947582151A9C126300487720 /* main.m in Sources */,
 				9456EDB71AA2A9CC003D167E /* ExistingOrdersViewController.m in Sources */,
 				946068D41A9D55EE006664A2 /* UIColor+FlatColors.m in Sources */,
 				947584591A9CFDE700487720 /* NSArray+Chameleon.m in Sources */,
+				9430E89C1AB3A0030038738F /* SPGooglePlacesAutocompleteUtilities.m in Sources */,
 				94591EDA1AB255E500D62C0A /* RestaurantItem.m in Sources */,
 				946068D01A9D55BC006664A2 /* PQFCirclesInTriangle.m in Sources */,
 				946068CF1A9D55BC006664A2 /* PQFBouncingBalls.m in Sources */,
