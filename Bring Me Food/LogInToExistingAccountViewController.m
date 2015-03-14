@@ -160,10 +160,12 @@
     self.popupView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     
     [super viewDidLoad];
-    
     self.usernameTextField.delegate = self;
     self.passwordTextField.delegate = self;
-    
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 
 - (void) showAnimate
@@ -174,6 +176,18 @@
     [UIView animateWithDuration:0.25 animations:^(void) {
         self.view.alpha = 1;
         self.view.transform = CGAffineTransformMakeScale(1, 1);
+    }];
+}
+
+- (void) removeAnimate
+{
+    [UIView animateWithDuration:0.25 animations:^(void) {
+        self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
+        self.view.alpha = 0;
+    } completion:^(BOOL finished) {
+        if(finished) {
+            [self.view removeFromSuperview];
+        }
     }];
 }
 
@@ -193,22 +207,7 @@
     [self removeAnimate];
 }
 
-- (void) removeAnimate
-{
-    [UIView animateWithDuration:0.25 animations:^(void) {
-        self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
-        self.view.alpha = 0;
-    } completion:^(BOOL finished) {
-        if(finished) {
-            [self.view removeFromSuperview];
-        }
-    }];
-}
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (IBAction)exitButton:(id)sender {
     [self closePopup:sender];
@@ -216,6 +215,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    [self animateTextField: textField up: YES];
     //Add some glow effect
     textField.layer.cornerRadius=8.0f;
     textField.layer.masksToBounds=YES;
@@ -225,8 +225,27 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    [self animateTextField: textField up: NO];
     //Remove the flow effect
     textField.layer.borderColor=[[UIColor clearColor]CGColor];
 }
 
+- (void) animateTextField: (UITextField*) textField up: (BOOL) up
+{
+    const int movementDistance = 50; // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    
+    int movement = (up ? -movementDistance : movementDistance);
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 @end
