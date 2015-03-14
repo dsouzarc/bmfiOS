@@ -8,10 +8,10 @@
 
 #import "CreateOrderViewController.h"
 #import "SPGooglePlacesAutocompleteQuery.h"
-
+#import "ChooseRestaurantViewController.h"
+#import <Parse/Parse.h>
 @interface CreateOrderViewController ()
-
-- (IBAction)cancelOrder:(id)sender;
+- (IBAction)chooseRestaurantButton:(id)sender;
 
 
 @end
@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    SPGooglePlacesAutocompleteQuery *query = [[SPGooglePlacesAutocompleteQuery alloc] initWithApiKey:[self getGoogleAPIKey]];
+    /*SPGooglePlacesAutocompleteQuery *query = [[SPGooglePlacesAutocompleteQuery alloc] initWithApiKey:[self getGoogleAPIKey]];
     
     query.input = @"23 Silvers Lane";
     query.types = SPPlaceTypeGeocode;
@@ -33,18 +33,13 @@
         else {
             NSLog(error.description);
         }
-    }];
-    // Do any additional setup after loading the view from its nib.
+    }];*/
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-- (IBAction)cancelOrder:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSString*)getGoogleAPIKey {
@@ -54,4 +49,16 @@
     return config[@"GoogleAPIKey"];
 }
 
+- (IBAction)chooseRestaurantButton:(id)sender {
+    [PFCloud callFunctionInBackground:@"getRestaurants" withParameters:nil block:^(NSArray *response, NSError *error ) {
+        if(!error) {
+            ChooseRestaurantViewController *chooseRestaurant = [[ChooseRestaurantViewController alloc] initWithNibName:@"ChooseRestaurantViewController" bundle:[NSBundle mainBundle] restaurants:response];
+            [chooseRestaurant showInView:self.view shouldAnimate:YES];
+            
+        }
+        else {
+            NSLog(@"ERROR\t%@", error.description);
+        }
+    }];
+}
 @end
