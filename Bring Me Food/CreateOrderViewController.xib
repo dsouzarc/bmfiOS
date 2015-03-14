@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateOrderViewController">
             <connections>
+                <outlet property="restaurantNameLabel" destination="u2I-P9-dl0" id="Xfl-K1-IJx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sVQ-8f-lV6"/>
             </connections>
         </placeholder>

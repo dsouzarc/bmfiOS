@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChooseRestaurantViewController.h"
 
-@interface CreateOrderViewController : UIViewController
+@interface CreateOrderViewController : UIViewController <ChooseRestaurantNameDelegate>
 
 @end

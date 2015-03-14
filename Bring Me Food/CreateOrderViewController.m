@@ -10,9 +10,12 @@
 #import "SPGooglePlacesAutocompleteQuery.h"
 #import "ChooseRestaurantViewController.h"
 #import <Parse/Parse.h>
-@interface CreateOrderViewController ()
-- (IBAction)chooseRestaurantButton:(id)sender;
 
+@interface CreateOrderViewController ()
+
+- (IBAction)chooseRestaurantButton:(id)sender;
+@property (nonatomic, strong) ChooseRestaurantViewController *chooseRestaurant;
+@property (strong, nonatomic) IBOutlet UILabel *restaurantNameLabel;
 
 @end
 
@@ -37,6 +40,12 @@
     
 }
 
+- (void) chooseRestaurantViewController:(ChooseRestaurantViewController *)controller didFinishChoosing:(NSString *)chosenRestaurant
+{
+    self.restaurantNameLabel.text = chosenRestaurant;
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -52,8 +61,9 @@
 - (IBAction)chooseRestaurantButton:(id)sender {
     [PFCloud callFunctionInBackground:@"getRestaurants" withParameters:nil block:^(NSArray *response, NSError *error ) {
         if(!error) {
-            ChooseRestaurantViewController *chooseRestaurant = [[ChooseRestaurantViewController alloc] initWithNibName:@"ChooseRestaurantViewController" bundle:[NSBundle mainBundle] restaurants:response];
-            [chooseRestaurant showInView:self.view shouldAnimate:YES];
+            self.chooseRestaurant = [[ChooseRestaurantViewController alloc] initWithNibName:@"ChooseRestaurantViewController" bundle:[NSBundle mainBundle] restaurants:response];
+            self.chooseRestaurant.delegate = self;
+            [self.chooseRestaurant showInView:self.view shouldAnimate:YES];
             
         }
         else {

@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class ChooseRestaurantViewController;
+
+@protocol ChooseRestaurantNameDelegate <NSObject>
+
+- (void) chooseRestaurantViewController:(ChooseRestaurantViewController*)controller didFinishChoosing:(NSString*)chosenRestaurant;
+
+@end
+
 @interface ChooseRestaurantViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, weak) id<ChooseRestaurantNameDelegate> delegate;
 
 - (void) showInView:(UIView *)view shouldAnimate:(BOOL)shouldAnimate;
 

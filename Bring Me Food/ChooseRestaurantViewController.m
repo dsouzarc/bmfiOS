@@ -21,7 +21,7 @@
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil restaurants:(NSArray *)restaurants
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    self.restaurants = restaurants;
+    self.restaurants = [[NSArray alloc] initWithArray:restaurants];
     return self;
 }
 
@@ -37,6 +37,17 @@
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.restaurants.count;
+}
+
+- (void) tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *chosenRestaurant = [self.restaurants objectAtIndex:indexPath.row];
+    
+    [self.delegate chooseRestaurantViewController:self didFinishChoosing:chosenRestaurant];
+    
+    [self removeAnimate];
+    
+    NSLog(@"CLICKED: %@", self.restaurants[indexPath.row]);
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
