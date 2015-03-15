@@ -7,7 +7,7 @@
 //
 
 #import "CreateOrderViewController.h"
-#import "SPGooglePlacesAutocompleteQuery.h"
+#import "ChooseAddressViewController.h"
 #import "ChooseRestaurantViewController.h"
 #import <Parse/Parse.h>
 #import "PQFBouncingBalls.h"
@@ -15,13 +15,16 @@
 @interface CreateOrderViewController ()
 
 - (IBAction)chooseRestaurantButton:(id)sender;
+- (IBAction)chooseAddressButton:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UILabel *restaurantNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *addressLabel;
 
 @property (strong, nonatomic) PQFBouncingBalls *loadingBouncingBalls;
 
 //Choose View Controllers
 @property (nonatomic, strong) ChooseRestaurantViewController *chooseRestaurant;
+@property (nonatomic, strong) ChooseAddressViewController *chooseAddress;
 
 //Data from Parse
 @property (nonatomic, strong) NSArray *allRestaurants;
@@ -109,11 +112,11 @@
     }
 }
 
-- (NSString*)getGoogleAPIKey {
-    NSString *plist = [[NSBundle mainBundle] pathForResource:@"ApiConfigurations" ofType:@"plist"];
-    NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:plist];
+- (IBAction)chooseAddressButton:(id)sender {
+    self.chooseAddress = [[ChooseAddressViewController alloc] initWithNibName:@"ChooseAddressViewController" bundle:[NSBundle mainBundle]];
     
-    return config[@"GoogleAPIKey"];
+    [self setModalPresentationStyle:UIModalPresentationPopover];
+    [self presentViewController:self.chooseAddress animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

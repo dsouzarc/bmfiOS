@@ -65,6 +65,8 @@
 		9475845C1A9CFDE700487720 /* UIViewController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 947584571A9CFDE700487720 /* UIViewController+Chameleon.m */; };
 		94A128061AB4C337005FC639 /* ChooseRestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A128041AB4C337005FC639 /* ChooseRestaurantViewController.m */; };
 		94A128071AB4C337005FC639 /* ChooseRestaurantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A128051AB4C337005FC639 /* ChooseRestaurantViewController.xib */; };
+		94A1280D1AB53CFB005FC639 /* ChooseAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A1280B1AB53CFB005FC639 /* ChooseAddressViewController.m */; };
+		94A1280E1AB53CFB005FC639 /* ChooseAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A1280C1AB53CFB005FC639 /* ChooseAddressViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +169,9 @@
 		94A128031AB4C337005FC639 /* ChooseRestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseRestaurantViewController.h; sourceTree = "<group>"; };
 		94A128041AB4C337005FC639 /* ChooseRestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseRestaurantViewController.m; sourceTree = "<group>"; };
 		94A128051AB4C337005FC639 /* ChooseRestaurantViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseRestaurantViewController.xib; sourceTree = "<group>"; };
+		94A1280A1AB53CFB005FC639 /* ChooseAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAddressViewController.h; sourceTree = "<group>"; };
+		94A1280B1AB53CFB005FC639 /* ChooseAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAddressViewController.m; sourceTree = "<group>"; };
+		94A1280C1AB53CFB005FC639 /* ChooseAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseAddressViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +287,9 @@
 		947582111A9C126300487720 /* Bring Me Food */ = {
 			isa = PBXGroup;
 			children = (
+				94A1280A1AB53CFB005FC639 /* ChooseAddressViewController.h */,
+				94A1280B1AB53CFB005FC639 /* ChooseAddressViewController.m */,
+				94A1280C1AB53CFB005FC639 /* ChooseAddressViewController.xib */,
 				94591EDB1AB26A6800D62C0A /* CreateOrderViewController.h */,
 				94591EDC1AB26A6800D62C0A /* CreateOrderViewController.m */,
 				94591EDD1AB26A6800D62C0A /* CreateOrderViewController.xib */,
@@ -492,6 +500,7 @@
 				94A128071AB4C337005FC639 /* ChooseRestaurantViewController.xib in Resources */,
 				9475823C1A9C130B00487720 /* LogInViewController.xib in Resources */,
 				94591EDF1AB26A6800D62C0A /* CreateOrderViewController.xib in Resources */,
+				94A1280E1AB53CFB005FC639 /* ChooseAddressViewController.xib in Resources */,
 				9475821E1A9C126300487720 /* Main.storyboard in Resources */,
 				946068B61A9D13A0006664A2 /* phone1-50.png in Resources */,
 				9443CCF01AA0F23600C5CC70 /* user_dark_male4-50.png in Resources */,
@@ -521,6 +530,7 @@
 				9475823B1A9C130B00487720 /* LogInViewController.m in Sources */,
 				94591ED71AB2554C00D62C0A /* Order.m in Sources */,
 				94591EDE1AB26A6800D62C0A /* CreateOrderViewController.m in Sources */,
+				94A1280D1AB53CFB005FC639 /* ChooseAddressViewController.m in Sources */,
 				9475845B1A9CFDE700487720 /* UIColor+CIELAB.m in Sources */,
 				9475821B1A9C126300487720 /* ViewController.m in Sources */,
 				9475845A1A9CFDE700487720 /* UIColor+Chameleon.m in Sources */,
