@@ -43,11 +43,10 @@
 {
     NSString *chosenRestaurant = [self.restaurants objectAtIndex:indexPath.row];
     
+    //Tell CreateOrderViewController which Restaurant was chosen
     [self.delegate chooseRestaurantViewController:self didFinishChoosing:chosenRestaurant];
     
     [self removeAnimate];
-    
-    NSLog(@"CLICKED: %@", self.restaurants[indexPath.row]);
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

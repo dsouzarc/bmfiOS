@@ -14,8 +14,19 @@
 @interface CreateOrderViewController ()
 
 - (IBAction)chooseRestaurantButton:(id)sender;
-@property (nonatomic, strong) ChooseRestaurantViewController *chooseRestaurant;
+
 @property (strong, nonatomic) IBOutlet UILabel *restaurantNameLabel;
+
+//Choose View Controllers
+@property (nonatomic, strong) ChooseRestaurantViewController *chooseRestaurant;
+
+//Data from Parse
+@property (nonatomic, strong) NSArray *allRestaurants;
+@property (nonatomic, strong) NSArray *allMenuItems;
+
+//User selected data
+@property (nonatomic, strong) NSString *chosenRestaurant;
+@property (nonatomic, strong) NSArray *chosenMenuItems;
 
 @end
 
@@ -42,13 +53,48 @@
 
 - (void) chooseRestaurantViewController:(ChooseRestaurantViewController *)controller didFinishChoosing:(NSString *)chosenRestaurant
 {
+    //Delegate from "ChooseRestaurantViewController"
+    self.chosenRestaurant = chosenRestaurant;
     self.restaurantNameLabel.text = chosenRestaurant;
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)chooseRestaurantButton:(id)sender {
+    
+    //If we do not already have a list of restaurants from Parse
+    if(self.allRestaurants == nil) {
+        
+        //Get
+        [PFCloud callFunctionInBackground:@"getRestaurants" withParameters:nil block:^(NSArray *response, NSError *error) {
+            if(!error) {
+                
+                //Cache it
+                self.allRestaurants = [[NSArray alloc] initWithArray:response];
+                
+                //Show the chooser
+                self.chooseRestaurant = [[ChooseRestaurantViewController alloc]
+                                         initWithNibName:@"ChooseRestaurantViewController"
+                                         bundle:[NSBundle mainBundle]
+                                         restaurants:self.allRestaurants];
+                self.chooseRestaurant.delegate = self;
+                [self.chooseRestaurant showInView:self.view shouldAnimate:YES];
+                
+            }
+            else {
+                NSLog(@"ERROR\t%@", error.description);
+            }
+        }];
+    }
+    
+    //If we already have a list of restaurants
+    else {
+        //Show them
+        self.chooseRestaurant = [[ChooseRestaurantViewController alloc]
+                                 initWithNibName:@"ChooseRestaurantViewController"
+                                 bundle:[NSBundle mainBundle]
+                                 restaurants:self.allRestaurants];
+        self.chooseRestaurant.delegate = self;
+        [self.chooseRestaurant showInView:self.view shouldAnimate:YES];
+    }
 }
 
 - (NSString*)getGoogleAPIKey {
@@ -58,17 +104,9 @@
     return config[@"GoogleAPIKey"];
 }
 
-- (IBAction)chooseRestaurantButton:(id)sender {
-    [PFCloud callFunctionInBackground:@"getRestaurants" withParameters:nil block:^(NSArray *response, NSError *error ) {
-        if(!error) {
-            self.chooseRestaurant = [[ChooseRestaurantViewController alloc] initWithNibName:@"ChooseRestaurantViewController" bundle:[NSBundle mainBundle] restaurants:response];
-            self.chooseRestaurant.delegate = self;
-            [self.chooseRestaurant showInView:self.view shouldAnimate:YES];
-            
-        }
-        else {
-            NSLog(@"ERROR\t%@", error.description);
-        }
-    }];
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
+
 @end
