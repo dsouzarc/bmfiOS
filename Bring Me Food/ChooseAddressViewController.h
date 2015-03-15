@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SPGooglePlacesAutocompleteQuery.h"
+#import "SPGooglePlacesAutocompletePlace.h"
+
+@class ChooseAddressViewController;
+
+@protocol ChooseAddressDelegate <NSObject>
+
+- (void) chooseAddressViewController:(ChooseAddressViewController*)viewController chosenAddress:(SPGooglePlacesAutocompletePlace*)chosenAddress;
+
+@end
 
 @interface ChooseAddressViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property(nonatomic, weak) id<ChooseAddressDelegate> delegate;
 
 @end

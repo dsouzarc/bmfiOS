@@ -31,6 +31,7 @@
 @property (nonatomic, strong) NSArray *allMenuItems;
 
 //User selected data
+@property (nonatomic, strong) SPGooglePlacesAutocompletePlace *chosenAddress;
 @property (nonatomic, strong) NSString *chosenRestaurant;
 @property (nonatomic, strong) NSArray *chosenMenuItems;
 
@@ -63,12 +64,19 @@
     
 }
 
+- (void) chooseAddressViewController:(ChooseAddressViewController *)viewController chosenAddress:(SPGooglePlacesAutocompletePlace *)chosenAddress
+{
+    self.chosenAddress = chosenAddress;
+    self.addressLabel.text = chosenAddress.name;
+}
+
 - (void) chooseRestaurantViewController:(ChooseRestaurantViewController *)controller didFinishChoosing:(NSString *)chosenRestaurant
 {
     //Delegate from "ChooseRestaurantViewController"
     self.chosenRestaurant = chosenRestaurant;
     self.restaurantNameLabel.text = chosenRestaurant;
 }
+
 
 - (IBAction)chooseRestaurantButton:(id)sender {
     
@@ -114,7 +122,7 @@
 
 - (IBAction)chooseAddressButton:(id)sender {
     self.chooseAddress = [[ChooseAddressViewController alloc] initWithNibName:@"ChooseAddressViewController" bundle:[NSBundle mainBundle]];
-    
+    self.chooseAddress.delegate = self;
     [self setModalPresentationStyle:UIModalPresentationPopover];
     [self presentViewController:self.chooseAddress animated:YES completion:nil];
 }

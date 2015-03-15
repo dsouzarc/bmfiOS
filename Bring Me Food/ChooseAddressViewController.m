@@ -7,8 +7,6 @@
 //
 
 #import "ChooseAddressViewController.h"
-#import "SPGooglePlacesAutocompleteQuery.h"
-#import "SPGooglePlacesAutocompletePlace.h"
 
 @interface ChooseAddressViewController ()
 
@@ -26,7 +24,7 @@
 @implementation ChooseAddressViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];    
+    [super viewDidLoad];
 }
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -56,6 +54,14 @@
                                                                                 objectAtIndex:indexPath.row];
     cell.textLabel.text = place.name;
     return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SPGooglePlacesAutocompletePlace *place = (SPGooglePlacesAutocompletePlace*) [self.possibleLocations objectAtIndex:indexPath.row];
+    
+    [self.delegate chooseAddressViewController:self chosenAddress:place];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSString*)getGoogleAPIKey {
