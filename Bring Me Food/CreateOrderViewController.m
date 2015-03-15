@@ -10,12 +10,15 @@
 #import "SPGooglePlacesAutocompleteQuery.h"
 #import "ChooseRestaurantViewController.h"
 #import <Parse/Parse.h>
+#import "PQFBouncingBalls.h"
 
 @interface CreateOrderViewController ()
 
 - (IBAction)chooseRestaurantButton:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UILabel *restaurantNameLabel;
+
+@property (strong, nonatomic) PQFBouncingBalls *loadingBouncingBalls;
 
 //Choose View Controllers
 @property (nonatomic, strong) ChooseRestaurantViewController *chooseRestaurant;
@@ -34,6 +37,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.loadingBouncingBalls = [[PQFBouncingBalls alloc] initLoaderOnView:self.view];
+    self.loadingBouncingBalls.jumpAmount = 50;
+    self.loadingBouncingBalls.separation = 40;
+    self.loadingBouncingBalls.zoomAmount = 40;
+    self.loadingBouncingBalls.loaderColor = [UIColor blueColor];
     
     /*SPGooglePlacesAutocompleteQuery *query = [[SPGooglePlacesAutocompleteQuery alloc] initWithApiKey:[self getGoogleAPIKey]];
     
@@ -63,6 +72,8 @@
     //If we do not already have a list of restaurants from Parse
     if(self.allRestaurants == nil) {
         
+        [self.loadingBouncingBalls show];
+        
         //Get
         [PFCloud callFunctionInBackground:@"getRestaurants" withParameters:nil block:^(NSArray *response, NSError *error) {
             if(!error) {
@@ -78,6 +89,7 @@
                 self.chooseRestaurant.delegate = self;
                 [self.chooseRestaurant showInView:self.view shouldAnimate:YES];
                 
+                [self.loadingBouncingBalls hide];
             }
             else {
                 NSLog(@"ERROR\t%@", error.description);
