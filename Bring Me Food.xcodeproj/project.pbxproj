@@ -32,6 +32,8 @@
 		946068D41A9D55EE006664A2 /* UIColor+FlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 946068D31A9D55EE006664A2 /* UIColor+FlatColors.m */; };
 		94739D121ABA343400406819 /* ChooseMenuItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94739D101ABA343300406819 /* ChooseMenuItemsViewController.m */; };
 		94739D131ABA343400406819 /* ChooseMenuItemsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94739D111ABA343300406819 /* ChooseMenuItemsViewController.xib */; };
+		94739D1A1ABA41B100406819 /* RestaurantItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94739D181ABA41B100406819 /* RestaurantItemTableViewCell.m */; };
+		94739D1B1ABA41B100406819 /* RestaurantItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94739D191ABA41B100406819 /* RestaurantItemTableViewCell.xib */; };
 		947582151A9C126300487720 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 947582141A9C126300487720 /* main.m */; };
 		947582181A9C126300487720 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 947582171A9C126300487720 /* AppDelegate.m */; };
 		9475821B1A9C126300487720 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475821A1A9C126300487720 /* ViewController.m */; };
@@ -123,6 +125,9 @@
 		94739D0F1ABA343300406819 /* ChooseMenuItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseMenuItemsViewController.h; sourceTree = "<group>"; };
 		94739D101ABA343300406819 /* ChooseMenuItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseMenuItemsViewController.m; sourceTree = "<group>"; };
 		94739D111ABA343300406819 /* ChooseMenuItemsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseMenuItemsViewController.xib; sourceTree = "<group>"; };
+		94739D171ABA41B000406819 /* RestaurantItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantItemTableViewCell.h; sourceTree = "<group>"; };
+		94739D181ABA41B100406819 /* RestaurantItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantItemTableViewCell.m; sourceTree = "<group>"; };
+		94739D191ABA41B100406819 /* RestaurantItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantItemTableViewCell.xib; sourceTree = "<group>"; };
 		9475820F1A9C126300487720 /* Bring Me Food.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bring Me Food.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		947582131A9C126300487720 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		947582141A9C126300487720 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -316,6 +321,9 @@
 		947582111A9C126300487720 /* Bring Me Food */ = {
 			isa = PBXGroup;
 			children = (
+				94739D171ABA41B000406819 /* RestaurantItemTableViewCell.h */,
+				94739D181ABA41B100406819 /* RestaurantItemTableViewCell.m */,
+				94739D191ABA41B100406819 /* RestaurantItemTableViewCell.xib */,
 				94739D0F1ABA343300406819 /* ChooseMenuItemsViewController.h */,
 				94739D101ABA343300406819 /* ChooseMenuItemsViewController.m */,
 				94739D111ABA343300406819 /* ChooseMenuItemsViewController.xib */,
@@ -523,6 +531,7 @@
 				94739D131ABA343400406819 /* ChooseMenuItemsViewController.xib in Resources */,
 				9443CCEE1AA0F18F00C5CC70 /* lock_dark-50.png in Resources */,
 				94A128071AB4C337005FC639 /* ChooseRestaurantViewController.xib in Resources */,
+				94739D1B1ABA41B100406819 /* RestaurantItemTableViewCell.xib in Resources */,
 				9475823C1A9C130B00487720 /* LogInViewController.xib in Resources */,
 				94591EDF1AB26A6800D62C0A /* CreateOrderViewController.xib in Resources */,
 				94A1280E1AB53CFB005FC639 /* ChooseAddressViewController.xib in Resources */,
@@ -565,6 +574,7 @@
 				9430E89A1AB3A0030038738F /* SPGooglePlacesAutocompletePlace.m in Sources */,
 				94739D121ABA343400406819 /* ChooseMenuItemsViewController.m in Sources */,
 				947584491A9CDE0D00487720 /* UICKeyChainStore.m in Sources */,
+				94739D1A1ABA41B100406819 /* RestaurantItemTableViewCell.m in Sources */,
 				9430E89D1AB3A0030038738F /* SPGooglePlacesPlaceDetailQuery.m in Sources */,
 				9430E89B1AB3A0030038738F /* SPGooglePlacesAutocompleteQuery.m in Sources */,
 				9443CCEB1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.m in Sources */,
