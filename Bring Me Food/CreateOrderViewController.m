@@ -9,13 +9,15 @@
 #import "CreateOrderViewController.h"
 #import "ChooseAddressViewController.h"
 #import "ChooseRestaurantViewController.h"
+#import "ChooseMenuItemsViewController.h"
+
 #import <Parse/Parse.h>
 #import "RestaurantItem.h"
 #import "PQFBouncingBalls.h"
 
 @interface CreateOrderViewController ()
-- (IBAction)cancelNewOrder:(id)sender;
 
+- (IBAction)cancelNewOrder:(id)sender;
 - (IBAction)chooseRestaurantButton:(id)sender;
 - (IBAction)chooseAddressButton:(id)sender;
 - (IBAction)chooseItemsButton:(id)sender;
@@ -29,6 +31,7 @@
 //Choose View Controllers
 @property (nonatomic, strong) ChooseRestaurantViewController *chooseRestaurant;
 @property (nonatomic, strong) ChooseAddressViewController *chooseAddress;
+@property (nonatomic, strong) ChooseMenuItemsViewController *chooseMenuItems;
 
 //Data from Parse
 @property (nonatomic, strong) NSArray *allRestaurants;
@@ -37,7 +40,7 @@
 //User selected data
 @property (nonatomic, strong) SPGooglePlacesAutocompletePlace *chosenAddress;
 @property (nonatomic, strong) NSString *chosenRestaurant;
-@property (nonatomic, strong) NSArray *chosenMenuItems;
+@property (nonatomic, strong) NSMutableArray *chosenMenuItems;
 
 @end
 
@@ -51,14 +54,14 @@
     self.loadingBouncingBalls.separation = 40;
     self.loadingBouncingBalls.zoomAmount = 40;
     self.loadingBouncingBalls.loaderColor = [UIColor blueColor];
-
 }
 
 - (IBAction)chooseItemsButton:(id)sender {
     
     if(self.chosenRestaurant == nil) {
-        [self showAlert:@"Choose Restaurant" alertMessage:@"Please choose a restaurant first" buttonName:@"Ok"];
-        return;
+        self.chosenRestaurant = @"Hoagie Haven";
+        //[self showAlert:@"Choose Restaurant" alertMessage:@"Please choose a restaurant first" buttonName:@"Ok"];
+        //return;
     }
     
     if(self.allMenuItems == nil) {
@@ -71,16 +74,36 @@
                 return;
             }
             
+            if(self.chosenMenuItems == nil) {
+                self.chosenMenuItems = [[NSMutableArray alloc] init];
+            }
+            
+            NSMutableArray *menuItems = [[NSMutableArray alloc] init];
+            
             for(NSDictionary *menuItem in results) {
                 RestaurantItem *item = [[RestaurantItem alloc] initWithEverything:[menuItem objectForKey:@"restaurantName"]
                                                                          itemName:[menuItem objectForKey:@"itemName"]
                                                                          itemCost:[menuItem objectForKey:@"itemCost"]
                                                                   itemDescription:[menuItem objectForKey:@"itemDescription"]];
-                [self.allMenuItems addObject:item];
+                [menuItems addObject:item];
             }
+            
+            self.allMenuItems = [[NSArray alloc] initWithArray:menuItems];
+            
+            self.chooseMenuItems = [[ChooseMenuItemsViewController alloc] initWithNibName:@"ChooseMenuItemsViewController"
+                                                                                   bundle:[NSBundle mainBundle] restaurantMenuItems:self.allMenuItems chosenMenuItems:self.chosenMenuItems];
+            [self.chooseMenuItems showInView:self.view shouldAnimate:YES];
+            [self.loadingBouncingBalls hide];
         }];
     }
     
+    else {
+        self.chooseMenuItems = [[ChooseMenuItemsViewController alloc] initWithNibName:@"ChooseMenuItemsViewController"
+                                                                               bundle:[NSBundle mainBundle] restaurantMenuItems:self.allMenuItems chosenMenuItems:self.chosenMenuItems];
+        [self.chooseMenuItems showInView:self.view shouldAnimate:YES];
+        //[self setModalPresentationStyle:UIModalPresentationPopover];
+        //[self presentViewController:self.chooseMenuItems animated:YES completion:nil];
+    }
 }
 
 - (IBAction)chooseRestaurantButton:(id)sender {

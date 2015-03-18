@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseMenuItemsViewController">
+            <connections>
+                <outlet property="menuItemsTableView" destination="phc-j7-DAT" id="pJn-hk-Cff"/>
+                <outlet property="searchTextView" destination="7EV-O2-YNW" id="Mwb-D1-A8V"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="c1H-GG-yjs"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcI-iN-mlQ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <items>
+                        <navigationItem title="Choose Menu Items" id="kv0-VQ-ihn">
+                            <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Jev-Y8-j9c">
+                                <connections>
+                                    <action selector="cancelAddingNewItems:" destination="-1" id="Skb-zp-5LC"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" systemItem="done" id="6CJ-8e-K7O">
+                                <connections>
+                                    <action selector="doneAddingNewItems:" destination="-1" id="TUl-gv-8Hp"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <searchBar contentMode="redraw" placeholder="Search for menu item" translatesAutoresizingMaskIntoConstraints="NO" id="7EV-O2-YNW">
+                    <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="z76-jp-Yqj"/>
+                    </connections>
+                </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="phc-j7-DAT">
+                    <rect key="frame" x="0.0" y="88" width="375" height="579"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="SMq-DZ-Iwk"/>
+                        <outlet property="delegate" destination="-1" id="4ws-nC-cEz"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="7EV-O2-YNW" firstAttribute="top" secondItem="xcI-iN-mlQ" secondAttribute="bottom" id="2a8-Qt-KBL"/>
+                <constraint firstAttribute="bottom" secondItem="phc-j7-DAT" secondAttribute="bottom" id="9xl-hs-BWc"/>
+                <constraint firstItem="xcI-iN-mlQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="b7h-mF-rZS"/>
+                <constraint firstAttribute="trailing" secondItem="phc-j7-DAT" secondAttribute="trailing" id="iI4-bN-DkF"/>
+                <constraint firstItem="phc-j7-DAT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jPQ-YH-CNc"/>
+                <constraint firstAttribute="trailing" secondItem="7EV-O2-YNW" secondAttribute="trailing" id="l9q-Hv-vP1"/>
+                <constraint firstItem="xcI-iN-mlQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tpL-t7-Vr9"/>
+                <constraint firstItem="phc-j7-DAT" firstAttribute="top" secondItem="7EV-O2-YNW" secondAttribute="bottom" id="ves-vD-D6P"/>
+                <constraint firstItem="7EV-O2-YNW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yRB-fo-oeh"/>
+                <constraint firstAttribute="trailing" secondItem="xcI-iN-mlQ" secondAttribute="trailing" id="zEX-0s-IZB"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+        </view>
+    </objects>
+</document>
