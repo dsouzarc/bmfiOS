@@ -10,4 +10,28 @@
 
 @implementation RestaurantItem
 
+- (instancetype) initWithEverything:(NSString *)restaurantName itemName:(NSString *)itemName itemCost:(NSString *)itemCost itemDescription:(NSString *)itemDescription
+{
+    self = [super init];
+    
+    if(self) {
+        self.restaurantName = restaurantName;
+        self.itemName = itemName;
+        self.itemCost = itemCost;
+        self.itemDescription = itemDescription;
+    }
+    
+    return self;
+}
+
+- (NSString*) description
+{
+    NSMutableString *information = [[NSMutableString alloc] init];
+    [information appendFormat:@"Restaurant: %@", self.restaurantName];
+    [information appendFormat:@" Name %@", self.itemName];
+    [information appendFormat:@" Description: %@", self.itemDescription];
+    [information appendFormat:@" Cost: %@", self.itemCost];
+    return information;
+}
+
 @end
