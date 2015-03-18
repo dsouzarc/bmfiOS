@@ -13,12 +13,15 @@
 #import "PQFBouncingBalls.h"
 
 @interface CreateOrderViewController ()
+- (IBAction)cancelNewOrder:(id)sender;
 
 - (IBAction)chooseRestaurantButton:(id)sender;
 - (IBAction)chooseAddressButton:(id)sender;
+- (IBAction)chooseItemsButton:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UILabel *restaurantNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *addressLabel;
+@property (strong, nonatomic) IBOutlet UITableView *chosenItemsTableView;
 
 @property (strong, nonatomic) PQFBouncingBalls *loadingBouncingBalls;
 
@@ -47,21 +50,7 @@
     self.loadingBouncingBalls.separation = 40;
     self.loadingBouncingBalls.zoomAmount = 40;
     self.loadingBouncingBalls.loaderColor = [UIColor blueColor];
-    
-    /*SPGooglePlacesAutocompleteQuery *query = [[SPGooglePlacesAutocompleteQuery alloc] initWithApiKey:[self getGoogleAPIKey]];
-    
-    query.input = @"23 Silvers Lane";
-    query.types = SPPlaceTypeGeocode;
-    
-    [query fetchPlaces:^(NSArray *places, NSError *error) {
-        if(!error) {
-            NSLog(@"Places: %@", places);
-        }
-        else {
-            NSLog(error.description);
-        }
-    }];*/
-    
+
 }
 
 - (void) chooseAddressViewController:(ChooseAddressViewController *)viewController chosenAddress:(SPGooglePlacesAutocompletePlace *)chosenAddress
@@ -78,6 +67,12 @@
 }
 
 
+- (IBAction)cancelNewOrder:(id)sender {
+    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 - (IBAction)chooseRestaurantButton:(id)sender {
     
     //If we do not already have a list of restaurants from Parse
@@ -89,8 +84,14 @@
         [PFCloud callFunctionInBackground:@"getRestaurants" withParameters:nil block:^(NSArray *response, NSError *error) {
             if(!error) {
                 
+                NSMutableArray *restaurantNames = [[NSMutableArray alloc] init];
+                
+                for(NSDictionary *json in response) {
+                    [restaurantNames addObject:[json objectForKey:@"restaurantName"]];
+                }
+                
                 //Cache it
-                self.allRestaurants = [[NSArray alloc] initWithArray:response];
+                self.allRestaurants = [[NSArray alloc] initWithArray:restaurantNames];
                 
                 //Show the chooser
                 self.chooseRestaurant = [[ChooseRestaurantViewController alloc]
@@ -125,6 +126,9 @@
     self.chooseAddress.delegate = self;
     [self setModalPresentationStyle:UIModalPresentationPopover];
     [self presentViewController:self.chooseAddress animated:YES completion:nil];
+}
+
+- (IBAction)chooseItemsButton:(id)sender {
 }
 
 - (void)didReceiveMemoryWarning {

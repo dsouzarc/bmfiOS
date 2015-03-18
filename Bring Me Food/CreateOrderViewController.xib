@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateOrderViewController">
             <connections>
                 <outlet property="addressLabel" destination="2aX-dx-0mc" id="Ft8-lj-ezn"/>
+                <outlet property="chosenItemsTableView" destination="Bwd-tc-ih5" id="UEV-Df-zgd"/>
                 <outlet property="restaurantNameLabel" destination="u2I-P9-dl0" id="Xfl-K1-IJx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sVQ-8f-lV6"/>
             </connections>
@@ -20,7 +21,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <items>
                         <navigationItem title="New Order" id="feB-Xj-vml">
-                            <barButtonItem key="leftBarButtonItem" title="Cancel" id="gfA-2y-lSH"/>
+                            <barButtonItem key="leftBarButtonItem" title="Cancel" id="gfA-2y-lSH">
+                                <connections>
+                                    <action selector="cancelNewOrder:" destination="-1" id="UNf-u6-QRJ"/>
+                                </connections>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
@@ -76,10 +81,23 @@
                         <action selector="chooseAddressButton:" destination="-1" eventType="touchUpInside" id="b4d-mI-X7s"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9U-iy-ydD">
+                    <rect key="frame" x="23" y="252" width="95" height="30"/>
+                    <state key="normal" title="Choose Items">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="chooseItemsButton:" destination="-1" eventType="touchUpInside" id="4iX-hw-mea"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Bwd-tc-ih5">
+                    <rect key="frame" x="131" y="259" width="236" height="274"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="263.5" y="391.5"/>
+            <point key="canvasLocation" x="149.5" y="387.5"/>
         </view>
     </objects>
 </document>
