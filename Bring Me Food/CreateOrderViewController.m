@@ -10,6 +10,7 @@
 #import "ChooseAddressViewController.h"
 #import "ChooseRestaurantViewController.h"
 #import <Parse/Parse.h>
+#import "RestaurantItem.h"
 #import "PQFBouncingBalls.h"
 
 @interface CreateOrderViewController ()
@@ -53,24 +54,32 @@
 
 }
 
-- (void) chooseAddressViewController:(ChooseAddressViewController *)viewController chosenAddress:(SPGooglePlacesAutocompletePlace *)chosenAddress
-{
-    self.chosenAddress = chosenAddress;
-    self.addressLabel.text = chosenAddress.name;
-}
-
-- (void) chooseRestaurantViewController:(ChooseRestaurantViewController *)controller didFinishChoosing:(NSString *)chosenRestaurant
-{
-    //Delegate from "ChooseRestaurantViewController"
-    self.chosenRestaurant = chosenRestaurant;
-    self.restaurantNameLabel.text = chosenRestaurant;
-}
-
-
-- (IBAction)cancelNewOrder:(id)sender {
-    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+- (IBAction)chooseItemsButton:(id)sender {
+    
+    if(self.chosenRestaurant == nil) {
+        [self showAlert:@"Choose Restaurant" alertMessage:@"Please choose a restaurant first" buttonName:@"Ok"];
+        return;
+    }
+    
+    if(self.allMenuItems == nil) {
+        [self.loadingBouncingBalls show];
+        
+        [PFCloud callFunctionInBackground:@"getMenuItems" withParameters:@{@"restaurantName": self.chosenRestaurant} block:^(NSArray *results, NSError *error) {
+            
+            if(error) {
+                [self showAlert:@"Uh Oh" alertMessage:@"Sorry, something went wrong while fetching the menu" buttonName:@"Try again"];
+                return;
+            }
+            
+            for(NSDictionary *menuItem in results) {
+                RestaurantItem *item = [[RestaurantItem alloc] init];
+                item.restaurantName = [menuItem objectForKey:@"restaurantOwner"];
+                item.itemName = [menuItem objectForKey:@"itemName"];
+                item.pr
+            }
+        }];
+    }
+    
 }
 
 - (IBAction)chooseRestaurantButton:(id)sender {
@@ -121,6 +130,15 @@
     }
 }
 
+- (void) showAlert:(NSString*)alertTitle alertMessage:(NSString*)alertMessage buttonName:(NSString*)buttonName {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle
+                                                        message:alertMessage
+                                                       delegate:nil
+                                              cancelButtonTitle:buttonName
+                                              otherButtonTitles:nil, nil];
+    [alertView show];
+}
+
 - (IBAction)chooseAddressButton:(id)sender {
     self.chooseAddress = [[ChooseAddressViewController alloc] initWithNibName:@"ChooseAddressViewController" bundle:[NSBundle mainBundle]];
     self.chooseAddress.delegate = self;
@@ -128,12 +146,28 @@
     [self presentViewController:self.chooseAddress animated:YES completion:nil];
 }
 
-- (IBAction)chooseItemsButton:(id)sender {
+- (void) chooseAddressViewController:(ChooseAddressViewController *)viewController chosenAddress:(SPGooglePlacesAutocompletePlace *)chosenAddress
+{
+    self.chosenAddress = chosenAddress;
+    self.addressLabel.text = chosenAddress.name;
+}
+
+- (void) chooseRestaurantViewController:(ChooseRestaurantViewController *)controller didFinishChoosing:(NSString *)chosenRestaurant
+{
+    //Delegate from "ChooseRestaurantViewController"
+    self.chosenRestaurant = chosenRestaurant;
+    self.restaurantNameLabel.text = chosenRestaurant;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)cancelNewOrder:(id)sender {
+    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end
