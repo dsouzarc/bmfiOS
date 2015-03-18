@@ -32,7 +32,7 @@
 
 //Data from Parse
 @property (nonatomic, strong) NSArray *allRestaurants;
-@property (nonatomic, strong) NSArray *allMenuItems;
+@property (nonatomic, strong) NSMutableArray *allMenuItems;
 
 //User selected data
 @property (nonatomic, strong) SPGooglePlacesAutocompletePlace *chosenAddress;
@@ -72,10 +72,11 @@
             }
             
             for(NSDictionary *menuItem in results) {
-                RestaurantItem *item = [[RestaurantItem alloc] init];
-                item.restaurantName = [menuItem objectForKey:@"restaurantOwner"];
-                item.itemName = [menuItem objectForKey:@"itemName"];
-                item.pr
+                RestaurantItem *item = [[RestaurantItem alloc] initWithEverything:[menuItem objectForKey:@"restaurantName"]
+                                                                         itemName:[menuItem objectForKey:@"itemName"]
+                                                                         itemCost:[menuItem objectForKey:@"itemCost"]
+                                                                  itemDescription:[menuItem objectForKey:@"itemDescription"]];
+                [self.allMenuItems addObject:item];
             }
         }];
     }
@@ -93,14 +94,8 @@
         [PFCloud callFunctionInBackground:@"getRestaurants" withParameters:nil block:^(NSArray *response, NSError *error) {
             if(!error) {
                 
-                NSMutableArray *restaurantNames = [[NSMutableArray alloc] init];
-                
-                for(NSDictionary *json in response) {
-                    [restaurantNames addObject:[json objectForKey:@"restaurantName"]];
-                }
-                
                 //Cache it
-                self.allRestaurants = [[NSArray alloc] initWithArray:restaurantNames];
+                self.allRestaurants = [[NSArray alloc] initWithArray:response];
                 
                 //Show the chooser
                 self.chooseRestaurant = [[ChooseRestaurantViewController alloc]
