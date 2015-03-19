@@ -10,13 +10,8 @@
 #import "RestaurantItem.h"
 
 @interface RestaurantItemTableViewCell : UITableViewCell
-
-- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier menuItem:(RestaurantItem*)menuItem;
-
-@property (strong, nonatomic) IBOutlet UILabel *itemName;
-@property (strong, nonatomic) IBOutlet UITextView *itemDescription;
-@property (strong, nonatomic) IBOutlet UILabel *itemCost;
-
-@property (strong, nonatomic) RestaurantItem *menuItem;
+@property (strong, nonatomic) IBOutlet UILabel *costLabel;
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
 
 @end

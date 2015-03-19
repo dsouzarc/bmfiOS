@@ -8,6 +8,7 @@
 
 #import "ChooseMenuItemsViewController.h"
 #import "RestaurantItem.h"
+#import "RestaurantItemTableViewCell.h"
 
 @interface ChooseMenuItemsViewController ()
 
@@ -20,9 +21,14 @@
 @property (strong, nonatomic) NSArray *restaurantMenuItems;
 @property (strong, nonatomic) NSMutableArray *chosenItems;
 
+@property NSIndexPath *selectedRow;
+@property NSInteger selectedRowHeight;
+
 @end
 
 @implementation ChooseMenuItemsViewController
+
+static NSString* cellIdentifier = @"Cell";
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil restaurantMenuItems:(NSArray *)restaurantMenuItems chosenMenuItems:(NSMutableArray *)chosenMenuItems
 {
@@ -39,11 +45,7 @@
 
 - (void)viewDidLoad
 {
-    /*self.view.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:.6];
-    self.mainView.layer.cornerRadius = 5;
-    self.mainView.layer.shadowOpacity = 0.8;
-    self.mainView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);*/
-    
+    [self.menuItemsTableView registerClass:[RestaurantItemTableViewCell class] forCellReuseIdentifier:cellIdentifier];
     [super viewDidLoad];
 }
 
@@ -88,25 +90,69 @@
 
 - (void) tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //Get the previously clicked view, and hide it
+    RestaurantItemTableViewCell *cell = (RestaurantItemTableViewCell*) [tableView cellForRowAtIndexPath:self.selectedRow];
+    cell.descriptionTextView.hidden = YES;
     
+    //Update our global variable
+    self.selectedRow = indexPath;
+    
+    //Get the most recently clicked view and show its contents
+    cell = (RestaurantItemTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.descriptionTextView.hidden = NO;
+    
+    if([cell.descriptionTextView.text length] == 0) {
+        [cell.descriptionTextView setText:@"No description available"];
+    }
+    
+    [tableView beginUpdates];
+    [tableView endUpdates];
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(self.selectedRow && [self.selectedRow isEqual:indexPath]) {
+        return 108;
+    }
+    
+    return 50;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.selectedRow = indexPath;
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString* cellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [self.menuItemsTableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    RestaurantItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menuItemCell"];
     
     if(!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        [tableView registerNib:[UINib nibWithNibName:@"RestaurantItemTableViewCell" bundle:nil] forCellReuseIdentifier:@"menuItemCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"menuItemCell"];
     }
     
-    RestaurantItem *item = (RestaurantItem*)[self.restaurantMenuItems objectAtIndex:indexPath.row];
+    RestaurantItem *menuItem = [self.restaurantMenuItems objectAtIndex:indexPath.row];
     
-    NSLog(item.description);
+    cell.nameLabel.numberOfLines = 0;
+    cell.costLabel.numberOfLines = 0;
     
-    cell.textLabel.text = item.itemName;
-    cell.detailTextLabel.text = item.itemDescription;
+    cell.nameLabel.text = menuItem.itemName;
+    cell.costLabel.text = menuItem.itemCost;
+    
+    if(!menuItem.description || menuItem.description.length < 3 || [menuItem.description isEqualToString:@" "]) {
+        cell.descriptionTextView.text = @"No description available";
+    }
+    else {
+        cell.descriptionTextView.text = menuItem.itemDescription;
+    }
+
+    if([self.selectedRow isEqual:indexPath]) {
+        cell.descriptionTextView.hidden = NO;
+    }
+    else {
+        cell.descriptionTextView.hidden = YES;
+    }
     
     return cell;
 }
@@ -120,16 +166,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)doneAddingNewItems:(id)sender {
 }

@@ -59,7 +59,7 @@
 - (IBAction)chooseItemsButton:(id)sender {
     
     if(self.chosenRestaurant == nil) {
-        self.chosenRestaurant = @"Hoagie Haven";
+        self.chosenRestaurant = @"Tortugas";
         //[self showAlert:@"Choose Restaurant" alertMessage:@"Please choose a restaurant first" buttonName:@"Ok"];
         //return;
     }
