@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomizeRestaurantItemViewController">
+            <connections>
+                <outlet property="customItemsDetailTextView" destination="4lF-95-zRv" id="DyZ-C3-xSa"/>
+                <outlet property="itemDetailsTextView" destination="CSv-99-63z" id="OCM-pR-9ha"/>
+                <outlet property="itemNameLabel" destination="O3U-cj-Kgt" id="GEw-KB-TPn"/>
+                <outlet property="mainView" destination="a0a-Mz-DkX" id="xQr-1Y-xTR"/>
+                <outlet property="restaurantNameLabel" destination="dpV-yX-XHa" id="czY-dw-zfE"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="F9I-mM-9Qg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0a-Mz-DkX">
+                    <rect key="frame" x="33" y="122" width="309" height="424"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6d-qt-jbd">
+                            <rect key="frame" x="211" y="8" width="90" height="30"/>
+                            <state key="normal" title="Add to Order">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="addItemToOrder:" destination="-1" eventType="touchUpInside" id="iiN-tr-1IX"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LyD-Rb-GOw">
+                            <rect key="frame" x="8" y="8" width="48" height="30"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="cancelAddingItem:" destination="-1" eventType="touchUpInside" id="J5r-ii-Jtb"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpV-yX-XHa">
+                            <rect key="frame" x="8" y="53" width="293" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3U-cj-Kgt">
+                            <rect key="frame" x="8" y="94" width="293" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" text="Item Details" translatesAutoresizingMaskIntoConstraints="NO" id="CSv-99-63z">
+                            <rect key="frame" x="8" y="127" width="293" height="112"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="Customize This Item" translatesAutoresizingMaskIntoConstraints="NO" id="4lF-95-zRv">
+                            <rect key="frame" x="8" y="262" width="293" height="154"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="O3U-cj-Kgt" secondAttribute="trailing" constant="8" id="1sw-lT-VQf"/>
+                        <constraint firstAttribute="trailing" secondItem="4lF-95-zRv" secondAttribute="trailing" constant="8" id="5wW-Ev-n7Q"/>
+                        <constraint firstItem="LyD-Rb-GOw" firstAttribute="leading" secondItem="a0a-Mz-DkX" secondAttribute="leading" constant="8" id="86g-EZ-a07"/>
+                        <constraint firstItem="D6d-qt-jbd" firstAttribute="top" secondItem="a0a-Mz-DkX" secondAttribute="top" constant="8" id="9AK-fI-pEG"/>
+                        <constraint firstItem="4lF-95-zRv" firstAttribute="leading" secondItem="a0a-Mz-DkX" secondAttribute="leading" constant="8" id="AAs-jj-Q7p"/>
+                        <constraint firstItem="CSv-99-63z" firstAttribute="top" secondItem="O3U-cj-Kgt" secondAttribute="bottom" constant="12" id="C60-RT-7ni"/>
+                        <constraint firstItem="O3U-cj-Kgt" firstAttribute="leading" secondItem="a0a-Mz-DkX" secondAttribute="leading" constant="8" id="FHL-ch-z38"/>
+                        <constraint firstItem="dpV-yX-XHa" firstAttribute="leading" secondItem="a0a-Mz-DkX" secondAttribute="leading" constant="8" id="Fbi-Yg-kt4"/>
+                        <constraint firstAttribute="trailing" secondItem="D6d-qt-jbd" secondAttribute="trailing" constant="8" id="NYa-xB-Gfd"/>
+                        <constraint firstItem="O3U-cj-Kgt" firstAttribute="top" secondItem="dpV-yX-XHa" secondAttribute="bottom" constant="20" id="Oxa-6z-hoF"/>
+                        <constraint firstItem="CSv-99-63z" firstAttribute="leading" secondItem="a0a-Mz-DkX" secondAttribute="leading" constant="8" id="VJy-8s-Lao"/>
+                        <constraint firstItem="LyD-Rb-GOw" firstAttribute="top" secondItem="a0a-Mz-DkX" secondAttribute="top" constant="8" id="YhY-5u-nj6"/>
+                        <constraint firstItem="dpV-yX-XHa" firstAttribute="top" secondItem="LyD-Rb-GOw" secondAttribute="bottom" constant="15" id="bP6-o6-L8O"/>
+                        <constraint firstItem="4lF-95-zRv" firstAttribute="top" secondItem="CSv-99-63z" secondAttribute="bottom" constant="23" id="gO9-4E-Tiz"/>
+                        <constraint firstAttribute="trailing" secondItem="dpV-yX-XHa" secondAttribute="trailing" constant="8" id="rV2-bB-EDV"/>
+                        <constraint firstAttribute="trailing" secondItem="CSv-99-63z" secondAttribute="trailing" constant="8" id="xxE-Jb-4A1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="a0a-Mz-DkX" secondAttribute="bottom" constant="121" id="1UL-WH-uzh"/>
+                <constraint firstAttribute="centerY" secondItem="a0a-Mz-DkX" secondAttribute="centerY" id="Epm-s3-q6A"/>
+                <constraint firstAttribute="centerX" secondItem="a0a-Mz-DkX" secondAttribute="centerX" id="fRk-B2-kxT"/>
+                <constraint firstItem="a0a-Mz-DkX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="33" id="iha-bJ-s4c"/>
+                <constraint firstAttribute="trailing" secondItem="a0a-Mz-DkX" secondAttribute="trailing" constant="33" id="jPw-x8-9Oh"/>
+                <constraint firstItem="a0a-Mz-DkX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="122" id="uWR-kv-yTX"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="348.5" y="304.5"/>
+        </view>
+    </objects>
+</document>

@@ -208,8 +208,6 @@ static NSString* cellIdentifier = @"Cell";
     
     RestaurantItem *item = (RestaurantItem*) [self.searchResults objectAtIndex:tapRecognizer.view.tag];
     
-    NSLog(item.itemName);
-    
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

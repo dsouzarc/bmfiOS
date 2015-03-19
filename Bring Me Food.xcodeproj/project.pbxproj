@@ -67,6 +67,8 @@
 		9475845A1A9CFDE700487720 /* UIColor+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 947584531A9CFDE700487720 /* UIColor+Chameleon.m */; };
 		9475845B1A9CFDE700487720 /* UIColor+CIELAB.m in Sources */ = {isa = PBXBuildFile; fileRef = 947584551A9CFDE700487720 /* UIColor+CIELAB.m */; };
 		9475845C1A9CFDE700487720 /* UIViewController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 947584571A9CFDE700487720 /* UIViewController+Chameleon.m */; };
+		949661961ABB09BD0030661A /* CustomizeRestaurantItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 949661941ABB09BD0030661A /* CustomizeRestaurantItemViewController.m */; };
+		949661971ABB09BD0030661A /* CustomizeRestaurantItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949661951ABB09BD0030661A /* CustomizeRestaurantItemViewController.xib */; };
 		94A128061AB4C337005FC639 /* ChooseRestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A128041AB4C337005FC639 /* ChooseRestaurantViewController.m */; };
 		94A128071AB4C337005FC639 /* ChooseRestaurantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A128051AB4C337005FC639 /* ChooseRestaurantViewController.xib */; };
 		94A1280D1AB53CFB005FC639 /* ChooseAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A1280B1AB53CFB005FC639 /* ChooseAddressViewController.m */; };
@@ -176,6 +178,9 @@
 		947584551A9CFDE700487720 /* UIColor+CIELAB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CIELAB.m"; sourceTree = "<group>"; };
 		947584561A9CFDE700487720 /* UIViewController+Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Chameleon.h"; sourceTree = "<group>"; };
 		947584571A9CFDE700487720 /* UIViewController+Chameleon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Chameleon.m"; sourceTree = "<group>"; };
+		949661931ABB09BD0030661A /* CustomizeRestaurantItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomizeRestaurantItemViewController.h; sourceTree = "<group>"; };
+		949661941ABB09BD0030661A /* CustomizeRestaurantItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomizeRestaurantItemViewController.m; sourceTree = "<group>"; };
+		949661951ABB09BD0030661A /* CustomizeRestaurantItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomizeRestaurantItemViewController.xib; sourceTree = "<group>"; };
 		94A128031AB4C337005FC639 /* ChooseRestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseRestaurantViewController.h; sourceTree = "<group>"; };
 		94A128041AB4C337005FC639 /* ChooseRestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseRestaurantViewController.m; sourceTree = "<group>"; };
 		94A128051AB4C337005FC639 /* ChooseRestaurantViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseRestaurantViewController.xib; sourceTree = "<group>"; };
@@ -321,9 +326,9 @@
 		947582111A9C126300487720 /* Bring Me Food */ = {
 			isa = PBXGroup;
 			children = (
-				94739D171ABA41B000406819 /* RestaurantItemTableViewCell.h */,
-				94739D181ABA41B100406819 /* RestaurantItemTableViewCell.m */,
-				94739D191ABA41B100406819 /* RestaurantItemTableViewCell.xib */,
+				949661931ABB09BD0030661A /* CustomizeRestaurantItemViewController.h */,
+				949661941ABB09BD0030661A /* CustomizeRestaurantItemViewController.m */,
+				949661951ABB09BD0030661A /* CustomizeRestaurantItemViewController.xib */,
 				94739D0F1ABA343300406819 /* ChooseMenuItemsViewController.h */,
 				94739D101ABA343300406819 /* ChooseMenuItemsViewController.m */,
 				94739D111ABA343300406819 /* ChooseMenuItemsViewController.xib */,
@@ -333,11 +338,14 @@
 				9456EDB41AA2A9CC003D167E /* ExistingOrdersViewController.h */,
 				9456EDB51AA2A9CC003D167E /* ExistingOrdersViewController.m */,
 				9456EDB61AA2A9CC003D167E /* ExistingOrdersViewController.xib */,
+				94739D171ABA41B000406819 /* RestaurantItemTableViewCell.h */,
+				94739D181ABA41B100406819 /* RestaurantItemTableViewCell.m */,
+				94739D191ABA41B100406819 /* RestaurantItemTableViewCell.xib */,
+				94739D151ABA346200406819 /* Choose ViewControllers */,
 				94739D161ABA349500406819 /* Custom Objects */,
 				947582161A9C126300487720 /* AppDelegate.h */,
 				947582171A9C126300487720 /* AppDelegate.m */,
 				9430E89E1AB3A3A40038738F /* ApiConfigurations.plist */,
-				94739D151ABA346200406819 /* Choose ViewControllers */,
 				94A128091AB53A00005FC639 /* Login Files */,
 				947582191A9C126300487720 /* ViewController.h */,
 				9475821A1A9C126300487720 /* ViewController.m */,
@@ -535,6 +543,7 @@
 				9475823C1A9C130B00487720 /* LogInViewController.xib in Resources */,
 				94591EDF1AB26A6800D62C0A /* CreateOrderViewController.xib in Resources */,
 				94A1280E1AB53CFB005FC639 /* ChooseAddressViewController.xib in Resources */,
+				949661971ABB09BD0030661A /* CustomizeRestaurantItemViewController.xib in Resources */,
 				9475821E1A9C126300487720 /* Main.storyboard in Resources */,
 				946068B61A9D13A0006664A2 /* phone1-50.png in Resources */,
 				9443CCF01AA0F23600C5CC70 /* user_dark_male4-50.png in Resources */,
@@ -561,6 +570,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				949661961ABB09BD0030661A /* CustomizeRestaurantItemViewController.m in Sources */,
 				9475823B1A9C130B00487720 /* LogInViewController.m in Sources */,
 				94591ED71AB2554C00D62C0A /* Order.m in Sources */,
 				94591EDE1AB26A6800D62C0A /* CreateOrderViewController.m in Sources */,
