@@ -16,7 +16,6 @@
 - (IBAction)cancelAddingNewItems:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
-
 @property (strong, nonatomic) IBOutlet UITableView *menuItemsTableView;
 
 @property (strong, nonatomic) NSArray *restaurantMenuItems;
@@ -136,7 +135,7 @@ static NSString* cellIdentifier = @"Cell";
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(self.selectedRow && [self.selectedRow isEqual:indexPath]) {
+    if(self.selectedRow && [indexPath isEqual:self.selectedRow]) {
         return 108;
     }
     
@@ -179,17 +178,43 @@ static NSString* cellIdentifier = @"Cell";
         cell.descriptionTextView.hidden = YES;
     }
     
+    cell.descriptionTextView.tag = indexPath.row;
+    cell.nameLabel.tag = indexPath.row;
+    cell.costLabel.tag = indexPath.row;
+    
+    //Two taps for name to prompt
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nameTap:)];
+    tapGesture.numberOfTapsRequired = 2;
+    [cell.nameLabel addGestureRecognizer:tapGesture];
+    cell.nameLabel.userInteractionEnabled = YES;
+    
+    //1 tap for everything else
+    tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nameTap:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [cell.descriptionTextView addGestureRecognizer:tapGesture];
+    cell.descriptionTextView.userInteractionEnabled = YES;
+    
+    tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nameTap:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [cell.costLabel addGestureRecognizer:tapGesture];
+    cell.costLabel.userInteractionEnabled = YES;
+    
     return cell;
+}
+
+- (void) nameTap:(id)sender
+{
+    UITapGestureRecognizer *tapRecognizer = (UITapGestureRecognizer *)sender;
+    
+    RestaurantItem *item = (RestaurantItem*) [self.searchResults objectAtIndex:tapRecognizer.view.tag];
+    
+    NSLog(item.itemName);
+    
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.searchResults.count;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)doneAddingNewItems:(id)sender {
