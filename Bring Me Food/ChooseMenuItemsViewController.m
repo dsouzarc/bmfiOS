@@ -15,14 +15,15 @@
 - (IBAction)doneAddingNewItems:(id)sender;
 - (IBAction)cancelAddingNewItems:(id)sender;
 
-@property (strong, nonatomic) IBOutlet UISearchBar *searchTextView;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+
 @property (strong, nonatomic) IBOutlet UITableView *menuItemsTableView;
 
 @property (strong, nonatomic) NSArray *restaurantMenuItems;
 @property (strong, nonatomic) NSMutableArray *chosenItems;
+@property (strong, nonatomic) NSMutableArray *searchResults;
 
 @property NSIndexPath *selectedRow;
-@property NSInteger selectedRowHeight;
 
 @end
 
@@ -35,12 +36,41 @@ static NSString* cellIdentifier = @"Cell";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if(self) {
-        self.restaurantMenuItems = restaurantMenuItems;
-        self.chosenItems = chosenMenuItems;
-        NSLog(@"COUNT ME: %li", (long)self.restaurantMenuItems.count);
+        self.restaurantMenuItems = [[NSArray alloc] initWithArray:restaurantMenuItems];
+        self.searchResults = [[NSMutableArray alloc] initWithArray:restaurantMenuItems];
+        self.chosenItems = [[NSMutableArray alloc] initWithArray:chosenMenuItems];
     }
     
     return self;
+}
+
+- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [self.searchResults removeAllObjects];
+    [self.searchResults addObjectsFromArray:self.restaurantMenuItems];
+    [self.menuItemsTableView reloadData];
+}
+
+- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    //Clear the search
+    [self.searchResults removeAllObjects];
+    
+    //Add items with matching names or descriptions
+    for(RestaurantItem *item in self.restaurantMenuItems) {
+        if([item.itemName containsString:searchText] || [item.itemDescription containsString:searchText]) {
+            [self.searchResults addObject:item];
+        }
+    }
+    
+    //If there is no text or cancel button was pressed
+    if(searchText.length == 0) {
+        self.selectedRow = nil;
+        [self.searchResults removeAllObjects];
+        [self.searchResults addObjectsFromArray:self.restaurantMenuItems];
+    }
+    
+    [self.menuItemsTableView reloadData];
 }
 
 - (void)viewDidLoad
@@ -81,11 +111,6 @@ static NSString* cellIdentifier = @"Cell";
             [self showAnimate];
         }
     });
-}
-
-- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    
 }
 
 - (void) tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
@@ -132,7 +157,7 @@ static NSString* cellIdentifier = @"Cell";
         cell = [tableView dequeueReusableCellWithIdentifier:@"menuItemCell"];
     }
     
-    RestaurantItem *menuItem = [self.restaurantMenuItems objectAtIndex:indexPath.row];
+    RestaurantItem *menuItem = [self.searchResults objectAtIndex:indexPath.row];
     
     cell.nameLabel.numberOfLines = 0;
     cell.costLabel.numberOfLines = 0;
@@ -159,7 +184,7 @@ static NSString* cellIdentifier = @"Cell";
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.restaurantMenuItems.count;
+    return self.searchResults.count;
 }
 
 - (void)didReceiveMemoryWarning {

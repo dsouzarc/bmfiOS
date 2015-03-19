@@ -7,7 +7,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseMenuItemsViewController">
             <connections>
                 <outlet property="menuItemsTableView" destination="phc-j7-DAT" id="pJn-hk-Cff"/>
-                <outlet property="searchTextView" destination="7EV-O2-YNW" id="Mwb-D1-A8V"/>
+                <outlet property="searchBar" destination="qZc-hc-aQX" id="xOK-Z0-g5y"/>
+                <outlet property="searchDisplayController" destination="MH8-zE-wie" id="7ni-ii-q6J"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="c1H-GG-yjs"/>
             </connections>
         </placeholder>
@@ -33,14 +34,7 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <searchBar contentMode="redraw" placeholder="Search for menu item" translatesAutoresizingMaskIntoConstraints="NO" id="7EV-O2-YNW">
-                    <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="z76-jp-Yqj"/>
-                    </connections>
-                </searchBar>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="phc-j7-DAT">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="phc-j7-DAT">
                     <rect key="frame" x="0.0" y="88" width="375" height="571"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -48,21 +42,35 @@
                         <outlet property="delegate" destination="-1" id="4ws-nC-cEz"/>
                     </connections>
                 </tableView>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qZc-hc-aQX">
+                    <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="0tb-Tv-WPy"/>
+                    </connections>
+                </searchBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="7EV-O2-YNW" firstAttribute="top" secondItem="xcI-iN-mlQ" secondAttribute="bottom" id="2a8-Qt-KBL"/>
+                <constraint firstItem="qZc-hc-aQX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="866-Jn-NTw"/>
                 <constraint firstAttribute="bottom" secondItem="phc-j7-DAT" secondAttribute="bottom" constant="8" id="9xl-hs-BWc"/>
+                <constraint firstAttribute="trailing" secondItem="qZc-hc-aQX" secondAttribute="trailing" id="HS0-8M-eZo"/>
+                <constraint firstItem="qZc-hc-aQX" firstAttribute="top" secondItem="xcI-iN-mlQ" secondAttribute="bottom" id="Ulv-aj-Y0o"/>
                 <constraint firstItem="xcI-iN-mlQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="b7h-mF-rZS"/>
                 <constraint firstAttribute="trailing" secondItem="phc-j7-DAT" secondAttribute="trailing" id="iI4-bN-DkF"/>
                 <constraint firstItem="phc-j7-DAT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jPQ-YH-CNc"/>
-                <constraint firstAttribute="trailing" secondItem="7EV-O2-YNW" secondAttribute="trailing" id="l9q-Hv-vP1"/>
                 <constraint firstItem="xcI-iN-mlQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tpL-t7-Vr9"/>
-                <constraint firstItem="phc-j7-DAT" firstAttribute="top" secondItem="7EV-O2-YNW" secondAttribute="bottom" id="ves-vD-D6P"/>
-                <constraint firstItem="7EV-O2-YNW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yRB-fo-oeh"/>
                 <constraint firstAttribute="trailing" secondItem="xcI-iN-mlQ" secondAttribute="trailing" id="zEX-0s-IZB"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
         </view>
+        <searchDisplayController id="MH8-zE-wie">
+            <connections>
+                <outlet property="delegate" destination="-1" id="Q86-Cg-zXc"/>
+                <outlet property="searchContentsController" destination="-1" id="dYE-w4-fRb"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="HqJ-Nv-6Uk"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="RIb-Ku-3C4"/>
+            </connections>
+        </searchDisplayController>
     </objects>
 </document>
