@@ -18,9 +18,12 @@
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UITableView *menuItemsTableView;
 
+@property (strong, nonatomic) NSString *restaurantName;
 @property (strong, nonatomic) NSArray *restaurantMenuItems;
 @property (strong, nonatomic) NSMutableArray *chosenItems;
 @property (strong, nonatomic) NSMutableArray *searchResults;
+
+@property (strong, nonatomic) CustomizeRestaurantItemViewController *customizeMenuItemViewController;
 
 @property NSIndexPath *selectedRow;
 
@@ -30,7 +33,7 @@
 
 static NSString* cellIdentifier = @"Cell";
 
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil restaurantMenuItems:(NSArray *)restaurantMenuItems chosenMenuItems:(NSMutableArray *)chosenMenuItems
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil restaurantMenuItems:(NSArray *)restaurantMenuItems chosenMenuItems:(NSMutableArray *)chosenMenuItems restaurantName:(NSString*)restaurantName
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
@@ -38,6 +41,7 @@ static NSString* cellIdentifier = @"Cell";
         self.restaurantMenuItems = [[NSArray alloc] initWithArray:restaurantMenuItems];
         self.searchResults = [[NSMutableArray alloc] initWithArray:restaurantMenuItems];
         self.chosenItems = [[NSMutableArray alloc] initWithArray:chosenMenuItems];
+        self.restaurantName = restaurantName;
     }
     
     return self;
@@ -202,12 +206,24 @@ static NSString* cellIdentifier = @"Cell";
     return cell;
 }
 
+- (void) customizedRestaurantItemViewController:(CustomizeRestaurantItemViewController *)customizeRestaurantItemViewController customizedMenuItem:(RestaurantItem *)customizedMenuItem
+{
+    if(customizedMenuItem) {
+        [self.chosenItems addObject:customizedMenuItem];
+        NSLog(@"Added: %@", customizedMenuItem);
+    }
+}
+
+
 - (void) nameTap:(id)sender
 {
     UITapGestureRecognizer *tapRecognizer = (UITapGestureRecognizer *)sender;
-    
     RestaurantItem *item = (RestaurantItem*) [self.searchResults objectAtIndex:tapRecognizer.view.tag];
     
+    self.customizeMenuItemViewController = [[CustomizeRestaurantItemViewController alloc] initWithNibName:@"CustomizeRestaurantItemViewController" bundle:[NSBundle mainBundle] restaurantName:self.restaurantName menuItem:item];
+    
+    self.customizeMenuItemViewController.delegate = self;
+    [self.customizeMenuItemViewController showInView:self.view shouldAnimate:YES];
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

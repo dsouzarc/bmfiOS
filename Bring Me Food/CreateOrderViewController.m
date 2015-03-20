@@ -64,6 +64,12 @@
         //return;
     }
     
+    self.chooseMenuItems = [[ChooseMenuItemsViewController alloc] initWithNibName:@"ChooseMenuItemsViewController"
+                                                                           bundle:[NSBundle mainBundle]
+                                                              restaurantMenuItems:self.allMenuItems
+                                                                  chosenMenuItems:self.chosenMenuItems
+                                                                   restaurantName:self.chosenRestaurant];
+    
     if(self.allMenuItems == nil) {
         [self.loadingBouncingBalls show];
         
@@ -88,18 +94,16 @@
                 [menuItems addObject:item];
             }
             
-            self.allMenuItems = [[NSArray alloc] initWithArray:menuItems];
+            self.allMenuItems = [[NSMutableArray alloc] initWithArray:menuItems];
             
-            self.chooseMenuItems = [[ChooseMenuItemsViewController alloc] initWithNibName:@"ChooseMenuItemsViewController"
-                                                                                   bundle:[NSBundle mainBundle] restaurantMenuItems:self.allMenuItems chosenMenuItems:self.chosenMenuItems];
+            self.chooseMenuItems = [[ChooseMenuItemsViewController alloc] initWithNibName:@"ChooseMenuItemsViewController" bundle:[NSBundle mainBundle] restaurantMenuItems:self.allMenuItems chosenMenuItems:self.chosenMenuItems restaurantName:self.chosenRestaurant];
+
             [self.chooseMenuItems showInView:self.view shouldAnimate:YES];
             [self.loadingBouncingBalls hide];
         }];
     }
     
     else {
-        self.chooseMenuItems = [[ChooseMenuItemsViewController alloc] initWithNibName:@"ChooseMenuItemsViewController"
-                                                                               bundle:[NSBundle mainBundle] restaurantMenuItems:self.allMenuItems chosenMenuItems:self.chosenMenuItems];
         [self.chooseMenuItems showInView:self.view shouldAnimate:YES];
         //[self setModalPresentationStyle:UIModalPresentationPopover];
         //[self presentViewController:self.chooseMenuItems animated:YES completion:nil];
@@ -121,10 +125,11 @@
                 self.allRestaurants = [[NSArray alloc] initWithArray:response];
                 
                 //Show the chooser
-                self.chooseRestaurant = [[ChooseRestaurantViewController alloc]
-                                         initWithNibName:@"ChooseRestaurantViewController"
-                                         bundle:[NSBundle mainBundle]
-                                         restaurants:self.allRestaurants];
+                self.chooseMenuItems = [[ChooseMenuItemsViewController alloc] initWithNibName:@"ChooseMenuItemsViewController"
+                                                                                       bundle:[NSBundle mainBundle]
+                                                                          restaurantMenuItems:self.allMenuItems
+                                                                              chosenMenuItems:self.chosenMenuItems
+                                                                               restaurantName:self.chosenRestaurant];
                 self.chooseRestaurant.delegate = self;
                 [self.chooseRestaurant showInView:self.view shouldAnimate:YES];
                 
@@ -138,11 +143,11 @@
     
     //If we already have a list of restaurants
     else {
-        //Show them
-        self.chooseRestaurant = [[ChooseRestaurantViewController alloc]
-                                 initWithNibName:@"ChooseRestaurantViewController"
-                                 bundle:[NSBundle mainBundle]
-                                 restaurants:self.allRestaurants];
+        self.chooseMenuItems = [[ChooseMenuItemsViewController alloc] initWithNibName:@"ChooseMenuItemsViewController"
+                                                                               bundle:[NSBundle mainBundle]
+                                                                  restaurantMenuItems:self.allMenuItems
+                                                                      chosenMenuItems:self.chosenMenuItems
+                                                                       restaurantName:self.chosenRestaurant];
         self.chooseRestaurant.delegate = self;
         [self.chooseRestaurant showInView:self.view shouldAnimate:YES];
     }

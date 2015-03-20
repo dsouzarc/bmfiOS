@@ -30,14 +30,74 @@
 
 @implementation CustomizeRestaurantItemViewController
 
+static NSString *customPlaceHolder = @"Type your customized order details here";
+
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil restaurantName:(NSString *)restaurantName menuItem:(RestaurantItem *)menuItem
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if(self) {
+        self.restaurantName = restaurantName;
+        self.itemName = menuItem.itemName;
+        self.itemDescription = menuItem.itemDescription;
+        self.itemCost = menuItem.itemCost;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     self.view.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:.6];
     self.mainView.layer.cornerRadius = 5;
     self.mainView.layer.shadowOpacity = 0.8;
     self.mainView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+    
+    self.restaurantNameLabel.text = self.restaurantName;
+    self.itemNameLabel.text = self.itemName;
+    self.itemDetailsTextView.text = self.itemDescription;
+    
+    self.customItemsDetailTextView.delegate = self;
+    self.customItemsDetailTextView.text = customPlaceHolder;
+    self.customItemsDetailTextView.textColor = [UIColor lightGrayColor];
+    
+    self.customItemsDetailTextView.layer.cornerRadius = 8;
+    self.customItemsDetailTextView.layer.borderColor = [[UIColor grayColor] CGColor];
+    
     [super viewDidLoad];
 }
+
+- (void) textViewDidBeginEditing:(UITextView *)textView
+{
+    //Add some glow effect
+    textView.layer.cornerRadius=8.0f;
+    textView.layer.masksToBounds=YES;
+    textView.layer.borderColor=[[UIColor blueColor]CGColor];
+    textView.layer.borderWidth= 2.0f;
+    
+    if(textView == self.customItemsDetailTextView) {
+        if([textView.text isEqualToString:customPlaceHolder]) {
+            [textView setText:@""];
+            [textView setTextColor:[UIColor blackColor]];
+        }
+        [textView becomeFirstResponder];
+    }
+}
+
+- (void) textViewDidEndEditing:(UITextView *)textView
+{
+    //Remove the flow effect
+    textView.layer.borderColor=[[UIColor clearColor]CGColor];
+    
+    if(textView == self.customItemsDetailTextView) {
+        if([textView.text isEqualToString:@""]) {
+            [textView setText:customPlaceHolder];
+            [textView setTextColor:[UIColor lightGrayColor]];
+        }
+        [textView resignFirstResponder];
+    }
+}
+
 
 - (void) showAnimate
 {
@@ -73,30 +133,22 @@
     });
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    //Add some glow effect
-    textField.layer.cornerRadius=8.0f;
-    textField.layer.masksToBounds=YES;
-    textField.layer.borderColor=[[UIColor blueColor]CGColor];
-    textField.layer.borderWidth= 2.0f;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    //Remove the flow effect
-    textField.layer.borderColor=[[UIColor clearColor]CGColor];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)cancelAddingItem:(id)sender {
-    
+    [self removeAnimate];
 }
 
 - (IBAction)addItemToOrder:(id)sender {
+    RestaurantItem *newItem = [[RestaurantItem alloc] initWithEverything:self.restaurantName
+                                                                itemName:self.itemName
+                                                                itemCost:self.itemCost
+                                                         itemDescription:self.customItemsDetailTextView.text];
+    
+    [self.delegate customizedRestaurantItemViewController:self customizedMenuItem:newItem];
+    [self removeAnimate];
 }
 @end

@@ -7,11 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RestaurantItem.h"
 
-@interface CustomizeRestaurantItemViewController : UIViewController
+@class CustomizeRestaurantItemViewController;
 
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil restaurantName:(NSString*)restaurantName itemName:(NSString*)itemName itemDescription:(NSString*)itemName itemCost:(NSString*)itemCost;
+@protocol CustomizeRestaurantItemDelegate <NSObject>
+
+- (void) customizedRestaurantItemViewController:(CustomizeRestaurantItemViewController*)customizeRestaurantItemViewController customizedMenuItem:(RestaurantItem*)customizedMenuItem;
+
+@end
+
+
+@interface CustomizeRestaurantItemViewController : UIViewController <UITextViewDelegate>
+
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil restaurantName:(NSString*)restaurantName menuItem:(RestaurantItem*)menuItem;
 
 - (void) showInView:(UIView *)view shouldAnimate:(BOOL)shouldAnimate;
+
+@property (nonatomic, weak) id<CustomizeRestaurantItemDelegate> delegate;
 
 @end
