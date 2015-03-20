@@ -9,7 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "CustomizeRestaurantItemViewController.h"
 
+@class ChooseMenuItemsViewController;
+
+@protocol ChooseMenuItemsDelegate <NSObject>
+
+- (void) chooseMenuItemsViewController:(ChooseMenuItemsViewController*)chooseMenuItemsViewController chosenItems:(NSArray*)chosenItems;
+
+@end
+
 @interface ChooseMenuItemsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate, CustomizeRestaurantItemDelegate>
+
+@property (weak, nonatomic) id<ChooseMenuItemsDelegate> delegate;
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil restaurantMenuItems:(NSArray*)restaurantMenuItems chosenMenuItems:(NSMutableArray*)chosenItems restaurantName:(NSString*)restaurantName;
 

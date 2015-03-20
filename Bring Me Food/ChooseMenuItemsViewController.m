@@ -232,8 +232,13 @@ static NSString* cellIdentifier = @"Cell";
 }
 
 - (IBAction)doneAddingNewItems:(id)sender {
+    NSLog(@"Chosen Items in done adding: %@", self.chosenItems);
+    [self.delegate chooseMenuItemsViewController:self chosenItems:self.chosenItems];
+    
+    [self removeAnimate];
 }
 
 - (IBAction)cancelAddingNewItems:(id)sender {
+    [self removeAnimate];
 }
 @end

@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ChooseAddressViewController.h"
 #import "ChooseRestaurantViewController.h"
+#import "ChooseMenuItemsViewController.h"
 
-@interface CreateOrderViewController : UIViewController <ChooseRestaurantNameDelegate, ChooseAddressDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface CreateOrderViewController : UIViewController <ChooseRestaurantNameDelegate, ChooseAddressDelegate, ChooseMenuItemsDelegate, UITableViewDataSource, UITableViewDelegate, CustomizeRestaurantItemDelegate>
 
 @end
