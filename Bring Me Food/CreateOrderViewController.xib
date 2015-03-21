@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="addressLabel" destination="2aX-dx-0mc" id="Ft8-lj-ezn"/>
                 <outlet property="chosenItemsTableView" destination="Bwd-tc-ih5" id="UEV-Df-zgd"/>
+                <outlet property="orderCostLabel" destination="vj6-Tm-kPk" id="bra-zU-1x6"/>
                 <outlet property="restaurantNameLabel" destination="u2I-P9-dl0" id="Xfl-K1-IJx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sVQ-8f-lV6"/>
             </connections>
@@ -98,6 +99,18 @@
                         <outlet property="delegate" destination="-1" id="JfM-32-J5c"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Cost" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQh-po-E5m">
+                    <rect key="frame" x="23" y="575" width="78" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vj6-Tm-kPk">
+                    <rect key="frame" x="177" y="575" width="187" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

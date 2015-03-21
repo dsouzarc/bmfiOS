@@ -26,6 +26,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *restaurantNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *addressLabel;
 @property (strong, nonatomic) IBOutlet UITableView *chosenItemsTableView;
+@property (strong, nonatomic) IBOutlet UILabel *orderCostLabel;
+
 
 @property (strong, nonatomic) PQFBouncingBalls *loadingBouncingBalls;
 
@@ -67,6 +69,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.chosenMenuItems removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self updateOrderCostLabel];
     }
 }
 
@@ -179,6 +182,7 @@
     [self.chosenMenuItems removeAllObjects];
     [self.chosenMenuItems addObjectsFromArray:chosenItems];
     [self.chosenItemsTableView reloadData];
+    [self updateOrderCostLabel];
 }
 
 - (void) showAlert:(NSString*)alertTitle alertMessage:(NSString*)alertMessage buttonName:(NSString*)buttonName {
@@ -208,11 +212,6 @@
     //Delegate from "ChooseRestaurantViewController"
     self.chosenRestaurant = chosenRestaurant;
     self.restaurantNameLabel.text = chosenRestaurant;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)cancelNewOrder:(id)sender {
@@ -254,6 +253,36 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedRow = indexPath;
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [self updateOrderCostLabel];
+}
+
+- (void) updateOrderCostLabel
+{
+    //Update the total cost
+    if(!self.chosenMenuItems || self.chosenMenuItems.count == 0) {
+        self.orderCostLabel.text = @"No items chosen yet";
+    }
+    
+    else {
+        double estimatedCost = 0;
+        
+        for(RestaurantItem *item in self.chosenMenuItems) {
+            NSString *tempCost = [item.itemCost stringByReplacingOccurrencesOfString:@"$" withString:@""];
+            
+            @try {
+                estimatedCost += [tempCost doubleValue];
+            }
+            @catch (NSException *exception) {
+                NSLog(@"ERROR PARSING ITEM COST: %@", item.description);
+            }
+        }
+        
+        self.orderCostLabel.text = [NSString stringWithFormat:@"$%.2f", estimatedCost];
+    }
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
