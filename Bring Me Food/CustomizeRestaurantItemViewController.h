@@ -17,12 +17,12 @@
 
 @end
 
-
 @interface CustomizeRestaurantItemViewController : UIViewController <UITextViewDelegate>
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil restaurantName:(NSString*)restaurantName menuItem:(RestaurantItem*)menuItem;
 
 - (void) showInView:(UIView *)view shouldAnimate:(BOOL)shouldAnimate;
+- (IBAction)valueChanged:(UIStepper *)stepper;
 
 @property (nonatomic, weak) id<CustomizeRestaurantItemDelegate> delegate;
 

@@ -17,6 +17,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *itemNameLabel;
 @property (strong, nonatomic) IBOutlet UITextView *itemDetailsTextView;
 @property (strong, nonatomic) IBOutlet UITextView *customItemsDetailTextView;
+@property (strong, nonatomic) IBOutlet UILabel *currentCostLabel;
+@property (strong, nonatomic) IBOutlet UIStepper *increaseCostStepper;
 
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 
@@ -25,6 +27,7 @@
 @property (strong, nonatomic) NSString *itemDescription;
 @property (strong, nonatomic) NSString *customItemDescription;
 @property (strong, nonatomic) NSString *itemCost;
+@property double currentCostDouble;
 
 @end
 
@@ -41,6 +44,7 @@ static NSString *customPlaceHolder = @"Type your customized order details here";
         self.itemName = menuItem.itemName;
         self.itemDescription = menuItem.itemDescription;
         self.itemCost = menuItem.itemCost;
+        self.currentCostDouble = [menuItem.itemCost doubleValue];
     }
     
     return self;
@@ -55,10 +59,19 @@ static NSString *customPlaceHolder = @"Type your customized order details here";
     
     self.restaurantNameLabel.text = self.restaurantName;
     self.itemNameLabel.text = self.itemName;
-    self.itemDetailsTextView.text = self.itemDescription;
+    
+    if(self.itemDescription || [self.itemDescription length] <= 3) {
+        self.itemDetailsTextView.text = @"No description available";
+    }
+    else {
+        self.itemDetailsTextView.text = self.itemDescription;
+    }
     
     self.customItemsDetailTextView.delegate = self;
     self.customItemsDetailTextView.text = customPlaceHolder;
+    self.currentCostLabel.text = self.itemCost;
+    self.increaseCostStepper.value = self.currentCostDouble;
+    self.increaseCostStepper.minimumValue = self.currentCostDouble;
     self.customItemsDetailTextView.textColor = [UIColor lightGrayColor];
     
     self.customItemsDetailTextView.layer.cornerRadius = 8;
@@ -82,6 +95,12 @@ static NSString *customPlaceHolder = @"Type your customized order details here";
         }
         [textView becomeFirstResponder];
     }
+}
+
+- (IBAction)valueChanged:(UIStepper *)stepper
+{
+    self.currentCostDouble = [stepper value];
+    [self.currentCostLabel setText:[NSString stringWithFormat:@"%.2f", self.currentCostDouble]];
 }
 
 - (void) textViewDidEndEditing:(UITextView *)textView
@@ -145,7 +164,7 @@ static NSString *customPlaceHolder = @"Type your customized order details here";
 - (IBAction)addItemToOrder:(id)sender {
     RestaurantItem *newItem = [[RestaurantItem alloc] initWithEverything:self.restaurantName
                                                                 itemName:self.itemName
-                                                                itemCost:self.itemCost
+                                                                itemCost:[NSString stringWithFormat:@"%.2f", self.currentCostDouble]
                                                          itemDescription:self.customItemsDetailTextView.text];
     
     [self.delegate customizedRestaurantItemViewController:self customizedMenuItem:newItem];
