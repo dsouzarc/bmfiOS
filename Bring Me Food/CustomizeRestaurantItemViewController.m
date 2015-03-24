@@ -162,10 +162,14 @@ static NSString *customPlaceHolder = @"Type your customized order details here";
 }
 
 - (IBAction)addItemToOrder:(id)sender {
+    
+    NSString *description = [self.customItemsDetailTextView.text containsString:customPlaceHolder] ? @"" :
+    self.customItemsDetailTextView.text;
+    
     RestaurantItem *newItem = [[RestaurantItem alloc] initWithEverything:self.restaurantName
                                                                 itemName:self.itemName
                                                                 itemCost:[NSString stringWithFormat:@"%.2f", self.currentCostDouble]
-                                                         itemDescription:self.customItemsDetailTextView.text];
+                                                         itemDescription:description];
     
     [self.delegate customizedRestaurantItemViewController:self customizedMenuItem:newItem];
     [self removeAnimate];

@@ -280,6 +280,15 @@
 		94739D151ABA346200406819 /* Choose ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				949661931ABB09BD0030661A /* CustomizeRestaurantItemViewController.h */,
+				949661941ABB09BD0030661A /* CustomizeRestaurantItemViewController.m */,
+				949661951ABB09BD0030661A /* CustomizeRestaurantItemViewController.xib */,
+				94739D0F1ABA343300406819 /* ChooseMenuItemsViewController.h */,
+				94739D101ABA343300406819 /* ChooseMenuItemsViewController.m */,
+				94739D111ABA343300406819 /* ChooseMenuItemsViewController.xib */,
+				94739D171ABA41B000406819 /* RestaurantItemTableViewCell.h */,
+				94739D181ABA41B100406819 /* RestaurantItemTableViewCell.m */,
+				94739D191ABA41B100406819 /* RestaurantItemTableViewCell.xib */,
 				94A128031AB4C337005FC639 /* ChooseRestaurantViewController.h */,
 				94A128041AB4C337005FC639 /* ChooseRestaurantViewController.m */,
 				94A128051AB4C337005FC639 /* ChooseRestaurantViewController.xib */,
@@ -326,21 +335,12 @@
 		947582111A9C126300487720 /* Bring Me Food */ = {
 			isa = PBXGroup;
 			children = (
-				949661931ABB09BD0030661A /* CustomizeRestaurantItemViewController.h */,
-				949661941ABB09BD0030661A /* CustomizeRestaurantItemViewController.m */,
-				949661951ABB09BD0030661A /* CustomizeRestaurantItemViewController.xib */,
-				94739D0F1ABA343300406819 /* ChooseMenuItemsViewController.h */,
-				94739D101ABA343300406819 /* ChooseMenuItemsViewController.m */,
-				94739D111ABA343300406819 /* ChooseMenuItemsViewController.xib */,
 				94591EDB1AB26A6800D62C0A /* CreateOrderViewController.h */,
 				94591EDC1AB26A6800D62C0A /* CreateOrderViewController.m */,
 				94591EDD1AB26A6800D62C0A /* CreateOrderViewController.xib */,
 				9456EDB41AA2A9CC003D167E /* ExistingOrdersViewController.h */,
 				9456EDB51AA2A9CC003D167E /* ExistingOrdersViewController.m */,
 				9456EDB61AA2A9CC003D167E /* ExistingOrdersViewController.xib */,
-				94739D171ABA41B000406819 /* RestaurantItemTableViewCell.h */,
-				94739D181ABA41B100406819 /* RestaurantItemTableViewCell.m */,
-				94739D191ABA41B100406819 /* RestaurantItemTableViewCell.xib */,
 				94739D151ABA346200406819 /* Choose ViewControllers */,
 				94739D161ABA349500406819 /* Custom Objects */,
 				947582161A9C126300487720 /* AppDelegate.h */,
