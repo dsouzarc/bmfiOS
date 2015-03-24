@@ -15,10 +15,10 @@
     self = [super init];
     
     if(self) {
-        self.restaurantName = restaurantName;
-        self.itemName = itemName;
-        self.itemCost = itemCost;
-        self.itemDescription = itemDescription;
+        self.restaurantName = restaurantName ? restaurantName : @"";
+        self.itemName = itemName ? itemName : @"";
+        self.itemCost = itemCost ? itemCost : @"";
+        self.itemDescription = itemDescription ? itemDescription : @"";
     }
     
     return self;
