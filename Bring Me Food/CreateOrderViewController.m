@@ -115,7 +115,8 @@
     self.loadingBouncingBalls.loaderColor = [UIColor blueColor];
     self.chosenItemsTableView.allowsMultipleSelection = NO;
     
-
+    [self.myNameTextField setText:self.keyChain[@"name"]];
+    [self.myPhoneTextField setText:self.keyChain[@"phoneNumber"]];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
