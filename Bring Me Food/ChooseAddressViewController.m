@@ -7,6 +7,7 @@
 //
 
 #import "ChooseAddressViewController.h"
+#import <Parse/Parse.h>
 
 @interface ChooseAddressViewController ()
 
@@ -58,10 +59,21 @@
 
 - (void) tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SPGooglePlacesAutocompletePlace *place = (SPGooglePlacesAutocompletePlace*) [self.possibleLocations objectAtIndex:indexPath.row];
+    SPGooglePlacesAutocompletePlace *placemark = (SPGooglePlacesAutocompletePlace*) [self.possibleLocations objectAtIndex:indexPath.row];
     
-    [self.delegate chooseAddressViewController:self chosenAddress:place];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [placemark resolveToPlacemark:^(CLPlacemark *placemark, NSString *addressString, NSError *error) {
+        
+        if(error) {
+            NSLog(@"ERROR CONVERTING TO PLACEMARK");
+        }
+        else {
+            PFGeoPoint *deliveryLocation = [PFGeoPoint geoPointWithLatitude:placemark.location.coordinate.latitude
+                                                                  longitude:placemark.location.coordinate.longitude];
+            
+            [self.delegate chooseAddressViewController:self chosenAddress:deliveryLocation addressName:placemark.name];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }];
 }
 
 - (NSString*)getGoogleAPIKey {

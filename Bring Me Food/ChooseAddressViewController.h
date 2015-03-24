@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "SPGooglePlacesAutocompleteQuery.h"
 #import "SPGooglePlacesAutocompletePlace.h"
+#import <Parse/Parse.h>
 
 @class ChooseAddressViewController;
 
 @protocol ChooseAddressDelegate <NSObject>
 
-- (void) chooseAddressViewController:(ChooseAddressViewController*)viewController chosenAddress:(SPGooglePlacesAutocompletePlace*)chosenAddress;
+- (void) chooseAddressViewController:(ChooseAddressViewController*)viewController chosenAddress:(PFGeoPoint*)chosenAddress addressName:(NSString*)addressName;
 
 @end
 

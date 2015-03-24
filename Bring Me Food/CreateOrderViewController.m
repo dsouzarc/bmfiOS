@@ -15,6 +15,7 @@
 #import <Parse/Parse.h>
 #import "RestaurantItem.h"
 #import "PQFBouncingBalls.h"
+#import "UICKeyChainStore.h"
 
 @interface CreateOrderViewController ()
 
@@ -22,14 +23,17 @@
 - (IBAction)chooseRestaurantButton:(id)sender;
 - (IBAction)chooseAddressButton:(id)sender;
 - (IBAction)chooseItemsButton:(id)sender;
+- (IBAction)submitOrderButton:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UILabel *restaurantNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *addressLabel;
 @property (strong, nonatomic) IBOutlet UITableView *chosenItemsTableView;
 @property (strong, nonatomic) IBOutlet UILabel *orderCostLabel;
-
+@property (strong, nonatomic) IBOutlet UITextField *myNameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *myPhoneTextField;
 
 @property (strong, nonatomic) PQFBouncingBalls *loadingBouncingBalls;
+@property (strong, nonatomic) UICKeyChainStore *keyChain;
 
 //Choose View Controllers
 @property (nonatomic, strong) ChooseRestaurantViewController *chooseRestaurant;
@@ -42,7 +46,7 @@
 @property (nonatomic, strong) NSMutableArray *allMenuItems;
 
 //User selected data
-@property (nonatomic, strong) SPGooglePlacesAutocompletePlace *chosenAddress;
+@property (nonatomic, strong) PFGeoPoint *chosenAddress;
 @property (nonatomic, strong) NSString *chosenRestaurant;
 @property (nonatomic, strong) NSMutableArray *chosenMenuItems;
 
@@ -51,6 +55,52 @@
 @end
 
 @implementation CreateOrderViewController
+
+- (IBAction)submitOrderButton:(id)sender {
+    /*if(self.chosenRestaurant == nil) {
+     [self showAlert:@"Incomplete Information" alertMessage:@"Please choose a restaurant" buttonName:@"Ok"];
+     return;
+     }
+     
+     if(self.chosenAddress == nil) {
+     [self showAlert:@"Incomplete Information" alertMessage:@"Please enter an address to bring the food to" buttonName:@"ok:"];
+     return;
+     }
+     
+     if(self.chosenMenuItems == nil || self.chosenMenuItems.count == 0) {
+     [self showAlert:@"Incomplete Information" alertMessage:@"Please choose items to order" buttonName:@"Ok"];
+     return;
+     }*/
+    
+    //TODO: CONFIRMATION + CALCULATE ORDER COST WITH SHIPPING
+    
+    if(self.chosenRestaurant == nil) {
+        NSLog(@"Restaurant");
+    }
+    if(self.myNameTextField == nil) {
+        NSLog(@"My name");
+    }
+    if(self.chosenAddress == nil) {
+        NSLog(@"Address");
+    }
+    
+    
+    NSDictionary *orderInformation = @{@"restaurantName": self.chosenRestaurant, @"ordererName": self.myNameTextField.text, @"deliveryAddress": self.chosenAddress, @"chosenItems": self.chosenMenuItems};
+    
+    [PFCloud callFunctionInBackground:@"placeOrder" withParameters:orderInformation block:^(NSString* result, NSError *error) {
+        if(!error) {
+            NSLog(result);
+        }
+        else {
+            NSLog(@"Error");
+            [self showAlert:@"Error placing order" alertMessage:@"Sorry, something went wrong while placing your order" buttonName:@"Try again"];
+        }
+        
+    }];
+    
+    NSLog(@"GUCCI");
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -169,7 +219,9 @@
     else {
         
         //Show the chooser
-        self.chooseRestaurant = [[ChooseRestaurantViewController alloc] initWithNibName:@"ChooseRestaurantViewController" bundle:[NSBundle mainBundle] restaurants:self.allRestaurants];
+        self.chooseRestaurant = [[ChooseRestaurantViewController alloc] initWithNibName:@"ChooseRestaurantViewController"
+                                                                                 bundle:[NSBundle mainBundle]
+                                                                            restaurants:self.allRestaurants];
         self.chooseRestaurant.delegate = self;
         [self.chooseRestaurant showInView:self.view shouldAnimate:YES];
         
@@ -195,16 +247,17 @@
 }
 
 - (IBAction)chooseAddressButton:(id)sender {
-    self.chooseAddress = [[ChooseAddressViewController alloc] initWithNibName:@"ChooseAddressViewController" bundle:[NSBundle mainBundle]];
+    self.chooseAddress = [[ChooseAddressViewController alloc] initWithNibName:@"ChooseAddressViewController"
+                                                                       bundle:[NSBundle mainBundle]];
     self.chooseAddress.delegate = self;
     [self setModalPresentationStyle:UIModalPresentationPopover];
     [self presentViewController:self.chooseAddress animated:YES completion:nil];
 }
 
-- (void) chooseAddressViewController:(ChooseAddressViewController *)viewController chosenAddress:(SPGooglePlacesAutocompletePlace *)chosenAddress
+- (void) chooseAddressViewController:(ChooseAddressViewController *)viewController chosenAddress:(PFGeoPoint*)chosenAddress addressName:(NSString *)addressName
 {
     self.chosenAddress = chosenAddress;
-    self.addressLabel.text = chosenAddress.name;
+    self.addressLabel.text = addressName;
 }
 
 - (void) chooseRestaurantViewController:(ChooseRestaurantViewController *)controller didFinishChoosing:(NSString *)chosenRestaurant
@@ -338,6 +391,15 @@
     cell.costLabel.userInteractionEnabled = YES;
     
     return cell;
+}
+
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    self.keyChain = [[UICKeyChainStore alloc] init];
+    
+    return self;
 }
 
 - (void) nameTap:(id)sender

@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="addressLabel" destination="2aX-dx-0mc" id="Ft8-lj-ezn"/>
                 <outlet property="chosenItemsTableView" destination="Bwd-tc-ih5" id="UEV-Df-zgd"/>
+                <outlet property="myNameTextField" destination="8xu-GO-kUJ" id="BsU-p9-xHf"/>
                 <outlet property="orderCostLabel" destination="vj6-Tm-kPk" id="bra-zU-1x6"/>
                 <outlet property="restaurantNameLabel" destination="u2I-P9-dl0" id="Xfl-K1-IJx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sVQ-8f-lV6"/>
@@ -111,6 +112,15 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vf7-hI-lCA">
+                    <rect key="frame" x="8" y="629" width="356" height="30"/>
+                    <state key="normal" title="Submit Order">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="submitOrderButton:" destination="-1" eventType="touchUpInside" id="z9j-ui-wJp"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
