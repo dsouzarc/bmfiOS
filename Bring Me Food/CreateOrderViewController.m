@@ -85,7 +85,10 @@
     }
     
     
-    NSDictionary *orderInformation = @{@"restaurantName": self.chosenRestaurant, @"ordererName": self.myNameTextField.text, @"deliveryAddress": self.chosenAddress, @"chosenItems": self.chosenMenuItems};
+    NSDictionary *orderInformation = @{@"restaurantName": self.chosenRestaurant,
+                                       @"ordererName": self.myNameTextField.text,
+                                       @"deliveryAddress": self.chosenAddress};
+                                       //@"chosenItems": self.chosenMenuItems};
     
     [PFCloud callFunctionInBackground:@"placeOrder" withParameters:orderInformation block:^(NSString* result, NSError *error) {
         if(!error) {
