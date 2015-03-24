@@ -113,8 +113,9 @@
     self.loadingBouncingBalls.separation = 40;
     self.loadingBouncingBalls.zoomAmount = 40;
     self.loadingBouncingBalls.loaderColor = [UIColor blueColor];
-    
     self.chosenItemsTableView.allowsMultipleSelection = NO;
+    
+
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

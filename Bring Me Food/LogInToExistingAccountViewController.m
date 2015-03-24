@@ -78,13 +78,11 @@
                                                 if(!error) {
                                                     PFObject *first = (PFObject*)results[0];
                                                     
-                                                    self.keyChain[@"username"] = self.usernameTextField.text;
+                                                    self.keyChain[@"username"] = first[@"username"];
                                                     self.keyChain[@"password"] = self.passwordTextField.text;
-                                                    self.keyChain[@"phoneNumber"] = self.usernameTextField.text;
+                                                    self.keyChain[@"phoneNumber"] = first[@"phoneNumber"];
                                                     self.keyChain[@"name"] = first[@"name"];
                                                     self.keyChain[@"emailAddress"] = first[@"email"];
-                                                    
-                                                    NSLog(self.keyChain[@"password"]);
                                                 }
                                             }];
                                             
