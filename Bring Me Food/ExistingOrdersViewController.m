@@ -10,11 +10,41 @@
 #import "CreateOrderViewController.h"
 
 @interface ExistingOrdersViewController ()
+
 - (IBAction)createNewOrder:(id)sender;
+
+@property (strong, nonatomic) NSArray *allOrders;
 
 @end
 
 @implementation ExistingOrdersViewController
+
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if(self) {
+        self.allOrders = [[NSArray alloc] init];
+    }
+    
+    return self;
+}
+
+- (void) updateOrders
+{
+    [PFCloud callFunctionInBackground:@"getUsersLiveOrders" withParameters:nil block:^(NSArray *results, NSError *error) {
+       
+        if(!error) {
+            
+            
+        }
+        
+        else {
+            NSLog([error description]);
+        }
+        
+    }];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

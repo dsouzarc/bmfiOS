@@ -70,7 +70,7 @@
             PFGeoPoint *deliveryLocation = [PFGeoPoint geoPointWithLatitude:placemark.location.coordinate.latitude
                                                                   longitude:placemark.location.coordinate.longitude];
             
-            [self.delegate chooseAddressViewController:self chosenAddress:deliveryLocation addressName:placemark.name];
+            [self.delegate chooseAddressViewController:self chosenAddress:deliveryLocation addressName:addressString];
             [self dismissViewControllerAnimated:YES completion:nil];
         }
     }];
