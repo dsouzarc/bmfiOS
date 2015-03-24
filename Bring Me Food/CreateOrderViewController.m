@@ -262,7 +262,10 @@
 - (void) chooseAddressViewController:(ChooseAddressViewController *)viewController chosenAddress:(PFGeoPoint*)chosenAddress addressName:(NSString *)addressName
 {
     self.chosenAddress = chosenAddress;
+    self.addressLabel.numberOfLines = 1;
     self.addressLabel.text = addressName;
+    self.addressLabel.adjustsFontSizeToFitWidth=YES;
+    self.addressLabel.minimumScaleFactor=0.5;
 }
 
 - (void) chooseRestaurantViewController:(ChooseRestaurantViewController *)controller didFinishChoosing:(NSString *)chosenRestaurant
