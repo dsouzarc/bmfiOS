@@ -85,15 +85,19 @@
         NSLog(@"Address");
     }
     
-    
     NSDictionary *orderInformation = @{@"restaurantName": self.chosenRestaurant,
                                        @"ordererName": self.myNameTextField.text,
-                                       @"deliveryAddress": self.chosenAddress};
-                                       //@"chosenItems": self.chosenMenuItems};
+                                       @"deliveryAddress": self.chosenAddress,
+                                       @"deliveryAddressString": self.addressLabel.text,
+                                       @"chosenItems": [self chosenMenuItemsDictionaryArray],
+                                       @"timeToDeliverAt": [self.deliveryTimeDatePicker date]};
     
     [PFCloud callFunctionInBackground:@"placeOrder" withParameters:orderInformation block:^(NSString* result, NSError *error) {
         if(!error) {
             NSLog(result);
+            self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            [self dismissViewControllerAnimated:YES completion:nil];
+            [self.navigationController popToRootViewControllerAnimated:YES];
         }
         else {
             NSLog(@"Error");
@@ -106,6 +110,18 @@
     
 }
 
+- (NSArray*) chosenMenuItemsDictionaryArray
+{
+    NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:self.chosenMenuItems.count];
+    
+    for(RestaurantItem *item in self.chosenMenuItems) {
+        NSDictionary *characteristics = @{@"itemName": item.itemName, @"itemCost": item.itemCost, @"itemDescription": item.itemDescription};
+        [items addObject:characteristics];
+    }
+    
+    return items;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -116,6 +132,8 @@
     self.loadingBouncingBalls.loaderColor = [UIColor blueColor];
     self.chosenItemsTableView.allowsMultipleSelection = NO;
     
+    [self.deliveryTimeDatePicker setDate:[NSDate date]];
+    [self.deliveryTimeDatePicker setMinimumDate:[NSDate date]];
     [self.myNameTextField setText:self.keyChain[@"name"]];
     [self.myPhoneTextField setText:self.keyChain[@"phoneNumber"]];
 }
