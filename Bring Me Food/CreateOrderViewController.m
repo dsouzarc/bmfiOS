@@ -31,6 +31,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *orderCostLabel;
 @property (strong, nonatomic) IBOutlet UITextField *myNameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *myPhoneTextField;
+@property (strong, nonatomic) IBOutlet UIDatePicker *deliveryTimeDatePicker;
 
 @property (strong, nonatomic) PQFBouncingBalls *loadingBouncingBalls;
 @property (strong, nonatomic) UICKeyChainStore *keyChain;
