@@ -43,6 +43,7 @@ static NSString *customPlaceHolder = @"Type your customized order details here";
         self.restaurantName = restaurantName;
         self.itemName = menuItem.itemName;
         self.itemDescription = menuItem.itemDescription;
+        
         self.itemCost = menuItem.itemCost;
         self.currentCostDouble = [menuItem.itemCost doubleValue];
     }
@@ -60,7 +61,7 @@ static NSString *customPlaceHolder = @"Type your customized order details here";
     self.restaurantNameLabel.text = self.restaurantName;
     self.itemNameLabel.text = self.itemName;
     
-    if(self.itemDescription || [self.itemDescription length] <= 3) {
+    if(!self.itemDescription || [self.itemDescription length] <= 3) {
         self.itemDetailsTextView.text = @"No description available";
     }
     else {

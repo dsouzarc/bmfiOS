@@ -58,32 +58,22 @@
 @implementation CreateOrderViewController
 
 - (IBAction)submitOrderButton:(id)sender {
-    /*if(self.chosenRestaurant == nil) {
-     [self showAlert:@"Incomplete Information" alertMessage:@"Please choose a restaurant" buttonName:@"Ok"];
-     return;
-     }
+    if(self.chosenRestaurant == nil) {
+        [self showAlert:@"Incomplete Information" alertMessage:@"Please choose a restaurant" buttonName:@"Ok"];
+        return;
+    }
      
      if(self.chosenAddress == nil) {
-     [self showAlert:@"Incomplete Information" alertMessage:@"Please enter an address to bring the food to" buttonName:@"ok:"];
-     return;
+         [self showAlert:@"Incomplete Information" alertMessage:@"Please enter an address to bring the food to" buttonName:@"ok:"];
+         return;
      }
      
      if(self.chosenMenuItems == nil || self.chosenMenuItems.count == 0) {
-     [self showAlert:@"Incomplete Information" alertMessage:@"Please choose items to order" buttonName:@"Ok"];
-     return;
-     }*/
+         [self showAlert:@"Incomplete Information" alertMessage:@"Please choose items to order" buttonName:@"Ok"];
+         return;
+     }
     
     //TODO: CONFIRMATION + CALCULATE ORDER COST WITH SHIPPING
-    
-    if(self.chosenRestaurant == nil) {
-        NSLog(@"Restaurant");
-    }
-    if(self.myNameTextField == nil) {
-        NSLog(@"My name");
-    }
-    if(self.chosenAddress == nil) {
-        NSLog(@"Address");
-    }
     
     NSDictionary *orderInformation = @{@"restaurantName": self.chosenRestaurant,
                                        @"ordererName": self.myNameTextField.text,
@@ -134,6 +124,7 @@
     
     [self.deliveryTimeDatePicker setDate:[NSDate date]];
     [self.deliveryTimeDatePicker setMinimumDate:[NSDate date]];
+    
     [self.myNameTextField setText:self.keyChain[@"name"]];
     [self.myPhoneTextField setText:self.keyChain[@"phoneNumber"]];
 }
@@ -159,9 +150,8 @@
 - (IBAction)chooseItemsButton:(id)sender {
     
     if(self.chosenRestaurant == nil) {
-        self.chosenRestaurant = @"Tortugas";
-        //[self showAlert:@"Choose Restaurant" alertMessage:@"Please choose a restaurant first" buttonName:@"Ok"];
-        //return;
+        [self showAlert:@"Choose Restaurant" alertMessage:@"Please choose a restaurant first" buttonName:@"Ok"];
+        return;
     }
     
     self.chooseMenuItems = [[ChooseMenuItemsViewController alloc] initWithNibName:@"ChooseMenuItemsViewController"
@@ -196,7 +186,8 @@
             
             self.allMenuItems = [[NSMutableArray alloc] initWithArray:menuItems];
             
-            self.chooseMenuItems = [[ChooseMenuItemsViewController alloc] initWithNibName:@"ChooseMenuItemsViewController" bundle:[NSBundle mainBundle] restaurantMenuItems:self.allMenuItems chosenMenuItems:self.chosenMenuItems restaurantName:self.chosenRestaurant];
+            self.chooseMenuItems = [[ChooseMenuItemsViewController alloc] initWithNibName:@"ChooseMenuItemsViewController"
+                                                                                   bundle:[NSBundle mainBundle] restaurantMenuItems:self.allMenuItems chosenMenuItems:self.chosenMenuItems restaurantName:self.chosenRestaurant];
             self.chooseMenuItems.delegate = self;
 
             [self.chooseMenuItems showInView:self.view shouldAnimate:YES];
