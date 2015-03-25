@@ -8,12 +8,13 @@
 
 #import "ExistingOrdersViewController.h"
 #import "CreateOrderViewController.h"
+#import "Order.h"
 
 @interface ExistingOrdersViewController ()
 
 - (IBAction)createNewOrder:(id)sender;
 
-@property (strong, nonatomic) NSArray *allOrders;
+@property (strong, nonatomic) NSMutableArray *existingOrders;
 
 @end
 
@@ -24,10 +25,15 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if(self) {
-        self.allOrders = [[NSArray alloc] init];
+        self.existingOrders = [[NSMutableArray alloc] init];
     }
     
     return self;
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [self updateOrders];
 }
 
 - (void) updateOrders
@@ -36,6 +42,11 @@
        
         if(!error) {
             
+            [self.existingOrders removeAllObjects];
+            
+            for(NSDictionary *result in results) {
+                
+            }
             
         }
         
@@ -48,17 +59,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self updateOrders];
     // Do any additional setup after loading the view from its nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return self.existingOrders.count;
 }
 
 - (IBAction)createNewOrder:(id)sender {

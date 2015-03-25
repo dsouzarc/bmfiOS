@@ -7,7 +7,25 @@
 //
 
 #import "Order.h"
+#import "RestaurantItem.h"
 
 @implementation Order
+
+- (instancetype) initWithEverything:(NSString *)restaurantName deliveryAddress:(NSString *)deliveryAddress orderedAt:(NSDate *)orderedAt toBeDeliveredAtTime:(NSDate *)toBeDeliveredAtTime estimatedDeliveryTime:(NSDate *)estimatedDeliveryTime orderItems:(NSArray *)orderItems orderStatus:(NSInteger)orderStatus
+{
+    self = [self init];
+    
+    if(self) {
+        self.restaurantName = restaurantName;
+        self.toBeDeliveredAtAddress = deliveryAddress;
+        self.orderedAt = orderedAt;
+        self.toBeDeliveredAtTime = toBeDeliveredAtTime;
+        self.estimatedDeliveryTime = estimatedDeliveryTime;
+        self.orderItems = orderItems;
+        self.orderStatus = orderStatus;
+    }
+    
+    return self;
+}
 
 @end
