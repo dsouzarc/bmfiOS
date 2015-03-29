@@ -9,6 +9,7 @@
 #import "ExistingOrdersViewController.h"
 #import "CreateOrderViewController.h"
 #import "Order.h"
+#import "OrdersTableViewCell.h"
 
 @interface ExistingOrdersViewController ()
 
@@ -21,6 +22,8 @@
 @end
 
 @implementation ExistingOrdersViewController
+
+static NSString *orderCellIdentifier = @"OrdersTableViewCell";
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -69,8 +72,14 @@
     }];
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 77;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.existingOrdersTableView registerNib:[UINib nibWithNibName:@"OrdersTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:orderCellIdentifier];
     [self updateOrders];
     // Do any additional setup after loading the view from its nib.
 }
@@ -87,15 +96,16 @@
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *classifier = @"Cell";
-    
-    UITableViewCell *cell = [self.existingOrdersTableView dequeueReusableCellWithIdentifier:classifier];
+    OrdersTableViewCell *cell = [self.existingOrdersTableView dequeueReusableCellWithIdentifier:orderCellIdentifier];
     
     if(!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:classifier];
+        cell = [[OrdersTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:orderCellIdentifier];
     }
     
-    cell.textLabel.text = ((RestaurantItem*) self.existingOrders[indexPath.row]).restaurantName;
+    Order *order = (Order*) self.existingOrders[indexPath.row];
+    
+    cell.restaurantNameLabel.text = order.restaurantName;
+    cell.orderedOnDateLabel.text = @"Test";
     
     return cell;
 }

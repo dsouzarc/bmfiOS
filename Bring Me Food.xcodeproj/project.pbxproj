@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9411974D1AC899770002FDEE /* OrdersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9411974B1AC899770002FDEE /* OrdersTableViewCell.m */; };
+		9411974E1AC899770002FDEE /* OrdersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9411974C1AC899770002FDEE /* OrdersTableViewCell.xib */; };
 		9430E89A1AB3A0030038738F /* SPGooglePlacesAutocompletePlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 9430E8931AB3A0030038738F /* SPGooglePlacesAutocompletePlace.m */; };
 		9430E89B1AB3A0030038738F /* SPGooglePlacesAutocompleteQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 9430E8951AB3A0030038738F /* SPGooglePlacesAutocompleteQuery.m */; };
 		9430E89C1AB3A0030038738F /* SPGooglePlacesAutocompleteUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 9430E8971AB3A0030038738F /* SPGooglePlacesAutocompleteUtilities.m */; };
@@ -86,6 +88,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9411974A1AC899770002FDEE /* OrdersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersTableViewCell.h; sourceTree = "<group>"; };
+		9411974B1AC899770002FDEE /* OrdersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersTableViewCell.m; sourceTree = "<group>"; };
+		9411974C1AC899770002FDEE /* OrdersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrdersTableViewCell.xib; sourceTree = "<group>"; };
 		9430E8911AB3A0030038738F /* SPGooglePlacesAutocomplete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGooglePlacesAutocomplete.h; sourceTree = "<group>"; };
 		9430E8921AB3A0030038738F /* SPGooglePlacesAutocompletePlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGooglePlacesAutocompletePlace.h; sourceTree = "<group>"; };
 		9430E8931AB3A0030038738F /* SPGooglePlacesAutocompletePlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGooglePlacesAutocompletePlace.m; sourceTree = "<group>"; };
@@ -335,6 +340,9 @@
 		947582111A9C126300487720 /* Bring Me Food */ = {
 			isa = PBXGroup;
 			children = (
+				9411974A1AC899770002FDEE /* OrdersTableViewCell.h */,
+				9411974B1AC899770002FDEE /* OrdersTableViewCell.m */,
+				9411974C1AC899770002FDEE /* OrdersTableViewCell.xib */,
 				94591EDB1AB26A6800D62C0A /* CreateOrderViewController.h */,
 				94591EDC1AB26A6800D62C0A /* CreateOrderViewController.m */,
 				94591EDD1AB26A6800D62C0A /* CreateOrderViewController.xib */,
@@ -544,6 +552,7 @@
 				94591EDF1AB26A6800D62C0A /* CreateOrderViewController.xib in Resources */,
 				94A1280E1AB53CFB005FC639 /* ChooseAddressViewController.xib in Resources */,
 				949661971ABB09BD0030661A /* CustomizeRestaurantItemViewController.xib in Resources */,
+				9411974E1AC899770002FDEE /* OrdersTableViewCell.xib in Resources */,
 				9475821E1A9C126300487720 /* Main.storyboard in Resources */,
 				946068B61A9D13A0006664A2 /* phone1-50.png in Resources */,
 				9443CCF01AA0F23600C5CC70 /* user_dark_male4-50.png in Resources */,
@@ -576,6 +585,7 @@
 				94591EDE1AB26A6800D62C0A /* CreateOrderViewController.m in Sources */,
 				94A1280D1AB53CFB005FC639 /* ChooseAddressViewController.m in Sources */,
 				9475845B1A9CFDE700487720 /* UIColor+CIELAB.m in Sources */,
+				9411974D1AC899770002FDEE /* OrdersTableViewCell.m in Sources */,
 				9475821B1A9C126300487720 /* ViewController.m in Sources */,
 				9475845A1A9CFDE700487720 /* UIColor+Chameleon.m in Sources */,
 				947584581A9CFDE700487720 /* ChameleonStatusBar.m in Sources */,
