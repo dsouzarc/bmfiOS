@@ -56,8 +56,6 @@
                                                       orderItems:[result objectForKey:@"chosenItems"]
                                                      orderStatus:[[result objectForKey:@"orderStatus"] longValue]];
                 [self.existingOrders addObject:order];
-                
-                NSLog(@"ORDERS: %@", order.restaurantName);
             }
             
             [self.existingOrdersTableView reloadData];

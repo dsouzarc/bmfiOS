@@ -58,7 +58,7 @@
 @implementation CreateOrderViewController
 
 - (IBAction)submitOrderButton:(id)sender {
-    if(self.chosenRestaurant == nil) {
+    /*if(self.chosenRestaurant == nil) {
         [self showAlert:@"Incomplete Information" alertMessage:@"Please choose a restaurant" buttonName:@"Ok"];
         return;
     }
@@ -71,9 +71,21 @@
      if(self.chosenMenuItems == nil || self.chosenMenuItems.count == 0) {
          [self showAlert:@"Incomplete Information" alertMessage:@"Please choose items to order" buttonName:@"Ok"];
          return;
-     }
+     }*/
     
     //TODO: CONFIRMATION + CALCULATE ORDER COST WITH SHIPPING
+    
+    self.chosenRestaurant = @"Hoagie Haven";
+    self.chosenAddress = [[PFGeoPoint alloc] init];
+    self.addressLabel.text = @"Testing Address...";
+    
+    if(!self.chosenMenuItems) {
+        self.chosenMenuItems = [[NSMutableArray alloc] init];
+    }
+    RestaurantItem *testItem = [[RestaurantItem alloc] initWithEverything:self.chosenRestaurant itemName:@"Testing 1" itemCost:@"9.99" itemDescription:@"Testing Item 1"];
+    [self.chosenMenuItems addObject:testItem];
+    
+    self.deliveryTimeDatePicker.date = [[self.deliveryTimeDatePicker date] dateByAddingTimeInterval:360];
     
     NSDictionary *orderInformation = @{@"restaurantName": self.chosenRestaurant,
                                        @"ordererName": self.myNameTextField.text,
