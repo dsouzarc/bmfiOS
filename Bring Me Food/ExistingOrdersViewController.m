@@ -50,25 +50,23 @@ static NSString *orderCellIdentifier = @"OrdersTableViewCell";
             [self.existingOrders removeAllObjects];
             
             for(NSDictionary *result in results) {
+                
                 Order *order = [[Order alloc] initWithEverything:[result objectForKey:@"restaurantName"]
                                                  deliveryAddress:[result objectForKey:@"deliveryAddressString"]
                                                        orderedAt:[[result objectForKey:@"createdAt"]
                                                                   dateByAddingTimeInterval:-3600*4]
-                                             toBeDeliveredAtTime:[result objectForKey:@"timeToBeDeliveredAt"]
+                                             toBeDeliveredAtTime:[result objectForKey:@"timeToDeliverAt"]
                                            estimatedDeliveryTime:[result objectForKey:@"estimatedDeliveryTime"]
                                                       orderItems:[result objectForKey:@"chosenItems"]
                                                      orderStatus:[[result objectForKey:@"orderStatus"] longValue]];
                 [self.existingOrders addObject:order];
             }
-            
             [self.existingOrdersTableView reloadData];
-            
         }
         
         else {
             NSLog([error description]);
         }
-        
     }];
 }
 
@@ -105,7 +103,33 @@ static NSString *orderCellIdentifier = @"OrdersTableViewCell";
     Order *order = (Order*) self.existingOrders[indexPath.row];
     
     cell.restaurantNameLabel.text = order.restaurantName;
-    cell.orderedOnDateLabel.text = @"Test";
+    
+    NSString *orderStatus = @"Order Status";
+    
+    switch(order.orderStatus) {
+        case 0:
+            orderStatus = @"Unclaimed";
+            cell.statusLabel.textColor = [UIColor redColor];
+            break;
+        case 1:
+            orderStatus = @"Claimed";
+            cell.statusLabel.textColor = [UIColor greenColor];
+            break;
+        case 2:
+            orderStatus = @"En route";
+            cell.statusLabel.textColor = [UIColor greenColor];
+            break;
+        case 3:
+            orderStatus = @"Delivered";
+            cell.statusLabel.textColor = [UIColor blackColor];
+            break;
+    }
+    cell.statusLabel.text = orderStatus;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm"];
+
+    cell.orderedOnDateLabel.text = [dateFormatter stringFromDate:order.orderedAt];
     
     return cell;
 }
