@@ -420,6 +420,11 @@
     return self;
 }
 
+- (void) customizedRestaurantItemViewController:(CustomizeRestaurantItemViewController *)customizeRestaurantItemViewController customizedMenuItem:(RestaurantItem *)customizedMenuItem
+{
+    //TODO: Implement customizing an item
+}
+
 - (void) nameTap:(id)sender
 {
     UITapGestureRecognizer *tapRecognizer = (UITapGestureRecognizer *)sender;
