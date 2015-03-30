@@ -52,6 +52,7 @@
 @property (nonatomic, strong) NSMutableArray *chosenMenuItems;
 
 @property (nonatomic, strong) NSIndexPath *selectedRow;
+@property NSInteger chosenMenuItemToCustomizeIndex;
 
 @end
 
@@ -105,11 +106,20 @@
             NSLog(@"Error");
             [self showAlert:@"Error placing order" alertMessage:@"Sorry, something went wrong while placing your order" buttonName:@"Try again"];
         }
-        
     }];
     
     NSLog(@"GUCCI");
     
+}
+
+- (void) customizedRestaurantItemViewController:(CustomizeRestaurantItemViewController *)customizeRestaurantItemViewController customizedMenuItem:(RestaurantItem *)customizedMenuItem
+{
+    if(!self.chosenMenuItemToCustomizeIndex) {
+        [self.chosenMenuItems replaceObjectAtIndex:self.chosenMenuItemToCustomizeIndex withObject:customizedMenuItem];
+        self.chosenMenuItemToCustomizeIndex = nil;
+        
+        [self.chosenItemsTableView reloadData];
+    }
 }
 
 - (NSArray*) chosenMenuItemsDictionaryArray
@@ -117,7 +127,7 @@
     NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:self.chosenMenuItems.count];
     
     for(RestaurantItem *item in self.chosenMenuItems) {
-        NSDictionary *characteristics = @{@"itemName": item.itemName, @"itemCost": item.itemCost, @"itemDescription": item.itemDescription};
+        NSDictionary *characteristics = @{@"itemName": item.itemName, @"itemCost": item.itemCost, @"itemDescription": item.itemDescription, @"customDescription": item.customizedItemDescription};
         [items addObject:characteristics];
     }
     
@@ -199,9 +209,11 @@
             self.allMenuItems = [[NSMutableArray alloc] initWithArray:menuItems];
             
             self.chooseMenuItems = [[ChooseMenuItemsViewController alloc] initWithNibName:@"ChooseMenuItemsViewController"
-                                                                                   bundle:[NSBundle mainBundle] restaurantMenuItems:self.allMenuItems chosenMenuItems:self.chosenMenuItems restaurantName:self.chosenRestaurant];
+                                                                                   bundle:[NSBundle mainBundle]
+                                                                      restaurantMenuItems:self.allMenuItems
+                                                                          chosenMenuItems:self.chosenMenuItems
+                                                                           restaurantName:self.chosenRestaurant];
             self.chooseMenuItems.delegate = self;
-
             [self.chooseMenuItems showInView:self.view shouldAnimate:YES];
             [self.loadingBouncingBalls hide];
         }];
@@ -389,7 +401,7 @@
         cell.descriptionTextView.text = @"No description available";
     }
     else {
-        cell.descriptionTextView.text = menuItem.itemDescription;
+        cell.descriptionTextView.text = menuItem.customizedItemDescription;
     }
     
     if([self.selectedRow isEqual:indexPath]) {
@@ -432,21 +444,16 @@
     return self;
 }
 
-- (void) customizedRestaurantItemViewController:(CustomizeRestaurantItemViewController *)customizeRestaurantItemViewController customizedMenuItem:(RestaurantItem *)customizedMenuItem
-{
-    //TODO: Implement customizing an item
-}
-
 - (void) nameTap:(id)sender
 {
     UITapGestureRecognizer *tapRecognizer = (UITapGestureRecognizer *)sender;
     RestaurantItem *item = (RestaurantItem*) [self.chosenMenuItems objectAtIndex:tapRecognizer.view.tag];
+    self.chosenMenuItemToCustomizeIndex = tapRecognizer.view.tag;
     
     self.customizeMenuItemViewController = [[CustomizeRestaurantItemViewController alloc] initWithNibName:@"CustomizeRestaurantItemViewController" bundle:[NSBundle mainBundle] restaurantName:self.chosenRestaurant menuItem:item];
     
     self.customizeMenuItemViewController.delegate = self;
     [self.customizeMenuItemViewController showInView:self.view shouldAnimate:YES];
 }
-
 
 @end

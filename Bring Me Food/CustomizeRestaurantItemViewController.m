@@ -43,6 +43,7 @@ static NSString *customPlaceHolder = @"Type your customized order details here";
         self.restaurantName = restaurantName;
         self.itemName = menuItem.itemName;
         self.itemDescription = menuItem.itemDescription;
+        self.customItemDescription = menuItem.customizedItemDescription;
         
         self.itemCost = menuItem.itemCost;
         self.currentCostDouble = [menuItem.itemCost doubleValue];
@@ -69,14 +70,20 @@ static NSString *customPlaceHolder = @"Type your customized order details here";
     }
     
     self.customItemsDetailTextView.delegate = self;
-    self.customItemsDetailTextView.text = customPlaceHolder;
+    self.customItemsDetailTextView.layer.cornerRadius = 8;
+    self.customItemsDetailTextView.layer.borderColor = [[UIColor grayColor] CGColor];
+    
+    if(!self.customItemDescription || self.customItemDescription.length == 0) {
+        self.customItemsDetailTextView.text = customPlaceHolder;
+        self.customItemsDetailTextView.textColor = [UIColor lightGrayColor];
+    }
+    else {
+        self.customItemsDetailTextView.text = self.customItemDescription;
+    }
+    
     self.currentCostLabel.text = self.itemCost;
     self.increaseCostStepper.value = self.currentCostDouble;
     self.increaseCostStepper.minimumValue = self.currentCostDouble;
-    self.customItemsDetailTextView.textColor = [UIColor lightGrayColor];
-    
-    self.customItemsDetailTextView.layer.cornerRadius = 8;
-    self.customItemsDetailTextView.layer.borderColor = [[UIColor grayColor] CGColor];
     
     [super viewDidLoad];
 }
@@ -170,7 +177,8 @@ static NSString *customPlaceHolder = @"Type your customized order details here";
     RestaurantItem *newItem = [[RestaurantItem alloc] initWithEverything:self.restaurantName
                                                                 itemName:self.itemName
                                                                 itemCost:[NSString stringWithFormat:@"%.2f", self.currentCostDouble]
-                                                         itemDescription:description];
+                                                         itemDescription:self.itemDescription
+                                                         customizedDescription:description];
     
     [self.delegate customizedRestaurantItemViewController:self customizedMenuItem:newItem];
     [self removeAnimate];
