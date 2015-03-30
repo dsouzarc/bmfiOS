@@ -10,7 +10,7 @@
 
 @implementation RestaurantItem
 
-- (instancetype) initWithEverything:(NSString *)restaurantName itemName:(NSString *)itemName itemCost:(NSString *)itemCost itemDescription:(NSString *)itemDescription
+- (instancetype) initWithEverything:(NSString *)restaurantName itemName:(NSString *)itemName itemCost:(NSString *)itemCost itemDescription:(NSString *)itemDescription customizedDescription:(NSString *)customizedDescription
 {
     self = [super init];
     
@@ -19,7 +19,15 @@
         self.itemName = itemName ? itemName : @"";
         self.itemCost = itemCost ? itemCost : @"";
         self.itemDescription = itemDescription ? itemDescription : @"";
+        self.customizedItemDescription = customizedDescription ? customizedDescription : @"";
     }
+    
+    return self;
+}
+
+- (instancetype) initWithEverything:(NSString *)restaurantName itemName:(NSString *)itemName itemCost:(NSString *)itemCost itemDescription:(NSString *)itemDescription
+{
+    self = [self initWithEverything:restaurantName itemName:itemName itemCost:itemCost itemDescription:itemDescription customizedDescription:@""];
     
     return self;
 }
@@ -31,6 +39,7 @@
     [information appendFormat:@" Name %@", self.itemName];
     [information appendFormat:@" Description: %@", self.itemDescription];
     [information appendFormat:@" Cost: %@", self.itemCost];
+    [information appendFormat:@" Customized Description: %@", self.customizedItemDescription];
     return information;
 }
 

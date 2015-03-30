@@ -14,8 +14,11 @@
 @property (nonatomic, strong) NSString *itemName;
 @property (nonatomic, strong) NSString *itemCost;
 @property (nonatomic, strong) NSString *itemDescription;
+@property (nonatomic, strong) NSString *customizedItemDescription;
 
 - (instancetype) initWithEverything:(NSString*)restaurantName itemName:(NSString*)itemName itemCost:(NSString*)itemCost itemDescription:(NSString*)itemDescription;
+
+- (instancetype) initWithEverything:(NSString*)restaurantName itemName:(NSString*)itemName itemCost:(NSString*)itemCost itemDescription:(NSString*)itemDescription customizedDescription:(NSString*)customizedDescription;
 
 - (NSString*) description;
 
