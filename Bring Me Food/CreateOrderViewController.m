@@ -74,17 +74,17 @@
          return;
      }*/
     
-    //TODO: CONFIRMATION + CALCULATE ORDER COST WITH SHIPPING
+    //TODO: CONFIRMATION + CALCULATE ORDER COST WITH SHIPPING + DELETE
     
-    self.chosenRestaurant = @"Hoagie Haven";
-    self.chosenAddress = [[PFGeoPoint alloc] init];
-    self.addressLabel.text = @"Testing Address...";
+    self.chosenRestaurant = !self.chosenRestaurant ? @"Hoagie Haven" : self.chosenRestaurant;
+    self.chosenAddress = !self.chosenAddress ? [PFGeoPoint geoPointWithLatitude:50.0 longitude:50.0] : self.chosenAddress;
+    self.addressLabel.text = !self.addressLabel.text ? @"Testing Address" : self.addressLabel.text;
     
     if(!self.chosenMenuItems) {
         self.chosenMenuItems = [[NSMutableArray alloc] init];
+        RestaurantItem *testItem = [[RestaurantItem alloc] initWithEverything:self.chosenRestaurant itemName:@"Testing 1" itemCost:@"9.99" itemDescription:@"Testing Item 1"];
+        [self.chosenMenuItems addObject:testItem];
     }
-    RestaurantItem *testItem = [[RestaurantItem alloc] initWithEverything:self.chosenRestaurant itemName:@"Testing 1" itemCost:@"9.99" itemDescription:@"Testing Item 1"];
-    [self.chosenMenuItems addObject:testItem];
     
     self.deliveryTimeDatePicker.date = [[self.deliveryTimeDatePicker date] dateByAddingTimeInterval:360];
     
@@ -93,6 +93,7 @@
                                        @"deliveryAddress": self.chosenAddress,
                                        @"deliveryAddressString": self.addressLabel.text,
                                        @"chosenItems": [self chosenMenuItemsDictionaryArray],
+                                       @"orderCost": self.orderCostLabel.text,
                                        @"timeToDeliverAt": [self.deliveryTimeDatePicker date]};
     
     [PFCloud callFunctionInBackground:@"placeOrder" withParameters:orderInformation block:^(NSString* result, NSError *error) {
