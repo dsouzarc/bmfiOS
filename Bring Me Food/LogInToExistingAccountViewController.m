@@ -78,6 +78,12 @@
                                                 if(!error) {
                                                     PFObject *first = (PFObject*)results[0];
                                                     
+                                                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^(void) {
+                                                        PFInstallation *installation = [PFInstallation currentInstallation];
+                                                        [installation addUniqueObject:first.objectId forKey:@"channels"];
+                                                        [installation save];
+                                                    });
+                                                    
                                                     self.keyChain[@"username"] = first[@"username"];
                                                     self.keyChain[@"password"] = self.passwordTextField.text;
                                                     self.keyChain[@"phoneNumber"] = first[@"phoneNumber"];

@@ -139,6 +139,13 @@
     
     [newUser signUpInBackgroundWithBlock:^(BOOL success, NSError *error) {
         if(!error) {
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+                PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                [currentInstallation addUniqueObject:newUser.objectId forKey:@"channels"];
+                [currentInstallation save];
+            });
+            
             self.keyChain[@"username"] = phoneNumber;
             self.keyChain[@"password"] = password;
             self.keyChain[@"phoneNumber"] = phoneNumber;

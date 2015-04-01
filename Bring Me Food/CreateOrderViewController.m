@@ -79,6 +79,7 @@
     self.chosenRestaurant = !self.chosenRestaurant ? @"Hoagie Haven" : self.chosenRestaurant;
     self.chosenAddress = !self.chosenAddress ? [PFGeoPoint geoPointWithLatitude:50.0 longitude:50.0] : self.chosenAddress;
     self.addressLabel.text = !self.addressLabel.text ? @"Testing Address" : self.addressLabel.text;
+    self.orderCostLabel.text = self.orderCostLabel.text.length > 5 ? @"$5.55" : self.orderCostLabel.text;
     
     if(!self.chosenMenuItems) {
         self.chosenMenuItems = [[NSMutableArray alloc] init];
