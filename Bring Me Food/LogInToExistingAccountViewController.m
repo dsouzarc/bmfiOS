@@ -78,15 +78,23 @@
                                                 if(!error) {
                                                     PFObject *first = (PFObject*)results[0];
                                                     
-                                                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^(void) {
-                                                        PFInstallation *installation = [PFInstallation currentInstallation];
-                                                        [installation addUniqueObject:first.objectId forKey:@"channels"];
-                                                        [installation save];
-                                                    });
+                                                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+                                                                   ^(void) {
+                                                        
+                                                                       PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                                                                       [currentInstallation addUniqueObject:user.objectId forKey:@"channels"];
+                                                                       NSLog(@"USER ID: %@", user.objectId);
+                                                        
+                                                                       [currentInstallation saveInBackgroundWithBlock:^(BOOL success, NSError *error) {
+                                                                           if(error) {
+                                                                                NSLog(@"Error saving");
+                                                                            }
+                                                                       }];
+                                                                   });
                                                     
                                                     self.keyChain[@"username"] = first[@"username"];
                                                     self.keyChain[@"password"] = self.passwordTextField.text;
-                                                    self.keyChain[@"phoneNumber"] = first[@"phoneNumber"];
+                                                    self.keyChain[@"phoneNumber"] = [first objectForKey:@"phoneNumber"];
                                                     self.keyChain[@"name"] = first[@"name"];
                                                     self.keyChain[@"emailAddress"] = first[@"email"];
                                                 }

@@ -84,7 +84,18 @@ static NSString *orderCellIdentifier = @"OrdersTableViewCell";
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    if(self.existingOrders.count > 0) {
+        return 1;
+    }
+    
+    UILabel *noExistingOrders = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    noExistingOrders.text = @"No prior orders";
+    noExistingOrders.textColor = [UIColor blackColor];
+    noExistingOrders.textAlignment = NSTextAlignmentCenter;
+    self.existingOrdersTableView.backgroundView = noExistingOrders;
+    self.existingOrdersTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    return 0;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
