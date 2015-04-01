@@ -22,6 +22,7 @@
 
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) PQFBouncingBalls *bouncingBalls;
+@property (strong, nonatomic) UILabel *noExistingOrders;
 
 @end
 
@@ -108,15 +109,21 @@ static NSString *orderCellIdentifier = @"OrdersTableViewCell";
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
     if(self.existingOrders.count > 0) {
+        self.noExistingOrders.text = @"";
+        self.noExistingOrders = nil;
+        self.existingOrdersTableView.backgroundView = nil;
+        self.existingOrdersTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         return 1;
     }
     
-    UILabel *noExistingOrders = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
-    noExistingOrders.text = @"No prior orders";
-    noExistingOrders.textColor = [UIColor blackColor];
-    noExistingOrders.textAlignment = NSTextAlignmentCenter;
-    self.existingOrdersTableView.backgroundView = noExistingOrders;
-    self.existingOrdersTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    else {
+        self.noExistingOrders = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        self.noExistingOrders.text = @"No prior orders";
+        self.noExistingOrders.textColor = [UIColor blackColor];
+        self.noExistingOrders.textAlignment = NSTextAlignmentCenter;
+        self.existingOrdersTableView.backgroundView = self.noExistingOrders;
+        self.existingOrdersTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
     
     return 0;
 }
