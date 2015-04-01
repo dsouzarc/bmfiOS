@@ -10,6 +10,7 @@
 #import "CreateOrderViewController.h"
 #import "Order.h"
 #import "OrdersTableViewCell.h"
+#import "PQFBouncingBalls.h"
 
 @interface ExistingOrdersViewController ()
 
@@ -18,6 +19,9 @@
 
 @property (strong, nonatomic) NSMutableArray *existingOrders;
 @property (strong, nonatomic) IBOutlet UITableView *existingOrdersTableView;
+
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) PQFBouncingBalls *bouncingBalls;
 
 @end
 
@@ -31,6 +35,8 @@ static NSString *orderCellIdentifier = @"OrdersTableViewCell";
     
     if(self) {
         self.existingOrders = [[NSMutableArray alloc] init];
+        self.bouncingBalls = [[PQFBouncingBalls alloc] initLoaderOnView:self.view];
+        self.bouncingBalls.loaderColor = [UIColor blueColor];
     }
     
     return self;
@@ -39,14 +45,25 @@ static NSString *orderCellIdentifier = @"OrdersTableViewCell";
 - (void) viewDidAppear:(BOOL)animated
 {
     [self updateOrders];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(updateOrders) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl.tintColor = [UIColor colorWithRed:(254/255.0) green:(153/255.0) blue:(0/255.0) alpha:1];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Fetching your current orders"];
+    
+    UITableViewController *viewController = [[UITableViewController alloc] init];
+    viewController.tableView = self.existingOrdersTableView;
+    viewController.refreshControl = self.refreshControl;
 }
 
 - (void) updateOrders
 {
+    if(!self.refreshControl.refreshing) {
+        [self.bouncingBalls show];
+    }
+    
     [PFCloud callFunctionInBackground:@"getUsersLiveOrders" withParameters:nil block:^(NSArray *results, NSError *error) {
-       
         if(!error) {
-            
             [self.existingOrders removeAllObjects];
             
             for(NSDictionary *result in results) {
@@ -66,6 +83,12 @@ static NSString *orderCellIdentifier = @"OrdersTableViewCell";
         
         else {
             NSLog([error description]);
+        }
+        
+        [self.bouncingBalls hide];
+        
+        if(self.refreshControl.refreshing) {
+            [self.refreshControl endRefreshing];
         }
     }];
 }
