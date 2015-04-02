@@ -210,10 +210,8 @@ static NSString* cellIdentifier = @"Cell";
 {
     if(customizedMenuItem) {
         [self.chosenItems addObject:customizedMenuItem];
-        NSLog(@"Added: %@", customizedMenuItem);
     }
 }
-
 
 - (void) nameTap:(id)sender
 {
@@ -232,13 +230,12 @@ static NSString* cellIdentifier = @"Cell";
 }
 
 - (IBAction)doneAddingNewItems:(id)sender {
-    NSLog(@"Chosen Items in done adding: %@", self.chosenItems);
     [self.delegate chooseMenuItemsViewController:self chosenItems:self.chosenItems];
-    
     [self removeAnimate];
 }
 
 - (IBAction)cancelAddingNewItems:(id)sender {
     [self removeAnimate];
 }
+
 @end

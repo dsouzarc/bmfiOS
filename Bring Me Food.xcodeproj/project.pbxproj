@@ -291,9 +291,6 @@
 				94739D0F1ABA343300406819 /* ChooseMenuItemsViewController.h */,
 				94739D101ABA343300406819 /* ChooseMenuItemsViewController.m */,
 				94739D111ABA343300406819 /* ChooseMenuItemsViewController.xib */,
-				94739D171ABA41B000406819 /* RestaurantItemTableViewCell.h */,
-				94739D181ABA41B100406819 /* RestaurantItemTableViewCell.m */,
-				94739D191ABA41B100406819 /* RestaurantItemTableViewCell.xib */,
 				94A128031AB4C337005FC639 /* ChooseRestaurantViewController.h */,
 				94A128041AB4C337005FC639 /* ChooseRestaurantViewController.m */,
 				94A128051AB4C337005FC639 /* ChooseRestaurantViewController.xib */,
@@ -340,9 +337,6 @@
 		947582111A9C126300487720 /* Bring Me Food */ = {
 			isa = PBXGroup;
 			children = (
-				9411974A1AC899770002FDEE /* OrdersTableViewCell.h */,
-				9411974B1AC899770002FDEE /* OrdersTableViewCell.m */,
-				9411974C1AC899770002FDEE /* OrdersTableViewCell.xib */,
 				94591EDB1AB26A6800D62C0A /* CreateOrderViewController.h */,
 				94591EDC1AB26A6800D62C0A /* CreateOrderViewController.m */,
 				94591EDD1AB26A6800D62C0A /* CreateOrderViewController.xib */,
@@ -350,6 +344,7 @@
 				9456EDB51AA2A9CC003D167E /* ExistingOrdersViewController.m */,
 				9456EDB61AA2A9CC003D167E /* ExistingOrdersViewController.xib */,
 				94739D151ABA346200406819 /* Choose ViewControllers */,
+				947BA37C1ACDB4570005D763 /* Table View Cells */,
 				94739D161ABA349500406819 /* Custom Objects */,
 				947582161A9C126300487720 /* AppDelegate.h */,
 				947582171A9C126300487720 /* AppDelegate.m */,
@@ -445,6 +440,19 @@
 				947584571A9CFDE700487720 /* UIViewController+Chameleon.m */,
 			);
 			path = Chameleon;
+			sourceTree = "<group>";
+		};
+		947BA37C1ACDB4570005D763 /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				94739D171ABA41B000406819 /* RestaurantItemTableViewCell.h */,
+				94739D181ABA41B100406819 /* RestaurantItemTableViewCell.m */,
+				94739D191ABA41B100406819 /* RestaurantItemTableViewCell.xib */,
+				9411974A1AC899770002FDEE /* OrdersTableViewCell.h */,
+				9411974B1AC899770002FDEE /* OrdersTableViewCell.m */,
+				9411974C1AC899770002FDEE /* OrdersTableViewCell.xib */,
+			);
+			name = "Table View Cells";
 			sourceTree = "<group>";
 		};
 		94A128091AB53A00005FC639 /* Login Files */ = {
