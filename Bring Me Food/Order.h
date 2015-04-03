@@ -11,11 +11,9 @@
 
 @interface Order : NSObject
 
-- (instancetype) initWithEverything:(NSString*)restaurantName deliveryAddress:(NSString*)deliveryAddress orderedAt:(NSDate*)orderedAt toBeDeliveredAtTime:(NSDate*)toBeDeliveredAtTime estimatedDeliveryTime:(NSDate*)estimatedDeliveryTime orderItems:(NSArray*)orderItems orderStatus:(NSInteger)orderStatus additionalDetails:(NSString*)additionalDetails;
+- (instancetype) initWithEverything:(NSString*)restaurantName deliveryAddress:(NSString*)deliveryAddress orderedAt:(NSDate*)orderedAt toBeDeliveredAtTime:(NSDate*)toBeDeliveredAtTime estimatedDeliveryTime:(NSDate*)estimatedDeliveryTime orderItems:(NSArray*)orderItems orderStatus:(NSInteger)orderStatus additionalDetails:(NSString*)additionalDetails driverLocation:(PFGeoPoint*)driverLocation dropOffLocation:(PFGeoPoint*)dropOffLocation;
 
 - (instancetype) initFromDictionary:(NSDictionary*)dictionary;
-
-- (void) description;
 
 @property (nonatomic, strong) NSString *restaurantName;
 @property (nonatomic, strong) NSString *toBeDeliveredAtAddress;
@@ -30,6 +28,7 @@
 
 @property (nonatomic) NSString *additionalDetails;
 
-@property (nonatomic, strong) 
+@property (nonatomic, strong) PFGeoPoint *driverLocation;
+@property (nonatomic, strong) PFGeoPoint *dropOffLocation;
 
 @end

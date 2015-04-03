@@ -11,7 +11,7 @@
 
 @implementation Order
 
-- (instancetype) initWithEverything:(NSString *)restaurantName deliveryAddress:(NSString *)deliveryAddress orderedAt:(NSDate *)orderedAt toBeDeliveredAtTime:(NSDate *)toBeDeliveredAtTime estimatedDeliveryTime:(NSDate *)estimatedDeliveryTime orderItems:(NSArray *)orderItems orderStatus:(NSInteger)orderStatus additionalDetails:(NSString *)additionalDetails
+- (instancetype) initWithEverything:(NSString *)restaurantName deliveryAddress:(NSString *)deliveryAddress orderedAt:(NSDate *)orderedAt toBeDeliveredAtTime:(NSDate *)toBeDeliveredAtTime estimatedDeliveryTime:(NSDate *)estimatedDeliveryTime orderItems:(NSArray *)orderItems orderStatus:(NSInteger)orderStatus additionalDetails:(NSString *)additionalDetails driverLocation:(PFGeoPoint *)driverLocation dropOffLocation:(PFGeoPoint *)dropOffLocation
 {
     self = [self init];
     
@@ -24,6 +24,8 @@
         self.orderItems = orderItems;
         self.orderStatus = orderStatus;
         self.additionalDetails = additionalDetails;
+        self.driverLocation = driverLocation;
+        self.dropOffLocation = dropOffLocation;
     }
     
     return self;
@@ -38,9 +40,12 @@
               estimatedDeliveryTime:dictionary[@"estimatedDeliveryTime"]
                          orderItems:dictionary[@"chosenItems"]
                         orderStatus:[dictionary[@"orderStatus"] integerValue]
-                  additionalDetails:dictionary[@"additionalDetails"]];
+                  additionalDetails:dictionary[@"additionalDetails"]
+                     driverLocation:dictionary[@"driverLocation"]
+                    dropOffLocation:dictionary[@"dropOffLocation"]];
     
     return self;
 }
+
 
 @end
