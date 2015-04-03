@@ -71,6 +71,7 @@
 		9475845C1A9CFDE700487720 /* UIViewController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 947584571A9CFDE700487720 /* UIViewController+Chameleon.m */; };
 		947BA3801ACDB4AE0005D763 /* ViewOrderDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BA37E1ACDB4AE0005D763 /* ViewOrderDetailsViewController.m */; };
 		947BA3811ACDB4AE0005D763 /* ViewOrderDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947BA37F1ACDB4AE0005D763 /* ViewOrderDetailsViewController.xib */; };
+		947BA3831ACF25F70005D763 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947BA3821ACF25F70005D763 /* MapKit.framework */; };
 		949661961ABB09BD0030661A /* CustomizeRestaurantItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 949661941ABB09BD0030661A /* CustomizeRestaurantItemViewController.m */; };
 		949661971ABB09BD0030661A /* CustomizeRestaurantItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949661951ABB09BD0030661A /* CustomizeRestaurantItemViewController.xib */; };
 		94A128061AB4C337005FC639 /* ChooseRestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A128041AB4C337005FC639 /* ChooseRestaurantViewController.m */; };
@@ -188,6 +189,7 @@
 		947BA37D1ACDB4AE0005D763 /* ViewOrderDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewOrderDetailsViewController.h; sourceTree = "<group>"; };
 		947BA37E1ACDB4AE0005D763 /* ViewOrderDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewOrderDetailsViewController.m; sourceTree = "<group>"; };
 		947BA37F1ACDB4AE0005D763 /* ViewOrderDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewOrderDetailsViewController.xib; sourceTree = "<group>"; };
+		947BA3821ACF25F70005D763 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		949661931ABB09BD0030661A /* CustomizeRestaurantItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomizeRestaurantItemViewController.h; sourceTree = "<group>"; };
 		949661941ABB09BD0030661A /* CustomizeRestaurantItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomizeRestaurantItemViewController.m; sourceTree = "<group>"; };
 		949661951ABB09BD0030661A /* CustomizeRestaurantItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomizeRestaurantItemViewController.xib; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				947BA3831ACF25F70005D763 /* MapKit.framework in Frameworks */,
 				9475825C1A9C160500487720 /* libsqlite3.dylib in Frameworks */,
 				9475825A1A9C15FE00487720 /* libz.dylib in Frameworks */,
 				947582581A9C15F600487720 /* SystemConfiguration.framework in Frameworks */,
@@ -399,6 +402,7 @@
 		9475825D1A9C171900487720 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				947BA3821ACF25F70005D763 /* MapKit.framework */,
 				947584411A9C1A4700487720 /* FacebookSDK.framework */,
 				947584421A9C1A4700487720 /* FBAudienceNetwork.framework */,
 				9475825B1A9C160500487720 /* libsqlite3.dylib */,
