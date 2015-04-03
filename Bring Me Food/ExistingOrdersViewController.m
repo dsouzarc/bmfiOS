@@ -11,6 +11,7 @@
 #import "Order.h"
 #import "OrdersTableViewCell.h"
 #import "PQFBouncingBalls.h"
+#import "ViewOrderDetailsViewController.h"
 
 @interface ExistingOrdersViewController ()
 
@@ -23,6 +24,8 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) PQFBouncingBalls *bouncingBalls;
 @property (strong, nonatomic) UILabel *noExistingOrders;
+
+@property (strong, nonatomic) ViewOrderDetailsViewController *viewOrderDetails;
 
 @end
 
@@ -55,6 +58,17 @@ static NSString *orderCellIdentifier = @"OrdersTableViewCell";
     UITableViewController *viewController = [[UITableViewController alloc] init];
     viewController.tableView = self.existingOrdersTableView;
     viewController.refreshControl = self.refreshControl;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Order *chosenOrder = (Order*) [self.existingOrders objectAtIndex:indexPath.row];
+    
+    self.viewOrderDetails = [[ViewOrderDetailsViewController alloc] initWithNibName:@"ViewOrderDetailsViewController" bundle:[NSBundle mainBundle] order:chosenOrder];
+    
+    [self setModalPresentationStyle:UIModalPresentationPopover];
+    [self presentViewController:self.viewOrderDetails animated:YES completion:^(void){}];
+    
 }
 
 - (void) updateOrders

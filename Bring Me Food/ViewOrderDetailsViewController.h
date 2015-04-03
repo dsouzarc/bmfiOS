@@ -7,7 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "Order.h"
 
-@interface ViewOrderDetailsViewController : ViewController
+@interface ViewOrderDetailsViewController : UIViewController
+
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil order:(Order*)order;
 
 @end
