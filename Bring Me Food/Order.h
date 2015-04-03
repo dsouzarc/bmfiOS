@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 @interface Order : NSObject
 
@@ -28,5 +29,7 @@
 @property (nonatomic) NSInteger orderStatus;
 
 @property (nonatomic) NSString *additionalDetails;
+
+@property (nonatomic, strong) 
 
 @end
