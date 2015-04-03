@@ -31,7 +31,14 @@
 
 - (instancetype) initFromDictionary:(NSDictionary *)dictionary
 {
-    self = [self initWithEverything:@"restaurantName" deliveryAddress:@"deliveryAddressString" orderedAt:@"createdAt" toBeDeliveredAtTime:@"timeToBeDeliveredAt" estimatedDeliveryTime:@"estimatedDeliveryTime" orderItems:@"chosenItems" orderStatus:@"orderStatus" additionalDetails:@"additionalDetails"];
+    self = [self initWithEverything:dictionary[@"restaurantName"]
+                    deliveryAddress:dictionary[@"deliveryAddressString"]
+                          orderedAt:dictionary[@"createdAt"]
+                toBeDeliveredAtTime:dictionary[@"timeToBeDeliveredAt"]
+              estimatedDeliveryTime:dictionary[@"estimatedDeliveryTime"]
+                         orderItems:dictionary[@"chosenItems"]
+                        orderStatus:[dictionary[@"orderStatus"] integerValue]
+                  additionalDetails:dictionary[@"additionalDetails"]];
     
     return self;
 }
