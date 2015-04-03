@@ -11,6 +11,6 @@
 #import "ChooseRestaurantViewController.h"
 #import "ChooseMenuItemsViewController.h"
 
-@interface CreateOrderViewController : UIViewController <ChooseRestaurantNameDelegate, ChooseAddressDelegate, ChooseMenuItemsDelegate, UITableViewDataSource, UITableViewDelegate, CustomizeRestaurantItemDelegate>
+@interface CreateOrderViewController : UIViewController <ChooseRestaurantNameDelegate, ChooseAddressDelegate, ChooseMenuItemsDelegate, UITableViewDataSource, UITableViewDelegate, CustomizeRestaurantItemDelegate, UITextViewDelegate>
 
 @end

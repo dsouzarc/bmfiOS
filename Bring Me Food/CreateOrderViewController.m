@@ -32,6 +32,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *myNameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *myPhoneTextField;
 @property (strong, nonatomic) IBOutlet UIDatePicker *deliveryTimeDatePicker;
+@property (strong, nonatomic) IBOutlet UITextView *additionalDetails;
 
 @property (strong, nonatomic) PQFBouncingBalls *loadingBouncingBalls;
 @property (strong, nonatomic) UICKeyChainStore *keyChain;
@@ -57,6 +58,8 @@
 @end
 
 @implementation CreateOrderViewController
+
+static NSString *additionalOrderDetailsString = @"Additional Details";
 
 - (IBAction)submitOrderButton:(id)sender {
     /*if(self.chosenRestaurant == nil) {
@@ -95,6 +98,7 @@
                                        @"deliveryAddressString": self.addressLabel.text,
                                        @"chosenItems": [self chosenMenuItemsDictionaryArray],
                                        @"orderCost": self.orderCostLabel.text,
+                                       @"additionalDetails": self.additionalDetails.text,
                                        @"timeToDeliverAt": [self.deliveryTimeDatePicker date]};
     
     [PFCloud callFunctionInBackground:@"placeOrder" withParameters:orderInformation block:^(NSString* result, NSError *error) {
@@ -151,6 +155,9 @@
     
     [self.myNameTextField setText:self.keyChain[@"name"]];
     [self.myPhoneTextField setText:self.keyChain[@"phoneNumber"]];
+    
+    [self.additionalDetails setText:additionalOrderDetailsString];
+    [self.additionalDetails setTextColor:[UIColor lightGrayColor]];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -444,6 +451,40 @@
     self.keyChain = [[UICKeyChainStore alloc] init];
     
     return self;
+}
+
+- (void) textViewDidEndEditing:(UITextView *)textView
+{
+    textView.layer.cornerRadius=8.0f;
+    textView.layer.masksToBounds=YES;
+    textView.layer.borderColor=[[UIColor whiteColor]CGColor];
+    textView.layer.borderWidth= 2.0f;
+    
+    if(self.additionalDetails.text.length == 0) {
+        [self.additionalDetails setTextColor:[UIColor lightGrayColor]];
+        [self.additionalDetails setText:additionalOrderDetailsString];
+    }
+}
+
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
+- (void) textViewDidBeginEditing:(UITextView *)textView
+{
+    //Add some glow effect
+    textView.layer.cornerRadius=8.0f;
+    textView.layer.masksToBounds=YES;
+    textView.layer.borderColor=[[UIColor blueColor]CGColor];
+    textView.layer.borderWidth= 2.0f;
+    
+    if(textView == self.additionalDetails) {
+        if([textView.text isEqualToString:additionalOrderDetailsString]) {
+            [textView setText:@""];
+            [textView setTextColor:[UIColor blackColor]];
+        }
+    }
 }
 
 - (void) nameTap:(id)sender

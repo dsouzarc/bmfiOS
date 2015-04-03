@@ -10,7 +10,9 @@
 
 @interface Order : NSObject
 
-- (instancetype) initWithEverything:(NSString*)restaurantName deliveryAddress:(NSString*)deliveryAddress orderedAt:(NSDate*)orderedAt toBeDeliveredAtTime:(NSDate*)toBeDeliveredAtTime estimatedDeliveryTime:(NSDate*)estimatedDeliveryTime orderItems:(NSArray*)orderItems orderStatus:(NSInteger)orderStatus;
+- (instancetype) initWithEverything:(NSString*)restaurantName deliveryAddress:(NSString*)deliveryAddress orderedAt:(NSDate*)orderedAt toBeDeliveredAtTime:(NSDate*)toBeDeliveredAtTime estimatedDeliveryTime:(NSDate*)estimatedDeliveryTime orderItems:(NSArray*)orderItems orderStatus:(NSInteger)orderStatus additionalDetails:(NSString*)additionalDetails;
+
+- (instancetype) initFromDictionary:(NSDictionary*)dictionary;
 
 - (void) description;
 
@@ -24,5 +26,7 @@
 @property (nonatomic, strong) NSArray *orderItems;
 
 @property (nonatomic) NSInteger orderStatus;
+
+@property (nonatomic) NSString *additionalDetails;
 
 @end

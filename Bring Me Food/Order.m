@@ -11,7 +11,7 @@
 
 @implementation Order
 
-- (instancetype) initWithEverything:(NSString *)restaurantName deliveryAddress:(NSString *)deliveryAddress orderedAt:(NSDate *)orderedAt toBeDeliveredAtTime:(NSDate *)toBeDeliveredAtTime estimatedDeliveryTime:(NSDate *)estimatedDeliveryTime orderItems:(NSArray *)orderItems orderStatus:(NSInteger)orderStatus
+- (instancetype) initWithEverything:(NSString *)restaurantName deliveryAddress:(NSString *)deliveryAddress orderedAt:(NSDate *)orderedAt toBeDeliveredAtTime:(NSDate *)toBeDeliveredAtTime estimatedDeliveryTime:(NSDate *)estimatedDeliveryTime orderItems:(NSArray *)orderItems orderStatus:(NSInteger)orderStatus additionalDetails:(NSString *)additionalDetails
 {
     self = [self init];
     
@@ -23,7 +23,15 @@
         self.estimatedDeliveryTime = estimatedDeliveryTime;
         self.orderItems = orderItems;
         self.orderStatus = orderStatus;
+        self.additionalDetails = additionalDetails;
     }
+    
+    return self;
+}
+
+- (instancetype) initFromDictionary:(NSDictionary *)dictionary
+{
+    self = [self initWithEverything:@"restaurantName" deliveryAddress:@"deliveryAddressString" orderedAt:@"createdAt" toBeDeliveredAtTime:@"timeToBeDeliveredAt" estimatedDeliveryTime:@"estimatedDeliveryTime" orderItems:@"chosenItems" orderStatus:@"orderStatus" additionalDetails:@"additionalDetails"];
     
     return self;
 }

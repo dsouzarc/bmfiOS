@@ -68,15 +68,8 @@ static NSString *orderCellIdentifier = @"OrdersTableViewCell";
             [self.existingOrders removeAllObjects];
             
             for(NSDictionary *result in results) {
+                Order *order = [[Order alloc] initFromDictionary:result];
                 
-                Order *order = [[Order alloc] initWithEverything:[result objectForKey:@"restaurantName"]
-                                                 deliveryAddress:[result objectForKey:@"deliveryAddressString"]
-                                                       orderedAt:[[result objectForKey:@"createdAt"]
-                                                                  dateByAddingTimeInterval:-3600*4]
-                                             toBeDeliveredAtTime:[result objectForKey:@"timeToDeliverAt"]
-                                           estimatedDeliveryTime:[result objectForKey:@"estimatedDeliveryTime"]
-                                                      orderItems:[result objectForKey:@"chosenItems"]
-                                                     orderStatus:[[result objectForKey:@"orderStatus"] longValue]];
                 [self.existingOrders addObject:order];
             }
             [self.existingOrdersTableView reloadData];
