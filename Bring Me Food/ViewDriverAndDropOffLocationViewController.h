@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "Order.h"
 
-@interface ViewDriverAndDropOffLocationViewController : ViewController <MKMapViewDelegate>
+@interface ViewDriverAndDropOffLocationViewController : ViewController
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil order:(Order*)order;
 

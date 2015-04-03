@@ -81,8 +81,8 @@ static NSString *orderCellIdentifier = @"OrdersTableViewCell";
         if(!error) {
             [self.existingOrders removeAllObjects];
             
-            for(NSDictionary *result in results) {
-                Order *order = [[Order alloc] initFromDictionary:result];
+            for(PFObject *result in results) {
+                Order *order = [[Order alloc] initWithPFObject:result];
                 
                 [self.existingOrders addObject:order];
             }

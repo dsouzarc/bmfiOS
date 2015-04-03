@@ -11,24 +11,47 @@
 
 @interface Order : NSObject
 
-- (instancetype) initWithEverything:(NSString*)restaurantName deliveryAddress:(NSString*)deliveryAddress orderedAt:(NSDate*)orderedAt toBeDeliveredAtTime:(NSDate*)toBeDeliveredAtTime estimatedDeliveryTime:(NSDate*)estimatedDeliveryTime orderItems:(NSArray*)orderItems orderStatus:(NSInteger)orderStatus additionalDetails:(NSString*)additionalDetails driverLocation:(PFGeoPoint*)driverLocation dropOffLocation:(PFGeoPoint*)dropOffLocation;
+@property (nonatomic, strong) NSString *orderId;
 
-- (instancetype) initFromDictionary:(NSDictionary*)dictionary;
+@property (nonatomic, strong) NSString *ordererName;
+@property (nonatomic, strong) NSString *ordererPhoneNumber;
 
-@property (nonatomic, strong) NSString *restaurantName;
-@property (nonatomic, strong) NSString *toBeDeliveredAtAddress;
-
-@property (nonatomic, strong) NSDate *orderedAt;
-@property (nonatomic, strong) NSDate *toBeDeliveredAtTime;
-@property (nonatomic, strong) NSDate *estimatedDeliveryTime;
-
-@property (nonatomic, strong) NSArray *orderItems;
+@property (nonatomic, strong) PFObject *deliveryAddress;
+@property (nonatomic, strong) NSString *deliveryAddressString;
 
 @property (nonatomic) NSInteger orderStatus;
 
-@property (nonatomic) NSString *additionalDetails;
+@property (nonatomic, strong) NSDate *timeToBeDeliveredAt;
+@property (nonatomic, strong) NSDate *estimatedDeliveryTime;
+@property (nonatomic, strong) NSDate *orderedAt;
+@property (nonatomic, strong) NSString *orderCost;
 
+@property (nonatomic, strong) NSString *driverName;
+@property (nonatomic, strong) NSString *driverPhoneNumber;
 @property (nonatomic, strong) PFGeoPoint *driverLocation;
-@property (nonatomic, strong) PFGeoPoint *dropOffLocation;
+
+@property (nonatomic, strong) NSString *restaurantName;
+@property (nonatomic, strong) PFGeoPoint *restaurantLocation;
+
+@property (nonatomic, strong) NSArray *chosenItems;
+
+- (instancetype) initWithEverything:(NSString*)orderId
+                        ordererName:(NSString*)ordererName
+                       ordererPhone:(NSString*)ordererPhone
+                    deliveryAddress:(PFObject*)deliveryAddress
+              deliveryAddressString:(NSString*)deliveryAddressString
+                        orderStatus:(NSInteger)orderStatus
+                timeToBeDeliveredAt:(NSDate*)timeToBeDeliveredAt
+              estimatedDeliveryTime:(NSDate*)estimatedDeliveryTime
+                          orderedAt:(NSDate*)orderedAt
+                          orderCost:(NSString*)orderCost
+                         driverName:(NSString*)driverName
+                        driverPhone:(NSString*)driverPhone
+                     driverLocation:(PFGeoPoint*)driverLocation
+                     restaurantName:(NSString*)restaurantName
+                 restaurantLocation:(PFGeoPoint*)restaurantLocation
+                    chosenItems:(NSArray*)chosenItems;
+
+- (instancetype) initWithPFObject:(PFObject*)object;
 
 @end

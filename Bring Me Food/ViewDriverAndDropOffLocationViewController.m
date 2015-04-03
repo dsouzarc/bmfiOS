@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    MKMapPoint *point = MKMapPointForCoordinate([[CLLocation alloc] initWithLatitude:self.order. longitude:<#(CLLocationDegrees)#>);
+    //MKMapPoint *point = MKMapPointForCoordinate([[CLLocation alloc] initWithLatitude:self.order. longitude:<#(CLLocationDegrees)#>);
 }
 
 - (void)didReceiveMemoryWarning {
