@@ -90,10 +90,9 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
         [self.chosenMenuItems addObject:testItem];
     }
     
-    self.deliveryTimeDatePicker.date = [[self.deliveryTimeDatePicker date] dateByAddingTimeInterval:360];
-    
     NSDictionary *orderInformation = @{@"restaurantName": self.chosenRestaurant,
                                        @"ordererName": self.myNameTextField.text,
+                                       @"ordererPhoneNumber": self.myPhoneTextField.text,
                                        @"deliveryAddress": self.chosenAddress,
                                        @"deliveryAddressString": self.addressLabel.text,
                                        @"chosenItems": [self chosenMenuItemsDictionaryArray],
@@ -103,7 +102,6 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
     
     [PFCloud callFunctionInBackground:@"placeOrder" withParameters:orderInformation block:^(NSString* result, NSError *error) {
         if(!error) {
-            NSLog(result);
             self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
             [self dismissViewControllerAnimated:YES completion:nil];
             [self.navigationController popToRootViewControllerAnimated:YES];

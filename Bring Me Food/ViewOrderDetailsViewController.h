@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "Order.h"
 
-@interface ViewOrderDetailsViewController : UIViewController
+@interface ViewOrderDetailsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil order:(Order*)order;
 
