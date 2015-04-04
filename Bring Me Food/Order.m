@@ -11,7 +11,7 @@
 
 @implementation Order
 
-- (instancetype) initWithEverything:(NSString *)orderId ordererName:(NSString *)ordererName ordererPhone:(NSString *)ordererPhone deliveryAddress:(PFObject *)deliveryAddress deliveryAddressString:(NSString *)deliveryAddressString orderStatus:(NSInteger)orderStatus timeToBeDeliveredAt:(NSDate *)timeToBeDeliveredAt estimatedDeliveryTime:(NSDate *)estimatedDeliveryTime orderedAt:(NSDate *)orderedAt orderCost:(NSString *)orderCost driverName:(NSString *)driverName driverPhone:(NSString *)driverPhone driverLocation:(PFGeoPoint *)driverLocation restaurantName:(NSString *)restaurantName restaurantLocation:(PFGeoPoint *)restaurantLocation chosenItems:(NSArray *)chosenItems
+- (instancetype) initWithEverything:(NSString *)orderId ordererName:(NSString *)ordererName ordererPhone:(NSString *)ordererPhone deliveryAddress:(PFObject *)deliveryAddress deliveryAddressString:(NSString *)deliveryAddressString orderStatus:(NSInteger)orderStatus timeToBeDeliveredAt:(NSDate *)timeToBeDeliveredAt estimatedDeliveryTime:(NSDate *)estimatedDeliveryTime orderedAt:(NSDate *)orderedAt orderCost:(NSString *)orderCost driverName:(NSString *)driverName driverPhone:(NSString *)driverPhone driverLocation:(PFGeoPoint *)driverLocation restaurantName:(NSString *)restaurantName restaurantLocation:(PFGeoPoint *)restaurantLocation chosenItems:(NSArray *)chosenItems additionalDetails:(NSString *)additionalDetails
 {
     self = [super init];
     
@@ -32,6 +32,7 @@
         self.restaurantName = restaurantName;
         self.restaurantLocation = restaurantLocation;
         self.chosenItems = chosenItems;
+        self.additionalDetails = additionalDetails;
     }
     
     return self;
@@ -62,9 +63,30 @@
                      driverLocation:object[@"driverLocation"]
                      restaurantName:object[@"restaurantName"]
                  restaurantLocation:object[@"restaurantLocation"]
-                        chosenItems:correctChosenItems];
+                        chosenItems:correctChosenItems
+                  additionalDetails:object[@"additionalDetails"]];
     
     return self;
+}
+
+- (NSString*) statusToString
+{
+    switch(self.orderStatus) {
+        case 0:
+            return @"Order is unclaimed";
+        case 1:
+            return @"Order has been claimed";
+        case 2:
+            return @"Order has been placed";
+        case 3:
+            return @"Order is currently en route";
+        case 4:
+            return @"Order has been delivered";
+        default:
+            return @"Order is unclaimed";
+    }
+    
+    return @"Unclaimed";
 }
 
 @end

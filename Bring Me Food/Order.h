@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) PFObject *deliveryAddress;
 @property (nonatomic, strong) NSString *deliveryAddressString;
+@property (nonatomic, strong) NSString *additionalDetails;
 
 @property (nonatomic) NSInteger orderStatus;
 
@@ -50,8 +51,11 @@
                      driverLocation:(PFGeoPoint*)driverLocation
                      restaurantName:(NSString*)restaurantName
                  restaurantLocation:(PFGeoPoint*)restaurantLocation
-                    chosenItems:(NSArray*)chosenItems;
+                        chosenItems:(NSArray*)chosenItems
+                  additionalDetails:(NSString*)additionalDetails;
 
 - (instancetype) initWithPFObject:(PFObject*)object;
+
+- (NSString*) statusToString;
 
 @end
