@@ -27,8 +27,12 @@
 
 - (IBAction)showDriverLocationOnMap:(id)sender;
 - (IBAction)callDriver:(id)sender;
+- (IBAction)backToExistingOrders:(id)sender;
 
 @property (nonatomic, strong) Order *order;
+
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIView *contentView;
 
 @end
 
@@ -53,18 +57,21 @@ static NSString *orderItemIdentifier = @"menuItemCell";
     [self.myItemsTableView registerNib:[UINib nibWithNibName:@"RestaurantItemTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:orderItemIdentifier];
     
     self.orderStatus.text = self.order.statusToString;
-    self.myDeliveryTime.text = [self getNiceDate:self.order.timeToBeDeliveredAt];
+    self.myDeliveryTime.text = [NSString stringWithFormat:@"Time To Be Delivered At: %@", [self getNiceDate:self.order.timeToBeDeliveredAt]];
     self.myPhoneNumber.text = self.order.ordererPhoneNumber;
     self.deliveryAddress.text = self.order.deliveryAddressString;
     self.restaurantName.text = self.order.restaurantName;
-    self.orderCost.text = self.orderCost;
-    self.additionalDetails.text = self.order.additionalDetails;
+    self.orderCost.text = self.order.orderCost;
+    //self.additionalDetails.text = self.order.additionalDetails;
     
     //UNCLAIMED
     if(self.order.orderStatus == 0) {
         self.estimatedDeliveryTime.text = @"Estimated Delivery Time: N/A";
         
     }
+    
+    [self.scrollView addSubview:self.contentView];
+    self.scrollView.contentSize = self.contentView.frame.size;
     
 }
 
@@ -120,6 +127,12 @@ static NSString *orderItemIdentifier = @"menuItemCell";
         
         return [NSString stringWithFormat:@"%@ on %@", time, [dateFormatter stringFromDate:date]];
     }
+}
+
+- (IBAction)backToExistingOrders:(id)sender {
+    [self setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [self dismissViewControllerAnimated:YES completion:^(void){}];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

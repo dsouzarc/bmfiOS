@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewOrderDetailsViewController">
             <connections>
                 <outlet property="additionalDetails" destination="iN1-bX-zg3" id="WH3-i0-Udc"/>
+                <outlet property="contentView" destination="yds-o2-lT7" id="sz9-9h-FG6"/>
                 <outlet property="deliveryAddress" destination="rMf-pb-bDE" id="Aro-hX-uqu"/>
                 <outlet property="driverLocationOnMapButton" destination="6jr-KG-bGt" id="cam-tb-OYe"/>
                 <outlet property="driverNamed" destination="zvN-XH-e97" id="k7h-qo-31z"/>
@@ -18,6 +19,7 @@
                 <outlet property="orderCost" destination="zYE-Zi-NQ4" id="LdM-eW-rFC"/>
                 <outlet property="orderStatus" destination="If3-ke-znN" id="rhq-Wy-Kse"/>
                 <outlet property="restaurantName" destination="Z03-eZ-EcV" id="YaX-bI-6W4"/>
+                <outlet property="scrollView" destination="C4e-tg-AKQ" id="g7f-Nh-czc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="P3i-UG-oXR"/>
             </connections>
         </placeholder>
@@ -26,16 +28,22 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="769"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LyW-Fx-cw2">
+                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LyW-Fx-cw2">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <items>
-                        <navigationItem title="My Order Details" id="IsF-6X-Jkz"/>
+                        <navigationItem title="My Order Details" id="IsF-6X-Jkz">
+                            <barButtonItem key="leftBarButtonItem" title="Back" id="3cc-kH-oJk">
+                                <connections>
+                                    <action selector="backToExistingOrders:" destination="-1" id="fqk-9b-0nS"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
                     </items>
                 </navigationBar>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C4e-tg-AKQ">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C4e-tg-AKQ">
                     <rect key="frame" x="0.0" y="44" width="375" height="725"/>
                     <subviews>
-                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yds-o2-lT7">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yds-o2-lT7">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="725"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Order Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="If3-ke-znN">
@@ -88,12 +96,6 @@
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Additional Details" translatesAutoresizingMaskIntoConstraints="NO" id="iN1-bX-zg3">
-                                    <rect key="frame" x="8" y="573" width="359" height="128"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                </textView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Estimated Delivery Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNU-4H-1v7">
                                     <rect key="frame" x="8" y="45" width="359" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -124,30 +126,20 @@
                                         <action selector="callDriver:" destination="-1" eventType="touchUpInside" id="T7l-Cd-Umj"/>
                                     </connections>
                                 </button>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iN1-bX-zg3">
+                                    <rect key="frame" x="8" y="573" width="359" height="7365"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <mutableString key="text">Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details  </mutableString>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
-                    <constraints>
-                        <constraint firstItem="yds-o2-lT7" firstAttribute="leading" secondItem="C4e-tg-AKQ" secondAttribute="leading" id="EQw-FF-oM6"/>
-                        <constraint firstAttribute="bottom" secondItem="yds-o2-lT7" secondAttribute="bottom" id="Ib2-7C-S3G"/>
-                        <constraint firstAttribute="width" constant="375" id="Pl4-sX-n9E"/>
-                        <constraint firstAttribute="trailing" secondItem="yds-o2-lT7" secondAttribute="trailing" id="jpF-NX-Q2z"/>
-                        <constraint firstAttribute="height" constant="725" id="p7S-MW-87Z"/>
-                        <constraint firstItem="yds-o2-lT7" firstAttribute="top" secondItem="C4e-tg-AKQ" secondAttribute="top" id="ylk-ui-EnL"/>
-                    </constraints>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="LyW-Fx-cw2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="DVm-w0-lRj"/>
-                <constraint firstItem="LyW-Fx-cw2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="En5-Eb-7Bp"/>
-                <constraint firstAttribute="trailing" secondItem="LyW-Fx-cw2" secondAttribute="trailing" id="KOr-1x-8b3"/>
-                <constraint firstItem="C4e-tg-AKQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="RDs-Lc-QXL"/>
-                <constraint firstItem="C4e-tg-AKQ" firstAttribute="top" secondItem="LyW-Fx-cw2" secondAttribute="bottom" id="TOJ-e0-yaT"/>
-                <constraint firstAttribute="bottom" secondItem="C4e-tg-AKQ" secondAttribute="bottom" id="mpz-wz-9Rd"/>
-                <constraint firstAttribute="trailing" secondItem="C4e-tg-AKQ" secondAttribute="trailing" id="tfw-Uh-YlF"/>
-            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="188.5" y="363.5"/>
         </view>
