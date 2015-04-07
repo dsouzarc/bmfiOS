@@ -219,8 +219,6 @@
     [self removeAnimate];
 }
 
-
-
 - (IBAction)exitButton:(id)sender {
     [self closePopup:sender];
 }

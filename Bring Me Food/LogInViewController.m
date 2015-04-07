@@ -55,7 +55,7 @@
     self.emailAddressTextField.delegate = self;
     self.passwordTextField.delegate = self;
     self.confirmPasswordTextField.delegate = self;
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.signInLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(signInLabelClicked)];
     [self.signInLabel addGestureRecognizer:tapGesture];

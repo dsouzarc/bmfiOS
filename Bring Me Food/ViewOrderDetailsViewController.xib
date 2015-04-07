@@ -6,142 +6,34 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewOrderDetailsViewController">
             <connections>
-                <outlet property="additionalDetails" destination="iN1-bX-zg3" id="WH3-i0-Udc"/>
-                <outlet property="contentView" destination="yds-o2-lT7" id="sz9-9h-FG6"/>
-                <outlet property="deliveryAddress" destination="rMf-pb-bDE" id="Aro-hX-uqu"/>
-                <outlet property="driverLocationOnMapButton" destination="6jr-KG-bGt" id="cam-tb-OYe"/>
-                <outlet property="driverNamed" destination="zvN-XH-e97" id="k7h-qo-31z"/>
-                <outlet property="driverPhone" destination="Ane-bf-kHc" id="B49-IR-5Ns"/>
-                <outlet property="estimatedDeliveryTime" destination="xNU-4H-1v7" id="B9E-12-tWp"/>
-                <outlet property="myDeliveryTime" destination="hBX-GC-2SE" id="vZ2-Di-NTY"/>
-                <outlet property="myItemsTableView" destination="cun-2n-ADk" id="3NE-st-heS"/>
-                <outlet property="myPhoneNumber" destination="JD3-Sc-A5a" id="VcD-pF-ejh"/>
-                <outlet property="orderCost" destination="zYE-Zi-NQ4" id="LdM-eW-rFC"/>
-                <outlet property="orderStatus" destination="If3-ke-znN" id="rhq-Wy-Kse"/>
-                <outlet property="restaurantName" destination="Z03-eZ-EcV" id="YaX-bI-6W4"/>
-                <outlet property="scrollView" destination="C4e-tg-AKQ" id="g7f-Nh-czc"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="P3i-UG-oXR"/>
+                <outlet property="view" destination="dVL-Qx-fCX" id="osV-VM-AlN"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="769"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LyW-Fx-cw2">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                    <items>
-                        <navigationItem title="My Order Details" id="IsF-6X-Jkz">
-                            <barButtonItem key="leftBarButtonItem" title="Back" id="3cc-kH-oJk">
-                                <connections>
-                                    <action selector="backToExistingOrders:" destination="-1" id="fqk-9b-0nS"/>
-                                </connections>
-                            </barButtonItem>
-                        </navigationItem>
-                    </items>
-                </navigationBar>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C4e-tg-AKQ">
-                    <rect key="frame" x="0.0" y="44" width="375" height="725"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yds-o2-lT7">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="725"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Order Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="If3-ke-znN">
-                                    <rect key="frame" x="8" y="16" width="359" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Phone Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JD3-Sc-A5a">
-                                    <rect key="frame" x="8" y="141" width="359" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Driver Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvN-XH-e97">
-                                    <rect key="frame" x="8" y="170" width="359" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delivery Address String" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMf-pb-bDE">
-                                    <rect key="frame" x="8" y="237" width="359" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurant Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z03-eZ-EcV">
-                                    <rect key="frame" x="8" y="266" width="359" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chosen Items" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BxS-0u-k7a">
-                                    <rect key="frame" x="8" y="295" width="359" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cun-2n-ADk">
-                                    <rect key="frame" x="8" y="324" width="359" height="204"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <connections>
-                                        <outlet property="dataSource" destination="-1" id="w32-iq-yLQ"/>
-                                        <outlet property="delegate" destination="-1" id="zyI-tC-Uq7"/>
-                                    </connections>
-                                </tableView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Order Cost" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYE-Zi-NQ4">
-                                    <rect key="frame" x="8" y="544" width="359" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Estimated Delivery Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNU-4H-1v7">
-                                    <rect key="frame" x="8" y="45" width="359" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Delivery Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBX-GC-2SE">
-                                    <rect key="frame" x="8" y="74" width="359" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6jr-KG-bGt">
-                                    <rect key="frame" x="8" y="103" width="359" height="30"/>
-                                    <state key="normal" title="Driver Location on Map">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="showDriverLocationOnMap:" destination="-1" eventType="touchUpInside" id="eYR-VA-qlS"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ane-bf-kHc">
-                                    <rect key="frame" x="8" y="199" width="359" height="30"/>
-                                    <state key="normal" title="Driver phone">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="callDriver:" destination="-1" eventType="touchUpInside" id="T7l-Cd-Umj"/>
-                                    </connections>
-                                </button>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iN1-bX-zg3">
-                                    <rect key="frame" x="8" y="573" width="359" height="7365"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <mutableString key="text">Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details Additional Details  </mutableString>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                </textView>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
-                    </subviews>
-                </scrollView>
-            </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+        <viewController id="vO3-2V-AUD">
+            <layoutGuides>
+                <viewControllerLayoutGuide type="top" id="W6B-fl-wFz"/>
+                <viewControllerLayoutGuide type="bottom" id="88S-d3-Zgn"/>
+            </layoutGuides>
+            <view key="view" contentMode="scaleToFill" id="dVL-Qx-fCX">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YOc-kY-0aJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                        <items>
+                            <navigationItem title="Title" id="iAE-Hg-0e7"/>
+                        </items>
+                    </navigationBar>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Or-qh-yG0">
+                        <rect key="frame" x="0.0" y="44" width="600" height="756"/>
+                    </scrollView>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            </view>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="188.5" y="363.5"/>
-        </view>
+            <size key="freeformSize" width="600" height="800"/>
+            <point key="canvasLocation" x="228" y="325"/>
+        </viewController>
     </objects>
 </document>

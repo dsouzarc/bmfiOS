@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseMenuItemsViewController">
@@ -34,7 +34,7 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="phc-j7-DAT">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="phc-j7-DAT">
                     <rect key="frame" x="0.0" y="88" width="375" height="571"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -52,15 +52,18 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="qZc-hc-aQX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="866-Jn-NTw"/>
-                <constraint firstAttribute="bottom" secondItem="phc-j7-DAT" secondAttribute="bottom" constant="8" id="9xl-hs-BWc"/>
-                <constraint firstAttribute="trailing" secondItem="qZc-hc-aQX" secondAttribute="trailing" id="HS0-8M-eZo"/>
-                <constraint firstItem="qZc-hc-aQX" firstAttribute="top" secondItem="xcI-iN-mlQ" secondAttribute="bottom" id="Ulv-aj-Y0o"/>
-                <constraint firstItem="xcI-iN-mlQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="b7h-mF-rZS"/>
-                <constraint firstAttribute="trailing" secondItem="phc-j7-DAT" secondAttribute="trailing" id="iI4-bN-DkF"/>
-                <constraint firstItem="phc-j7-DAT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jPQ-YH-CNc"/>
-                <constraint firstItem="xcI-iN-mlQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tpL-t7-Vr9"/>
-                <constraint firstAttribute="trailing" secondItem="xcI-iN-mlQ" secondAttribute="trailing" id="zEX-0s-IZB"/>
+                <constraint firstAttribute="trailing" secondItem="phc-j7-DAT" secondAttribute="trailing" id="6j4-t3-U8O"/>
+                <constraint firstItem="xcI-iN-mlQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="J7r-Cf-Rha"/>
+                <constraint firstItem="phc-j7-DAT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MkP-wk-znd"/>
+                <constraint firstItem="qZc-hc-aQX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PQh-Sd-b6Y"/>
+                <constraint firstItem="qZc-hc-aQX" firstAttribute="top" secondItem="xcI-iN-mlQ" secondAttribute="bottom" id="RwS-ql-z3D"/>
+                <constraint firstItem="phc-j7-DAT" firstAttribute="top" secondItem="qZc-hc-aQX" secondAttribute="bottom" id="ZYk-Yf-dwK"/>
+                <constraint firstItem="xcI-iN-mlQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dbZ-Ui-VyL"/>
+                <constraint firstAttribute="trailing" secondItem="qZc-hc-aQX" secondAttribute="trailing" id="eE9-nE-sdu"/>
+                <constraint firstItem="phc-j7-DAT" firstAttribute="top" secondItem="qZc-hc-aQX" secondAttribute="bottom" id="eZA-pk-5fF"/>
+                <constraint firstAttribute="trailing" secondItem="xcI-iN-mlQ" secondAttribute="trailing" id="o5c-q8-mgF"/>
+                <constraint firstAttribute="bottom" secondItem="phc-j7-DAT" secondAttribute="bottom" constant="8" id="rRV-04-ZUT"/>
+                <constraint firstItem="qZc-hc-aQX" firstAttribute="top" secondItem="xcI-iN-mlQ" secondAttribute="bottom" id="rlL-sZ-vQS"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
         </view>
