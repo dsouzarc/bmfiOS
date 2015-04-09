@@ -141,6 +141,8 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     self.loadingBouncingBalls = [[PQFBouncingBalls alloc] initLoaderOnView:self.view];
     self.loadingBouncingBalls.jumpAmount = 50;
     self.loadingBouncingBalls.separation = 40;
