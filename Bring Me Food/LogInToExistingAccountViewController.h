@@ -11,9 +11,10 @@
 #import "AppDelegate.h"
 
 @interface LogInToExistingAccountViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
 
+@property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
+
 - (IBAction)exitButton:(id)sender;
 
 

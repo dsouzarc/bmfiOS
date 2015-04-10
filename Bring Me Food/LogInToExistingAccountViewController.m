@@ -166,7 +166,7 @@
 
 - (void)viewDidLoad
 {
-    self.view.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:.6];
+    //self.view.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:.6];
     self.popupView.layer.cornerRadius = 5;
     self.popupView.layer.shadowOpacity = 0.8;
     self.popupView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
