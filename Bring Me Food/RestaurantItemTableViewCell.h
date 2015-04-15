@@ -10,8 +10,9 @@
 #import "RestaurantItem.h"
 
 @interface RestaurantItemTableViewCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UILabel *costLabel;
-@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *itemNameAndCost;
+
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
 
 @end

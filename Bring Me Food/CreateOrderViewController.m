@@ -59,10 +59,43 @@
 
 @implementation CreateOrderViewController
 
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if(self) {
+        self.keyChain = [[UICKeyChainStore alloc] init];
+    }
+    
+    return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.loadingBouncingBalls = [[PQFBouncingBalls alloc] initLoaderOnView:self.view];
+    self.loadingBouncingBalls.jumpAmount = 50;
+    self.loadingBouncingBalls.separation = 40;
+    self.loadingBouncingBalls.zoomAmount = 40;
+    self.loadingBouncingBalls.loaderColor = [UIColor blueColor];
+    self.chosenItemsTableView.allowsMultipleSelection = NO;
+    
+    [self.deliveryTimeDatePicker setDate:[NSDate date]];
+    [self.deliveryTimeDatePicker setMinimumDate:[NSDate date]];
+    
+    [self.myNameTextField setText:self.keyChain[@"name"]];
+    [self.myPhoneTextField setText:self.keyChain[@"phoneNumber"]];
+    
+    [self.additionalDetails setText:additionalOrderDetailsString];
+    [self.additionalDetails setTextColor:[UIColor lightGrayColor]];
+}
+
 static NSString *additionalOrderDetailsString = @"Additional Details";
 
 - (IBAction)submitOrderButton:(id)sender {
-    /*if(self.chosenRestaurant == nil) {
+    if(self.chosenRestaurant == nil) {
         [self showAlert:@"Incomplete Information" alertMessage:@"Please choose a restaurant" buttonName:@"Ok"];
         return;
     }
@@ -75,20 +108,17 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
      if(self.chosenMenuItems == nil || self.chosenMenuItems.count == 0) {
          [self showAlert:@"Incomplete Information" alertMessage:@"Please choose items to order" buttonName:@"Ok"];
          return;
-     }*/
+     }
+    
+    if(!self.chosenRestaurant) {
+        NSLog(@"No chosen");
+    }
+    if(!self.myNameTextField.text) {
+        NSLog(@"Name problem");
+    }
+    
     
     //TODO: CONFIRMATION + CALCULATE ORDER COST WITH SHIPPING + DELETE
-    
-    self.chosenRestaurant = !self.chosenRestaurant ? @"Hoagie Haven" : self.chosenRestaurant;
-    self.chosenAddress = !self.chosenAddress ? [PFGeoPoint geoPointWithLatitude:50.0 longitude:50.0] : self.chosenAddress;
-    self.addressLabel.text = !self.addressLabel.text ? @"Testing Address" : self.addressLabel.text;
-    self.orderCostLabel.text = self.orderCostLabel.text.length > 5 ? @"$5.55" : self.orderCostLabel.text;
-    
-    if(!self.chosenMenuItems) {
-        self.chosenMenuItems = [[NSMutableArray alloc] init];
-        RestaurantItem *testItem = [[RestaurantItem alloc] initWithEverything:self.chosenRestaurant itemName:@"Testing 1" itemCost:@"9.99" itemDescription:@"Testing Item 1"];
-        [self.chosenMenuItems addObject:testItem];
-    }
     
     NSDictionary *orderInformation = @{@"restaurantName": self.chosenRestaurant,
                                        @"ordererName": self.myNameTextField.text,
@@ -136,46 +166,6 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
     }
     
     return items;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    self.loadingBouncingBalls = [[PQFBouncingBalls alloc] initLoaderOnView:self.view];
-    self.loadingBouncingBalls.jumpAmount = 50;
-    self.loadingBouncingBalls.separation = 40;
-    self.loadingBouncingBalls.zoomAmount = 40;
-    self.loadingBouncingBalls.loaderColor = [UIColor blueColor];
-    self.chosenItemsTableView.allowsMultipleSelection = NO;
-    
-    [self.deliveryTimeDatePicker setDate:[NSDate date]];
-    [self.deliveryTimeDatePicker setMinimumDate:[NSDate date]];
-    
-    [self.myNameTextField setText:self.keyChain[@"name"]];
-    [self.myPhoneTextField setText:self.keyChain[@"phoneNumber"]];
-    
-    [self.additionalDetails setText:additionalOrderDetailsString];
-    [self.additionalDetails setTextColor:[UIColor lightGrayColor]];
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.chosenMenuItems removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        [self updateOrderCostLabel];
-    }
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.chosenMenuItems.count;
 }
 
 - (IBAction)chooseItemsButton:(id)sender {
@@ -324,6 +314,70 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [self updateOrderCostLabel];
+}
+
+- (void) updateOrderCostLabel
+{
+    //Update the total cost
+    if(!self.chosenMenuItems || self.chosenMenuItems.count == 0) {
+        self.orderCostLabel.text = @"No items chosen yet";
+    }
+    
+    else {
+        double estimatedCost = 0;
+        
+        for(RestaurantItem *item in self.chosenMenuItems) {
+            NSString *tempCost = [item.itemCost stringByReplacingOccurrencesOfString:@"$" withString:@""];
+            
+            @try {
+                estimatedCost += [tempCost doubleValue];
+            }
+            @catch (NSException *exception) {
+                NSLog(@"ERROR PARSING ITEM COST: %@", item.description);
+            }
+        }
+        
+        self.orderCostLabel.text = [NSString stringWithFormat:@"$%.2f", estimatedCost];
+    }
+}
+
+- (void) nameTap:(id)sender
+{
+    UITapGestureRecognizer *tapRecognizer = (UITapGestureRecognizer *)sender;
+    RestaurantItem *item = (RestaurantItem*) [self.chosenMenuItems objectAtIndex:tapRecognizer.view.tag];
+    self.chosenMenuItemToCustomizeIndex = tapRecognizer.view.tag;
+    
+    self.customizeMenuItemViewController = [[CustomizeRestaurantItemViewController alloc] initWithNibName:@"CustomizeRestaurantItemViewController" bundle:[NSBundle mainBundle] restaurantName:self.chosenRestaurant menuItem:item];
+    
+    self.customizeMenuItemViewController.delegate = self;
+    [self.customizeMenuItemViewController showInView:self.view shouldAnimate:YES];
+}
+
+/****************************/
+//    TABLEVIEW DELEGATES
+/****************************/
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.chosenMenuItems removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self updateOrderCostLabel];
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.chosenMenuItems.count;
+}
+
 - (void) tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //Get the previously clicked view, and hide it
@@ -359,36 +413,6 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
     self.selectedRow = indexPath;
 }
 
-- (void) viewDidAppear:(BOOL)animated
-{
-    [self updateOrderCostLabel];
-}
-
-- (void) updateOrderCostLabel
-{
-    //Update the total cost
-    if(!self.chosenMenuItems || self.chosenMenuItems.count == 0) {
-        self.orderCostLabel.text = @"No items chosen yet";
-    }
-    
-    else {
-        double estimatedCost = 0;
-        
-        for(RestaurantItem *item in self.chosenMenuItems) {
-            NSString *tempCost = [item.itemCost stringByReplacingOccurrencesOfString:@"$" withString:@""];
-            
-            @try {
-                estimatedCost += [tempCost doubleValue];
-            }
-            @catch (NSException *exception) {
-                NSLog(@"ERROR PARSING ITEM COST: %@", item.description);
-            }
-        }
-        
-        self.orderCostLabel.text = [NSString stringWithFormat:@"$%.2f", estimatedCost];
-    }
-}
-
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RestaurantItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menuItemCell"];
@@ -400,11 +424,9 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
     
     RestaurantItem *menuItem = [self.chosenMenuItems objectAtIndex:indexPath.row];
     
-    cell.nameLabel.numberOfLines = 0;
-    cell.costLabel.numberOfLines = 0;
-    
-    cell.nameLabel.text = menuItem.itemName;
-    cell.costLabel.text = menuItem.itemCost;
+    cell.itemNameAndCost.text = [NSString stringWithFormat:@"%@    $%@", menuItem.itemName, menuItem.itemCost];
+    cell.itemNameAndCost.numberOfLines = 1;
+    cell.itemNameAndCost.adjustsFontSizeToFitWidth = YES;
     
     if(!menuItem.description || menuItem.description.length < 3 || [menuItem.description isEqualToString:@" "]) {
         cell.descriptionTextView.text = @"No description available";
@@ -421,14 +443,13 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
     }
     
     cell.descriptionTextView.tag = indexPath.row;
-    cell.nameLabel.tag = indexPath.row;
-    cell.costLabel.tag = indexPath.row;
+    cell.itemNameAndCost.tag = indexPath.row;
     
     //Two taps for name to prompt
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nameTap:)];
     tapGesture.numberOfTapsRequired = 2;
-    [cell.nameLabel addGestureRecognizer:tapGesture];
-    cell.nameLabel.userInteractionEnabled = YES;
+    [cell.itemNameAndCost addGestureRecognizer:tapGesture];
+    cell.itemNameAndCost.userInteractionEnabled = YES;
     
     //1 tap for everything else
     tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nameTap:)];
@@ -436,28 +457,18 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
     [cell.descriptionTextView addGestureRecognizer:tapGesture];
     cell.descriptionTextView.userInteractionEnabled = YES;
     
-    tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nameTap:)];
-    tapGesture.numberOfTapsRequired = 1;
-    [cell.costLabel addGestureRecognizer:tapGesture];
-    cell.costLabel.userInteractionEnabled = YES;
-    
     return cell;
 }
 
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    
-    self.keyChain = [[UICKeyChainStore alloc] init];
-    
-    return self;
-}
+/****************************/
+//    TEXTVIEW DELEGATES
+/****************************/
 
 - (void) textViewDidEndEditing:(UITextView *)textView
 {
     textView.layer.cornerRadius=8.0f;
     textView.layer.masksToBounds=YES;
-    textView.layer.borderColor=[[UIColor whiteColor]CGColor];
+    textView.layer.borderColor=[[UIColor blueColor]CGColor];
     textView.layer.borderWidth= 2.0f;
     
     if(self.additionalDetails.text.length == 0) {
@@ -466,10 +477,6 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
     }
 }
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self.view endEditing:YES];
-}
 
 - (void) textViewDidBeginEditing:(UITextView *)textView
 {
@@ -487,16 +494,29 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
     }
 }
 
-- (void) nameTap:(id)sender
+
+/****************************/
+//    TEXTFIELD DELEGATES
+/****************************/
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    UITapGestureRecognizer *tapRecognizer = (UITapGestureRecognizer *)sender;
-    RestaurantItem *item = (RestaurantItem*) [self.chosenMenuItems objectAtIndex:tapRecognizer.view.tag];
-    self.chosenMenuItemToCustomizeIndex = tapRecognizer.view.tag;
-    
-    self.customizeMenuItemViewController = [[CustomizeRestaurantItemViewController alloc] initWithNibName:@"CustomizeRestaurantItemViewController" bundle:[NSBundle mainBundle] restaurantName:self.chosenRestaurant menuItem:item];
-    
-    self.customizeMenuItemViewController.delegate = self;
-    [self.customizeMenuItemViewController showInView:self.view shouldAnimate:YES];
+    //Add some glow effect
+    textField.layer.cornerRadius=8.0f;
+    textField.layer.masksToBounds=YES;
+    textField.layer.borderColor=[[UIColor blueColor]CGColor];
+    textField.layer.borderWidth= 2.0f;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    //Remove the flow effect
+    textField.layer.borderColor=[[UIColor clearColor]CGColor];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
 }
 
 @end

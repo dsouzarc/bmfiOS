@@ -52,6 +52,11 @@ static NSString *customPlaceHolder = @"Type your customized order details here";
     return self;
 }
 
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
 - (void)viewDidLoad
 {
     self.view.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:.6];
@@ -85,7 +90,17 @@ static NSString *customPlaceHolder = @"Type your customized order details here";
     self.increaseCostStepper.value = self.currentCostDouble;
     self.increaseCostStepper.minimumValue = self.currentCostDouble;
     
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReceived:)];
+    [tapGestureRecognizer setDelegate:self];
+    [self.view addGestureRecognizer:tapGestureRecognizer];
+
+
     [super viewDidLoad];
+}
+
+- (void) tapReceived:(UITapGestureRecognizer*)tapGestureRecognizer
+{
+    [self.view endEditing:YES];
 }
 
 - (void) textViewDidBeginEditing:(UITextView *)textView

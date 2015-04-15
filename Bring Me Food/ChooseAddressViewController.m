@@ -52,9 +52,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    SPGooglePlacesAutocompletePlace *place = (SPGooglePlacesAutocompletePlace*)[self.possibleLocations
-                                                                                objectAtIndex:indexPath.row];
+    SPGooglePlacesAutocompletePlace *place = (SPGooglePlacesAutocompletePlace*)[self.possibleLocations objectAtIndex:indexPath.row];
     cell.textLabel.text = place.name;
+    cell.textLabel.numberOfLines = 2;
+    cell.textLabel.adjustsFontSizeToFitWidth = YES;
     return cell;
 }
 

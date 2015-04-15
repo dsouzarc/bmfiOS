@@ -162,11 +162,9 @@ static NSString* cellIdentifier = @"Cell";
     
     RestaurantItem *menuItem = [self.searchResults objectAtIndex:indexPath.row];
     
-    cell.nameLabel.numberOfLines = 0;
-    cell.costLabel.numberOfLines = 0;
-    
-    cell.nameLabel.text = menuItem.itemName;
-    cell.costLabel.text = menuItem.itemCost;
+    cell.itemNameAndCost.text = [NSString stringWithFormat:@"%@    %@", menuItem.itemName, menuItem.itemCost];
+    cell.itemNameAndCost.numberOfLines = 1;
+    cell.itemNameAndCost.adjustsFontSizeToFitWidth = YES;
     
     if(!menuItem.description || menuItem.description.length < 3 || [menuItem.description isEqualToString:@" "]) {
         cell.descriptionTextView.text = @"No description available";
@@ -183,25 +181,19 @@ static NSString* cellIdentifier = @"Cell";
     }
     
     cell.descriptionTextView.tag = indexPath.row;
-    cell.nameLabel.tag = indexPath.row;
-    cell.costLabel.tag = indexPath.row;
+    cell.itemNameAndCost.tag = indexPath.row;
     
     //Two taps for name to prompt
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nameTap:)];
     tapGesture.numberOfTapsRequired = 2;
-    [cell.nameLabel addGestureRecognizer:tapGesture];
-    cell.nameLabel.userInteractionEnabled = YES;
+    [cell.itemNameAndCost addGestureRecognizer:tapGesture];
+    cell.itemNameAndCost.userInteractionEnabled = YES;
     
     //1 tap for everything else
     tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nameTap:)];
     tapGesture.numberOfTapsRequired = 1;
     [cell.descriptionTextView addGestureRecognizer:tapGesture];
     cell.descriptionTextView.userInteractionEnabled = YES;
-    
-    tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nameTap:)];
-    tapGesture.numberOfTapsRequired = 1;
-    [cell.costLabel addGestureRecognizer:tapGesture];
-    cell.costLabel.userInteractionEnabled = YES;
     
     return cell;
 }

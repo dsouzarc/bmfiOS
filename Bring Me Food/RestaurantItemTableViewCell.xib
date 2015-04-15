@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,27 +12,13 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NEs-4Y-0dW" id="IE7-8z-IK6">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBx-uj-3Rd">
-                        <rect key="frame" x="15" y="15" width="241" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="5ie-aF-JDn"/>
-                            <constraint firstAttribute="width" constant="241" id="aHo-gJ-RSB"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBx-uj-3Rd">
+                        <rect key="frame" x="15" y="16" width="297" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rfb-5X-lbw">
-                        <rect key="frame" x="264" y="15" width="37" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="37" id="1zm-ea-Oaq"/>
-                            <constraint firstAttribute="height" constant="21" id="Wxa-7O-cXu"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="red-f6-DZf">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="red-f6-DZf">
                         <rect key="frame" x="15" y="45" width="286" height="50"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -41,31 +26,12 @@
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                 </subviews>
-                <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="red-f6-DZf" secondAttribute="trailing" constant="11" id="2mH-uz-MPL"/>
-                    <constraint firstItem="red-f6-DZf" firstAttribute="top" secondItem="HBx-uj-3Rd" secondAttribute="bottom" constant="9" id="5N3-dZ-OS4"/>
-                    <constraint firstItem="red-f6-DZf" firstAttribute="leading" secondItem="IE7-8z-IK6" secondAttribute="leadingMargin" constant="7" id="9yw-EU-F2X"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="red-f6-DZf" secondAttribute="bottom" constant="4" id="JNF-yc-wDi"/>
-                    <constraint firstItem="red-f6-DZf" firstAttribute="leading" secondItem="IE7-8z-IK6" secondAttribute="leadingMargin" constant="7" id="MHt-Rd-fJp"/>
-                    <constraint firstItem="red-f6-DZf" firstAttribute="top" secondItem="Rfb-5X-lbw" secondAttribute="bottom" constant="9" id="OLR-bD-r6B"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="red-f6-DZf" secondAttribute="bottom" constant="4" id="PLF-JG-u4o"/>
-                    <constraint firstItem="HBx-uj-3Rd" firstAttribute="top" secondItem="IE7-8z-IK6" secondAttribute="topMargin" constant="7" id="PXa-Z9-ycd"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="red-f6-DZf" secondAttribute="trailing" constant="11" id="UCF-Rs-Erz"/>
-                    <constraint firstItem="red-f6-DZf" firstAttribute="top" secondItem="Rfb-5X-lbw" secondAttribute="bottom" constant="9" id="YJr-ZJ-TGi"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Rfb-5X-lbw" secondAttribute="trailing" constant="11" id="enW-ek-vXW"/>
-                    <constraint firstItem="HBx-uj-3Rd" firstAttribute="leading" secondItem="IE7-8z-IK6" secondAttribute="leadingMargin" constant="7" id="jkE-PH-dIv"/>
-                    <constraint firstItem="Rfb-5X-lbw" firstAttribute="leading" secondItem="HBx-uj-3Rd" secondAttribute="trailing" constant="8" id="oIe-kX-DjV"/>
-                    <constraint firstItem="Rfb-5X-lbw" firstAttribute="leading" secondItem="HBx-uj-3Rd" secondAttribute="trailing" constant="8" id="til-nl-LLL"/>
-                    <constraint firstItem="red-f6-DZf" firstAttribute="top" secondItem="Rfb-5X-lbw" secondAttribute="bottom" constant="9" id="vyM-rs-8sg"/>
-                    <constraint firstItem="Rfb-5X-lbw" firstAttribute="top" secondItem="IE7-8z-IK6" secondAttribute="topMargin" constant="7" id="wwE-Nh-6qr"/>
-                </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="costLabel" destination="Rfb-5X-lbw" id="3kc-FI-9mS"/>
                 <outlet property="descriptionTextView" destination="red-f6-DZf" id="WtF-eM-4CX"/>
-                <outlet property="nameLabel" destination="HBx-uj-3Rd" id="Qgy-Ya-3UW"/>
+                <outlet property="itemNameAndCost" destination="HBx-uj-3Rd" id="3ll-lL-acH"/>
             </connections>
-            <point key="canvasLocation" x="599" y="511"/>
+            <point key="canvasLocation" x="599" y="510"/>
         </tableViewCell>
     </objects>
 </document>

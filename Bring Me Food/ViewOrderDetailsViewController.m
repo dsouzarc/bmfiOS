@@ -90,9 +90,9 @@ static NSString *orderItemIdentifier = @"menuItemCell";
     }
     
     RestaurantItem *item = (RestaurantItem*) [self.order.chosenItems objectAtIndex:indexPath.row];
-    
-    cell.costLabel.text = item.itemCost;
-    cell.nameLabel.text = item.itemName;
+    cell.itemNameAndCost.text = [NSString stringWithFormat:@"%@    $%@", item.itemName, item.itemCost];
+    cell.itemNameAndCost.numberOfLines = 1;
+    cell.itemNameAndCost.adjustsFontSizeToFitWidth = YES;
     cell.descriptionTextView.text = item.customizedItemDescription;
     
     return cell;
