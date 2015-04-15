@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSArray *possibleLocations;
 
 @property (strong, nonatomic) SPGooglePlacesAutocompleteQuery *query;
+- (IBAction)cancel:(id)sender;
 
 @end
 
@@ -93,5 +94,9 @@
             [self.tableView reloadData];
         }
     }];
+}
+
+- (IBAction)cancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

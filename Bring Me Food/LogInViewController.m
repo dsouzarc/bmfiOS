@@ -75,7 +75,15 @@
 - (void)signInLabelClicked
 {
     self.loginPopupVC = [[LogInToExistingAccountViewController alloc] initWithNibName:@"LogInToExistingAccountViewController" bundle:[NSBundle mainBundle]];
-    [self.loginPopupVC showInView:self.view shouldAnimate:YES];
+    
+    self.loginPopupVC.modalPresentationStyle = UIModalPresentationFormSheet;
+    //self.loginPopupVC.modalTransitionStyle = UIModalTransitionStyl;
+    [self presentViewController:self.loginPopupVC animated:YES completion:nil];
+
+    self.loginPopupVC.view.superview.frame = CGRectMake(0, 0, 200, 200);
+    self.loginPopupVC.view.superview.center = self.loginPopupVC.view.center;
+    
+    //[self.loginPopupVC showInView:self.view shouldAnimate:YES];
     
     NSLog(@"BACK");
 }

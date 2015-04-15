@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseAddressViewController">
@@ -17,15 +17,27 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Text" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kj2-eF-PKu">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
                         <action selector="editDidBegin:" destination="-1" eventType="editingChanged" id="MQh-tZ-cnB"/>
                     </connections>
                 </textField>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="W5R-DB-YX6">
-                    <rect key="frame" x="0.0" y="32" width="375" height="635"/>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NpH-xd-uYM">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <items>
+                        <navigationItem title="Delivery Address" id="am9-G7-YB5">
+                            <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="aQf-cx-FtJ">
+                                <connections>
+                                    <action selector="cancel:" destination="-1" id="DOH-Wh-b5F"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="W5R-DB-YX6">
+                    <rect key="frame" x="0.0" y="74" width="375" height="593"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="mG4-Ni-vD0"/>
@@ -35,15 +47,21 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="W5R-DB-YX6" secondAttribute="trailing" id="0N3-NX-4Xf"/>
-                <constraint firstItem="kj2-eF-PKu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VCd-H2-4M9"/>
-                <constraint firstItem="W5R-DB-YX6" firstAttribute="top" secondItem="kj2-eF-PKu" secondAttribute="bottom" constant="2" id="gSI-jx-Xk3"/>
-                <constraint firstItem="W5R-DB-YX6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iUm-Na-HKd"/>
-                <constraint firstAttribute="trailing" secondItem="kj2-eF-PKu" secondAttribute="trailing" id="laT-8g-7fn"/>
-                <constraint firstItem="kj2-eF-PKu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="reQ-Ua-yeM"/>
+                <constraint firstItem="W5R-DB-YX6" firstAttribute="top" secondItem="kj2-eF-PKu" secondAttribute="bottom" id="8NX-8P-9ht"/>
+                <constraint firstAttribute="trailing" secondItem="W5R-DB-YX6" secondAttribute="trailing" id="ADK-Z8-wiM"/>
+                <constraint firstAttribute="trailing" secondItem="kj2-eF-PKu" secondAttribute="trailing" id="I5B-vu-1mJ"/>
+                <constraint firstItem="W5R-DB-YX6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NrC-qq-H4y"/>
+                <constraint firstItem="NpH-xd-uYM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Vro-8z-vOl"/>
+                <constraint firstAttribute="bottom" secondItem="W5R-DB-YX6" secondAttribute="bottom" id="YJd-K5-ozd"/>
+                <constraint firstItem="kj2-eF-PKu" firstAttribute="top" secondItem="NpH-xd-uYM" secondAttribute="bottom" id="YJk-GL-p0J"/>
+                <constraint firstItem="W5R-DB-YX6" firstAttribute="top" secondItem="kj2-eF-PKu" secondAttribute="bottom" id="eeo-HD-PU1"/>
+                <constraint firstItem="NpH-xd-uYM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fh4-W3-Dm5"/>
+                <constraint firstItem="kj2-eF-PKu" firstAttribute="top" secondItem="NpH-xd-uYM" secondAttribute="bottom" id="hBE-Z5-Fod"/>
+                <constraint firstAttribute="trailing" secondItem="NpH-xd-uYM" secondAttribute="trailing" id="i7x-9s-bN4"/>
+                <constraint firstItem="kj2-eF-PKu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pTn-5J-nPY"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="362.5" y="290.5"/>
+            <point key="canvasLocation" x="371.5" y="306.5"/>
         </view>
     </objects>
 </document>
