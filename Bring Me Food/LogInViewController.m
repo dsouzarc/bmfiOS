@@ -57,33 +57,21 @@
     self.confirmPasswordTextField.delegate = self;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.signInLabel.userInteractionEnabled = YES;
+    
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(signInLabelClicked)];
     [self.signInLabel addGestureRecognizer:tapGesture];
     
-    // Do any additional setup after loading the view from its nib.
+    tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReceived:)];
+    [tapGesture setDelegate:self];
+    [self.view addGestureRecognizer:tapGesture];
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (void)signInLabelClicked
 {
     self.loginPopupVC = [[LogInToExistingAccountViewController alloc] initWithNibName:@"LogInToExistingAccountViewController" bundle:[NSBundle mainBundle]];
     
-    self.loginPopupVC.modalPresentationStyle = UIModalPresentationFormSheet;
-    //self.loginPopupVC.modalTransitionStyle = UIModalTransitionStyl;
-    [self presentViewController:self.loginPopupVC animated:YES completion:nil];
-
-    self.loginPopupVC.view.superview.frame = CGRectMake(0, 0, 200, 200);
-    self.loginPopupVC.view.superview.center = self.loginPopupVC.view.center;
-    
-    //[self.loginPopupVC showInView:self.view shouldAnimate:YES];
+    [self.loginPopupVC showInView:self.view shouldAnimate:YES];
     
     NSLog(@"BACK");
 }
@@ -183,6 +171,10 @@
     }];
 }
 
+/****************************/
+//    VALIDATION METHODS
+/****************************/
+
 - (BOOL) validName:(NSString*) nameString {
     if(nameString.length < 5) {
         return NO;
@@ -238,8 +230,13 @@
     return YES;
 }
 
+/****************************/
+//    TEXTFIELD & TOUCH DELEGATES
+/****************************/
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    [self animateTextField: textField up: YES];
     //Add some glow effect
     textField.layer.cornerRadius=8.0f;
     textField.layer.masksToBounds=YES;
@@ -249,8 +246,33 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    [self animateTextField: textField up: NO];
     //Remove the flow effect
     textField.layer.borderColor=[[UIColor clearColor]CGColor];
+}
+
+- (void) animateTextField: (UITextField*) textField up: (BOOL) up
+{
+    const int movementDistance = 50; // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    
+    int movement = (up ? -movementDistance : movementDistance);
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
+-(void)tapReceived:(UITapGestureRecognizer *)tapGestureRecognizer
+{
+    [self.view endEditing:YES];
 }
 
 @end

@@ -17,9 +17,6 @@
 
 - (IBAction)exitButton:(id)sender;
 
-
-@property (weak, nonatomic) IBOutlet UIView *popupView;
-
 - (void) showInView:(UIView *)view shouldAnimate:(BOOL)shouldAnimate;
 
 @end

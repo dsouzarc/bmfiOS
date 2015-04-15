@@ -16,6 +16,8 @@
 
 - (IBAction)loginButtonClicked:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIView *popupView;
+
 @property (nonatomic, strong) PQFBouncingBalls *loadingAnimation;
 @property (nonatomic, strong) UICKeyChainStore *keyChain;
 
@@ -176,9 +178,9 @@
     self.passwordTextField.delegate = self;
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
-}
+/****************************/
+//    ANIMATION METHODS
+/****************************/
 
 - (void) showAnimate
 {
@@ -214,6 +216,20 @@
     });
 }
 
+- (void) animateTextField: (UITextField*) textField up: (BOOL) up
+{
+    const int movementDistance = 50; // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    
+    int movement = (up ? -movementDistance : movementDistance);
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
+}
+
 - (IBAction)closePopup:(id)sender
 {
     [self removeAnimate];
@@ -222,6 +238,10 @@
 - (IBAction)exitButton:(id)sender {
     [self closePopup:sender];
 }
+
+/****************************/
+//    TEXTFIELD DELEGATES
+/****************************/
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
@@ -240,22 +260,8 @@
     textField.layer.borderColor=[[UIColor clearColor]CGColor];
 }
 
-- (void) animateTextField: (UITextField*) textField up: (BOOL) up
-{
-    const int movementDistance = 50; // tweak as needed
-    const float movementDuration = 0.3f; // tweak as needed
-    
-    int movement = (up ? -movementDistance : movementDistance);
-    
-    [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: movementDuration];
-    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-    [UIView commitAnimations];
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 @end
