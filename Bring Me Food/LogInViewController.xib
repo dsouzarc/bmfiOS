@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <items>
                         <navigationItem title="Sign Up" id="SwT-2f-hVz">
-                            <barButtonItem key="rightBarButtonItem" title="Done" id="kZQ-RA-4TW">
+                            <barButtonItem key="rightBarButtonItem" title="Create Account" id="kZQ-RA-4TW">
                                 <connections>
                                     <action selector="signUpForAccount:" destination="-1" id="9ny-dB-bMt"/>
                                 </connections>
