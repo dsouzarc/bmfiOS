@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9408CBB81AE069D2000AC589 /* CustomIOSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9408CBB71AE069D2000AC589 /* CustomIOSAlertView.m */; };
 		9411974D1AC899770002FDEE /* OrdersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9411974B1AC899770002FDEE /* OrdersTableViewCell.m */; };
 		9411974E1AC899770002FDEE /* OrdersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9411974C1AC899770002FDEE /* OrdersTableViewCell.xib */; };
 		9430E89A1AB3A0030038738F /* SPGooglePlacesAutocompletePlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 9430E8931AB3A0030038738F /* SPGooglePlacesAutocompletePlace.m */; };
@@ -93,6 +94,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9408CBB61AE069D2000AC589 /* CustomIOSAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOSAlertView.h; sourceTree = "<group>"; };
+		9408CBB71AE069D2000AC589 /* CustomIOSAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOSAlertView.m; sourceTree = "<group>"; };
 		9411974A1AC899770002FDEE /* OrdersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersTableViewCell.h; sourceTree = "<group>"; };
 		9411974B1AC899770002FDEE /* OrdersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersTableViewCell.m; sourceTree = "<group>"; };
 		9411974C1AC899770002FDEE /* OrdersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrdersTableViewCell.xib; sourceTree = "<group>"; };
@@ -243,6 +246,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9408CBB51AE069D2000AC589 /* CustomIOSAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				9408CBB61AE069D2000AC589 /* CustomIOSAlertView.h */,
+				9408CBB71AE069D2000AC589 /* CustomIOSAlertView.m */,
+			);
+			path = CustomIOSAlertView;
+			sourceTree = "<group>";
+		};
+		9408CBB91AE069FB000AC589 /* UICKeyChainStore */ = {
+			isa = PBXGroup;
+			children = (
+				947584471A9CDE0D00487720 /* UICKeyChainStore.h */,
+				947584481A9CDE0D00487720 /* UICKeyChainStore.m */,
+			);
+			name = UICKeyChainStore;
+			sourceTree = "<group>";
+		};
 		9430E8901AB3A0030038738F /* SPGooglePlacesAutocomplete */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,7 +304,8 @@
 				946068CC1A9D55BC006664A2 /* PQFCirclesInTriangle.m */,
 				946068CD1A9D55BC006664A2 /* PQFCustomLoaders.h */,
 			);
-			path = PQFCustomLoaders;
+			name = PQFCustomLoaders;
+			path = ../PQFCustomLoaders;
 			sourceTree = "<group>";
 		};
 		946068D11A9D55EE006664A2 /* UIColor+FlatColors */ = {
@@ -292,7 +314,8 @@
 				946068D21A9D55EE006664A2 /* UIColor+FlatColors.h */,
 				946068D31A9D55EE006664A2 /* UIColor+FlatColors.m */,
 			);
-			path = "UIColor+FlatColors";
+			name = "UIColor+FlatColors";
+			path = "../UIColor+FlatColors";
 			sourceTree = "<group>";
 		};
 		94739D151ABA346200406819 /* Choose ViewControllers */ = {
@@ -332,9 +355,6 @@
 				9475822B1A9C126300487720 /* Bring Me FoodTests */,
 				947582101A9C126300487720 /* Products */,
 				9475825D1A9C171900487720 /* Frameworks */,
-				946068D11A9D55EE006664A2 /* UIColor+FlatColors */,
-				946068C61A9D55BC006664A2 /* PQFCustomLoaders */,
-				9475844B1A9CFDE700487720 /* Chameleon */,
 			);
 			sourceTree = "<group>";
 		};
@@ -367,10 +387,10 @@
 				94739D161ABA349500406819 /* Custom Objects */,
 				947582161A9C126300487720 /* AppDelegate.h */,
 				947582171A9C126300487720 /* AppDelegate.m */,
-				9430E89E1AB3A3A40038738F /* ApiConfigurations.plist */,
 				94A128091AB53A00005FC639 /* Login Files */,
 				947582191A9C126300487720 /* ViewController.h */,
 				9475821A1A9C126300487720 /* ViewController.m */,
+				9430E89E1AB3A3A40038738F /* ApiConfigurations.plist */,
 				9475821C1A9C126300487720 /* Main.storyboard */,
 				9475821F1A9C126300487720 /* Images.xcassets */,
 				947582211A9C126300487720 /* LaunchScreen.xib */,
@@ -436,9 +456,12 @@
 		9475844A1A9CDE7A00487720 /* 3rd Party Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				946068D11A9D55EE006664A2 /* UIColor+FlatColors */,
+				946068C61A9D55BC006664A2 /* PQFCustomLoaders */,
+				9475844B1A9CFDE700487720 /* Chameleon */,
+				9408CBB51AE069D2000AC589 /* CustomIOSAlertView */,
 				9430E8901AB3A0030038738F /* SPGooglePlacesAutocomplete */,
-				947584471A9CDE0D00487720 /* UICKeyChainStore.h */,
-				947584481A9CDE0D00487720 /* UICKeyChainStore.m */,
+				9408CBB91AE069FB000AC589 /* UICKeyChainStore */,
 			);
 			name = "3rd Party Libraries";
 			sourceTree = "<group>";
@@ -459,7 +482,8 @@
 				947584561A9CFDE700487720 /* UIViewController+Chameleon.h */,
 				947584571A9CFDE700487720 /* UIViewController+Chameleon.m */,
 			);
-			path = Chameleon;
+			name = Chameleon;
+			path = ../Chameleon;
 			sourceTree = "<group>";
 		};
 		947BA37C1ACDB4570005D763 /* Table View Cells */ = {
@@ -617,6 +641,7 @@
 				94A1280D1AB53CFB005FC639 /* ChooseAddressViewController.m in Sources */,
 				9475845B1A9CFDE700487720 /* UIColor+CIELAB.m in Sources */,
 				9411974D1AC899770002FDEE /* OrdersTableViewCell.m in Sources */,
+				9408CBB81AE069D2000AC589 /* CustomIOSAlertView.m in Sources */,
 				9475821B1A9C126300487720 /* ViewController.m in Sources */,
 				9475845A1A9CFDE700487720 /* UIColor+Chameleon.m in Sources */,
 				947584581A9CFDE700487720 /* ChameleonStatusBar.m in Sources */,
