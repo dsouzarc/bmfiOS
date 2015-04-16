@@ -32,7 +32,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *myNameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *myPhoneTextField;
 @property (strong, nonatomic) IBOutlet UIDatePicker *deliveryTimeDatePicker;
-@property (strong, nonatomic) IBOutlet UITextView *additionalDetails;
+@property (strong, nonatomic) IBOutlet UITextField *additionalDetails;
+
+//@property (strong, nonatomic) IBOutlet UITextView *additionalDetails;
 
 @property (strong, nonatomic) PQFBouncingBalls *loadingBouncingBalls;
 @property (strong, nonatomic) UICKeyChainStore *keyChain;
@@ -90,6 +92,23 @@
     
     [self.additionalDetails setText:additionalOrderDetailsString];
     [self.additionalDetails setTextColor:[UIColor lightGrayColor]];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReceived:)];
+    tapGesture.delegate = self;
+    [self.view addGestureRecognizer:tapGesture];
+    
+    //Add some glow effect
+    self.additionalDetails.layer.cornerRadius=8.0f;
+    self.additionalDetails.layer.masksToBounds=YES;
+    self.additionalDetails.layer.borderColor=[[UIColor darkGrayColor]CGColor];
+    self.additionalDetails.layer.borderWidth= 2.0f;
+    [self.additionalDetails canBecomeFirstResponder];
+    self.additionalDetails.userInteractionEnabled = YES;
+}
+
+- (void) tapReceived:(UIGestureRecognizer*)gestureRecognizer
+{
+    [self.view endEditing:YES];
 }
 
 static NSString *additionalOrderDetailsString = @"Additional Details";
@@ -462,41 +481,6 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
 }
 
 /****************************/
-//    TEXTVIEW DELEGATES
-/****************************/
-
-- (void) textViewDidEndEditing:(UITextView *)textView
-{
-    textView.layer.cornerRadius=8.0f;
-    textView.layer.masksToBounds=YES;
-    textView.layer.borderColor=[[UIColor blueColor]CGColor];
-    textView.layer.borderWidth= 2.0f;
-    
-    if(self.additionalDetails.text.length == 0) {
-        [self.additionalDetails setTextColor:[UIColor lightGrayColor]];
-        [self.additionalDetails setText:additionalOrderDetailsString];
-    }
-}
-
-
-- (void) textViewDidBeginEditing:(UITextView *)textView
-{
-    //Add some glow effect
-    textView.layer.cornerRadius=8.0f;
-    textView.layer.masksToBounds=YES;
-    textView.layer.borderColor=[[UIColor blueColor]CGColor];
-    textView.layer.borderWidth= 2.0f;
-    
-    if(textView == self.additionalDetails) {
-        if([textView.text isEqualToString:additionalOrderDetailsString]) {
-            [textView setText:@""];
-            [textView setTextColor:[UIColor blackColor]];
-        }
-    }
-}
-
-
-/****************************/
 //    TEXTFIELD DELEGATES
 /****************************/
 
@@ -507,17 +491,39 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
     textField.layer.masksToBounds=YES;
     textField.layer.borderColor=[[UIColor blueColor]CGColor];
     textField.layer.borderWidth= 2.0f;
+    
+    if(textField == self.additionalDetails) {
+        [self animateText:textField up:YES];
+    }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     //Remove the flow effect
     textField.layer.borderColor=[[UIColor clearColor]CGColor];
+    
+    if(textField == self.additionalDetails) {
+        [self animateText:textField up:NO];
+    }
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
+}
+
+- (void) animateText: (UIView*)textView up:(BOOL)up
+{
+    const int movementDistance = 200;
+    const float movementDuration = 0.3f;
+    
+    int movement = (up ? -movementDistance : movementDistance);
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
 }
 
 @end
