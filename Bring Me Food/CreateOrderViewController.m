@@ -7,15 +7,6 @@
 //
 
 #import "CreateOrderViewController.h"
-#import "ChooseAddressViewController.h"
-#import "ChooseRestaurantViewController.h"
-#import "CustomizeRestaurantItemViewController.h"
-#import "ChooseMenuItemsViewController.h"
-#import "RestaurantItemTableViewCell.h"
-#import <Parse/Parse.h>
-#import "RestaurantItem.h"
-#import "PQFBouncingBalls.h"
-#import "UICKeyChainStore.h"
 
 @interface CreateOrderViewController ()
 
@@ -32,9 +23,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *myNameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *myPhoneTextField;
 @property (strong, nonatomic) IBOutlet UIDatePicker *deliveryTimeDatePicker;
-@property (strong, nonatomic) IBOutlet UITextField *additionalDetails;
-
-//@property (strong, nonatomic) IBOutlet UITextView *additionalDetails;
+@property (strong, nonatomic) IBOutlet UITextView *additionalDetails;
 
 @property (strong, nonatomic) PQFBouncingBalls *loadingBouncingBalls;
 @property (strong, nonatomic) UICKeyChainStore *keyChain;
@@ -481,35 +470,30 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
 }
 
 /****************************/
-//    TEXTFIELD DELEGATES
+//    TEXTVIEW DELEGATES
 /****************************/
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
+- (void)textViewDidBeginEditing:(UITextView *)textView
 {
     //Add some glow effect
-    textField.layer.cornerRadius=8.0f;
-    textField.layer.masksToBounds=YES;
-    textField.layer.borderColor=[[UIColor blueColor]CGColor];
-    textField.layer.borderWidth= 2.0f;
+    textView.layer.cornerRadius=8.0f;
+    textView.layer.masksToBounds=YES;
+    textView.layer.borderColor=[[UIColor blueColor]CGColor];
+    textView.layer.borderWidth= 2.0f;
     
-    if(textField == self.additionalDetails) {
-        [self animateText:textField up:YES];
+    if(textView == self.additionalDetails) {
+        [self animateText:textView up:YES];
     }
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
+- (void)textViewDidEndEditing:(UITextView *)textView
 {
     //Remove the flow effect
-    textField.layer.borderColor=[[UIColor clearColor]CGColor];
+    textView.layer.borderColor=[[UIColor darkGrayColor]CGColor];
     
-    if(textField == self.additionalDetails) {
-        [self animateText:textField up:NO];
+    if(textView == self.additionalDetails) {
+        [self animateText:textView up:NO];
     }
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self.view endEditing:YES];
 }
 
 - (void) animateText: (UIView*)textView up:(BOOL)up
@@ -525,5 +509,32 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
     self.view.frame = CGRectOffset(self.view.frame, 0, movement);
     [UIView commitAnimations];
 }
+
+/****************************/
+//    TEXTFIELD DELEGATES
+/****************************/
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    //Add some glow effect
+    textField.layer.cornerRadius=8.0f;
+    textField.layer.masksToBounds=YES;
+    textField.layer.borderColor=[[UIColor blueColor]CGColor];
+    textField.layer.borderWidth= 2.0f;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    //Remove the flow effect
+    textField.layer.borderColor=[[UIColor clearColor]CGColor];
+
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
+
 
 @end
