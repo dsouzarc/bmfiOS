@@ -162,8 +162,10 @@
                         <constraint firstAttribute="bottom" secondItem="IZq-Ia-gqJ" secondAttribute="bottom" id="WDt-il-yns"/>
                         <constraint firstItem="IZq-Ia-gqJ" firstAttribute="top" secondItem="a0a-Mz-DkX" secondAttribute="top" id="WgO-hg-kIL"/>
                         <constraint firstAttribute="height" constant="627" id="a6C-fQ-tsA"/>
+                        <constraint firstAttribute="centerY" secondItem="IZq-Ia-gqJ" secondAttribute="centerY" id="iqM-V4-6N3"/>
                         <constraint firstAttribute="centerX" secondItem="IZq-Ia-gqJ" secondAttribute="centerX" id="j2u-wr-35m"/>
                         <constraint firstItem="IZq-Ia-gqJ" firstAttribute="leading" secondItem="a0a-Mz-DkX" secondAttribute="leading" id="wLs-9N-2CL"/>
+                        <constraint firstAttribute="centerX" secondItem="IZq-Ia-gqJ" secondAttribute="centerX" id="x8E-Ss-KZP"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
@@ -179,8 +181,10 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="centerY" secondItem="a0a-Mz-DkX" secondAttribute="centerY" id="3Ad-gE-Kwo"/>
                 <constraint firstAttribute="centerX" secondItem="a0a-Mz-DkX" secondAttribute="centerX" id="Bco-jQ-Gf5"/>
                 <constraint firstItem="a0a-Mz-DkX" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Ca7-rR-Dxc"/>
+                <constraint firstAttribute="centerX" secondItem="a0a-Mz-DkX" secondAttribute="centerX" id="Ee7-r0-Whr"/>
                 <constraint firstItem="a0a-Mz-DkX" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="MLG-cI-MIG"/>
                 <constraint firstItem="a0a-Mz-DkX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="YMM-Lh-Hbc"/>
                 <constraint firstItem="a0a-Mz-DkX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="dWd-oJ-1a5"/>

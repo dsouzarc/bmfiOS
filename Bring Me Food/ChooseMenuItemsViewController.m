@@ -82,39 +82,6 @@ static NSString* cellIdentifier = @"Cell";
     [super viewDidLoad];
 }
 
-- (void) showAnimate
-{
-    self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
-    self.view.alpha = 0;
-    
-    [UIView animateWithDuration:0.25 animations:^(void) {
-        self.view.alpha = 1;
-        self.view.transform = CGAffineTransformMakeScale(1, 1);
-    }];
-}
-
-- (void) removeAnimate
-{
-    [UIView animateWithDuration:0.25 animations:^(void) {
-        self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
-        self.view.alpha = 0;
-    } completion:^(BOOL finished) {
-        if(finished) {
-            [self.view removeFromSuperview];
-        }
-    }];
-}
-
-- (void) showInView:(UIView *)view shouldAnimate:(BOOL)shouldAnimate
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [view addSubview:self.view];
-        
-        if(shouldAnimate) {
-            [self showAnimate];
-        }
-    });
-}
 
 - (void) tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -223,11 +190,11 @@ static NSString* cellIdentifier = @"Cell";
 
 - (IBAction)doneAddingNewItems:(id)sender {
     [self.delegate chooseMenuItemsViewController:self chosenItems:self.chosenItems];
-    [self removeAnimate];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)cancelAddingNewItems:(id)sender {
-    [self removeAnimate];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

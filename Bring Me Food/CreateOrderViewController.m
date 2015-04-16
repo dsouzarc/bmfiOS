@@ -213,16 +213,17 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
                                                                           chosenMenuItems:self.chosenMenuItems
                                                                            restaurantName:self.chosenRestaurant];
             self.chooseMenuItems.delegate = self;
-            [self.chooseMenuItems showInView:self.view shouldAnimate:YES];
+            [self setModalPresentationStyle:UIModalPresentationFormSheet];
+            [self presentViewController:self.chooseMenuItems animated:YES completion:nil];
             [self.loadingBouncingBalls hide];
         }];
     }
     
     else {
-        [self.chooseMenuItems showInView:self.view shouldAnimate:YES];
+        //[self.chooseMenuItems showInView:self.view shouldAnimate:YES];
         self.chooseMenuItems.delegate = self;
-        //[self setModalPresentationStyle:UIModalPresentationPopover];
-        //[self presentViewController:self.chooseMenuItems animated:YES completion:nil];
+        [self setModalPresentationStyle:UIModalPresentationPopover];
+        [self presentViewController:self.chooseMenuItems animated:YES completion:nil];
     }
 }
 

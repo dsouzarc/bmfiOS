@@ -63,6 +63,7 @@ static NSString *customPlaceHolder = @"Type your customized order details here";
     self.mainView.layer.cornerRadius = 5;
     self.mainView.layer.shadowOpacity = 0.8;
     self.mainView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+    self.mainView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
     
     self.restaurantNameLabel.text = self.restaurantName;
     self.itemNameLabel.text = self.itemName;
