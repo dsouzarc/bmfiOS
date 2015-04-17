@@ -4,7 +4,8 @@
 
 ###Essentially a refined version of Uber for crowd-sourcing the delivery of food
 
-Note, the screenshots below were programmatically created and inserted into this README. This is a work in progress, and screenshots and videos will be updated and added
+Note, the screenshots below were programmatically created and inserted into this README (see the Python file in 'Screenshots/'. 
+This is a work in progress, and screenshots and videos will be updated and added when they become available.
 
 
 ![Screenshot 1](https://github.com/dsouzarc/bmfiOS/blob/master/Screenshots/Screenshot_1.png)
