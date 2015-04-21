@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewDriverAndDropOffLocationViewController">
@@ -15,16 +15,24 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YdX-Ei-xr1">
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YdX-Ei-xr1">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <items>
                         <navigationItem title="Map" id="Qgs-4Q-FI2">
-                            <barButtonItem key="leftBarButtonItem" systemItem="done" id="kZQ-eF-Owv"/>
-                            <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="AkL-7L-Gff"/>
+                            <barButtonItem key="leftBarButtonItem" systemItem="done" id="kZQ-eF-Owv">
+                                <connections>
+                                    <action selector="done:" destination="-1" id="2k9-9t-nXV"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="AkL-7L-Gff">
+                                <connections>
+                                    <action selector="refreshMap:" destination="-1" id="py7-gw-3p5"/>
+                                </connections>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="PXl-Zt-eiY">
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="PXl-Zt-eiY">
                     <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="g0h-Wx-uOF"/>
@@ -32,6 +40,16 @@
                 </mapView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="PXl-Zt-eiY" firstAttribute="top" secondItem="YdX-Ei-xr1" secondAttribute="bottom" id="7U6-dr-D06"/>
+                <constraint firstItem="PXl-Zt-eiY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="C6U-vd-UIq"/>
+                <constraint firstAttribute="bottom" secondItem="PXl-Zt-eiY" secondAttribute="bottom" id="Y37-XD-wgm"/>
+                <constraint firstItem="YdX-Ei-xr1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="afs-Jo-FHw"/>
+                <constraint firstAttribute="trailing" secondItem="YdX-Ei-xr1" secondAttribute="trailing" id="e1e-bb-T5L"/>
+                <constraint firstAttribute="trailing" secondItem="PXl-Zt-eiY" secondAttribute="trailing" id="fmc-JE-kM7"/>
+                <constraint firstItem="YdX-Ei-xr1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pve-Qi-uWA"/>
+                <constraint firstItem="PXl-Zt-eiY" firstAttribute="top" secondItem="YdX-Ei-xr1" secondAttribute="bottom" id="u8H-E5-IMu"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="267.5" y="338.5"/>
         </view>
