@@ -56,6 +56,7 @@
 
 - (instancetype) initWithPFObject:(PFObject*)object;
 
+- (UIColor*) getOrderStatusColor;
 - (NSString*) statusToString;
 
 @end

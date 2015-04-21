@@ -89,4 +89,22 @@
     return @"Unclaimed";
 }
 
+- (UIColor*) getOrderStatusColor
+{
+    switch(self.orderStatus) {
+        case 0:
+            return [UIColor redColor];
+        case 1:
+            return [UIColor blueColor];
+        case 2:
+            return [UIColor orangeColor];
+        case 3:
+            return [UIColor greenColor];
+        case 4:
+            return [UIColor blackColor];
+        default:
+            return [UIColor redColor];
+    }
+}
+
 @end
