@@ -25,14 +25,11 @@
 @property (strong, nonatomic) IBOutlet UILabel *orderCost;
 @property (strong, nonatomic) IBOutlet UITextView *additionalDetails;
 
-- (IBAction)showDriverLocationOnMap:(id)sender;
-- (IBAction)callDriver:(id)sender;
-- (IBAction)backToExistingOrders:(id)sender;
-
 @property (nonatomic, strong) Order *order;
 
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) IBOutlet UIView *contentView;
+- (IBAction)callDriver:(id)sender;
+- (IBAction)showDriverLocationOnMap:(id)sender;
+- (IBAction)goBack:(id)sender;
 
 @end
 
@@ -62,7 +59,7 @@ static NSString *orderItemIdentifier = @"menuItemCell";
     self.deliveryAddress.text = self.order.deliveryAddressString;
     self.restaurantName.text = self.order.restaurantName;
     self.orderCost.text = self.order.orderCost;
-    //self.additionalDetails.text = self.order.additionalDetails;
+    self.additionalDetails.text = self.order.additionalDetails;
     
     //UNCLAIMED
     if(self.order.orderStatus == 0) {
@@ -70,15 +67,6 @@ static NSString *orderItemIdentifier = @"menuItemCell";
         
     }
     
-    [self.scrollView addSubview:self.contentView];
-    self.scrollView.contentSize = self.contentView.frame.size;
-    
-}
-
-- (IBAction)showDriverLocationOnMap:(id)sender {
-}
-
-- (IBAction)callDriver:(id)sender {
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -135,4 +123,12 @@ static NSString *orderItemIdentifier = @"menuItemCell";
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+- (IBAction)callDriver:(id)sender {
+}
+
+- (IBAction)showDriverLocationOnMap:(id)sender {
+}
+
+- (IBAction)goBack:(id)sender {
+}
 @end

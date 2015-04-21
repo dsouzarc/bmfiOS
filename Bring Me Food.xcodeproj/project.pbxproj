@@ -321,18 +321,10 @@
 		94739D151ABA346200406819 /* Choose ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				949661931ABB09BD0030661A /* CustomizeRestaurantItemViewController.h */,
-				949661941ABB09BD0030661A /* CustomizeRestaurantItemViewController.m */,
-				949661951ABB09BD0030661A /* CustomizeRestaurantItemViewController.xib */,
-				94739D0F1ABA343300406819 /* ChooseMenuItemsViewController.h */,
-				94739D101ABA343300406819 /* ChooseMenuItemsViewController.m */,
-				94739D111ABA343300406819 /* ChooseMenuItemsViewController.xib */,
-				94A128031AB4C337005FC639 /* ChooseRestaurantViewController.h */,
-				94A128041AB4C337005FC639 /* ChooseRestaurantViewController.m */,
-				94A128051AB4C337005FC639 /* ChooseRestaurantViewController.xib */,
-				94A1280A1AB53CFB005FC639 /* ChooseAddressViewController.h */,
-				94A1280B1AB53CFB005FC639 /* ChooseAddressViewController.m */,
-				94A1280C1AB53CFB005FC639 /* ChooseAddressViewController.xib */,
+				94D11AAD1AE6E84000D83B51 /* Customize Restaurant Item */,
+				94D11AAE1AE6E86400D83B51 /* Choose Menu Items */,
+				94D11AAF1AE6E87400D83B51 /* Choose Restaurant */,
+				94D11AB01AE6E88200D83B51 /* Choose Address */,
 			);
 			name = "Choose ViewControllers";
 			sourceTree = "<group>";
@@ -376,12 +368,8 @@
 				947BA37D1ACDB4AE0005D763 /* ViewOrderDetailsViewController.h */,
 				947BA37E1ACDB4AE0005D763 /* ViewOrderDetailsViewController.m */,
 				947BA37F1ACDB4AE0005D763 /* ViewOrderDetailsViewController.xib */,
-				94591EDB1AB26A6800D62C0A /* CreateOrderViewController.h */,
-				94591EDC1AB26A6800D62C0A /* CreateOrderViewController.m */,
-				94591EDD1AB26A6800D62C0A /* CreateOrderViewController.xib */,
-				9456EDB41AA2A9CC003D167E /* ExistingOrdersViewController.h */,
-				9456EDB51AA2A9CC003D167E /* ExistingOrdersViewController.m */,
-				9456EDB61AA2A9CC003D167E /* ExistingOrdersViewController.xib */,
+				94D11AAB1AE6E82500D83B51 /* Create Order */,
+				94D11AAC1AE6E83400D83B51 /* Existing Orders */,
 				94739D151ABA346200406819 /* Choose ViewControllers */,
 				947BA37C1ACDB4570005D763 /* Table View Cells */,
 				94739D161ABA349500406819 /* Custom Objects */,
@@ -489,12 +477,8 @@
 		947BA37C1ACDB4570005D763 /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
-				94739D171ABA41B000406819 /* RestaurantItemTableViewCell.h */,
-				94739D181ABA41B100406819 /* RestaurantItemTableViewCell.m */,
-				94739D191ABA41B100406819 /* RestaurantItemTableViewCell.xib */,
-				9411974A1AC899770002FDEE /* OrdersTableViewCell.h */,
-				9411974B1AC899770002FDEE /* OrdersTableViewCell.m */,
-				9411974C1AC899770002FDEE /* OrdersTableViewCell.xib */,
+				94D11AB11AE6E88F00D83B51 /* Restaurant Item */,
+				94D11AB21AE6E89D00D83B51 /* Existing Orders */,
 			);
 			name = "Table View Cells";
 			sourceTree = "<group>";
@@ -502,14 +486,110 @@
 		94A128091AB53A00005FC639 /* Login Files */ = {
 			isa = PBXGroup;
 			children = (
+				94D11AB31AE6E8B200D83B51 /* Existing Account */,
+				94D11AB41AE6E8BC00D83B51 /* New Account */,
+			);
+			name = "Login Files";
+			sourceTree = "<group>";
+		};
+		94D11AAB1AE6E82500D83B51 /* Create Order */ = {
+			isa = PBXGroup;
+			children = (
+				94591EDB1AB26A6800D62C0A /* CreateOrderViewController.h */,
+				94591EDC1AB26A6800D62C0A /* CreateOrderViewController.m */,
+				94591EDD1AB26A6800D62C0A /* CreateOrderViewController.xib */,
+			);
+			name = "Create Order";
+			sourceTree = "<group>";
+		};
+		94D11AAC1AE6E83400D83B51 /* Existing Orders */ = {
+			isa = PBXGroup;
+			children = (
+				9456EDB41AA2A9CC003D167E /* ExistingOrdersViewController.h */,
+				9456EDB51AA2A9CC003D167E /* ExistingOrdersViewController.m */,
+				9456EDB61AA2A9CC003D167E /* ExistingOrdersViewController.xib */,
+			);
+			name = "Existing Orders";
+			sourceTree = "<group>";
+		};
+		94D11AAD1AE6E84000D83B51 /* Customize Restaurant Item */ = {
+			isa = PBXGroup;
+			children = (
+				949661931ABB09BD0030661A /* CustomizeRestaurantItemViewController.h */,
+				949661941ABB09BD0030661A /* CustomizeRestaurantItemViewController.m */,
+				949661951ABB09BD0030661A /* CustomizeRestaurantItemViewController.xib */,
+			);
+			name = "Customize Restaurant Item";
+			sourceTree = "<group>";
+		};
+		94D11AAE1AE6E86400D83B51 /* Choose Menu Items */ = {
+			isa = PBXGroup;
+			children = (
+				94739D0F1ABA343300406819 /* ChooseMenuItemsViewController.h */,
+				94739D101ABA343300406819 /* ChooseMenuItemsViewController.m */,
+				94739D111ABA343300406819 /* ChooseMenuItemsViewController.xib */,
+			);
+			name = "Choose Menu Items";
+			sourceTree = "<group>";
+		};
+		94D11AAF1AE6E87400D83B51 /* Choose Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				94A128031AB4C337005FC639 /* ChooseRestaurantViewController.h */,
+				94A128041AB4C337005FC639 /* ChooseRestaurantViewController.m */,
+				94A128051AB4C337005FC639 /* ChooseRestaurantViewController.xib */,
+			);
+			name = "Choose Restaurant";
+			sourceTree = "<group>";
+		};
+		94D11AB01AE6E88200D83B51 /* Choose Address */ = {
+			isa = PBXGroup;
+			children = (
+				94A1280A1AB53CFB005FC639 /* ChooseAddressViewController.h */,
+				94A1280B1AB53CFB005FC639 /* ChooseAddressViewController.m */,
+				94A1280C1AB53CFB005FC639 /* ChooseAddressViewController.xib */,
+			);
+			name = "Choose Address";
+			sourceTree = "<group>";
+		};
+		94D11AB11AE6E88F00D83B51 /* Restaurant Item */ = {
+			isa = PBXGroup;
+			children = (
+				94739D171ABA41B000406819 /* RestaurantItemTableViewCell.h */,
+				94739D181ABA41B100406819 /* RestaurantItemTableViewCell.m */,
+				94739D191ABA41B100406819 /* RestaurantItemTableViewCell.xib */,
+			);
+			name = "Restaurant Item";
+			sourceTree = "<group>";
+		};
+		94D11AB21AE6E89D00D83B51 /* Existing Orders */ = {
+			isa = PBXGroup;
+			children = (
+				9411974A1AC899770002FDEE /* OrdersTableViewCell.h */,
+				9411974B1AC899770002FDEE /* OrdersTableViewCell.m */,
+				9411974C1AC899770002FDEE /* OrdersTableViewCell.xib */,
+			);
+			name = "Existing Orders";
+			sourceTree = "<group>";
+		};
+		94D11AB31AE6E8B200D83B51 /* Existing Account */ = {
+			isa = PBXGroup;
+			children = (
 				9443CCE81AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.h */,
 				9443CCE91AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.m */,
 				9443CCEA1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.xib */,
+			);
+			name = "Existing Account";
+			sourceTree = "<group>";
+		};
+		94D11AB41AE6E8BC00D83B51 /* New Account */ = {
+			isa = PBXGroup;
+			children = (
 				947582381A9C130B00487720 /* LogInViewController.h */,
 				947582391A9C130B00487720 /* LogInViewController.m */,
 				9475823A1A9C130B00487720 /* LogInViewController.xib */,
 			);
-			name = "Login Files";
+			name = "New Account";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
