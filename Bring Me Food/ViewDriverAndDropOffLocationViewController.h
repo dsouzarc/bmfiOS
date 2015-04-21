@@ -6,12 +6,11 @@
 //  Copyright (c) 2015 Ryan D'souza. All rights reserved.
 //
 
-#import "ViewController.h"
 #import "Order.h"
 #import "PQFCirclesInTriangle.h"
 #import <MapKit/MapKit.h>
 
-@interface ViewDriverAndDropOffLocationViewController : ViewController
+@interface ViewDriverAndDropOffLocationViewController : UIViewController
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil order:(Order*)order;
 

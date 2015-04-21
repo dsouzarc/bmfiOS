@@ -39,8 +39,6 @@
 		94739D1B1ABA41B100406819 /* RestaurantItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94739D191ABA41B100406819 /* RestaurantItemTableViewCell.xib */; };
 		947582151A9C126300487720 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 947582141A9C126300487720 /* main.m */; };
 		947582181A9C126300487720 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 947582171A9C126300487720 /* AppDelegate.m */; };
-		9475821B1A9C126300487720 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475821A1A9C126300487720 /* ViewController.m */; };
-		9475821E1A9C126300487720 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9475821C1A9C126300487720 /* Main.storyboard */; };
 		947582201A9C126300487720 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9475821F1A9C126300487720 /* Images.xcassets */; };
 		947582231A9C126300487720 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947582211A9C126300487720 /* LaunchScreen.xib */; };
 		9475822F1A9C126300487720 /* Bring_Me_FoodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475822E1A9C126300487720 /* Bring_Me_FoodTests.m */; };
@@ -148,9 +146,6 @@
 		947582141A9C126300487720 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		947582161A9C126300487720 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		947582171A9C126300487720 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		947582191A9C126300487720 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9475821A1A9C126300487720 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		9475821D1A9C126300487720 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9475821F1A9C126300487720 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		947582221A9C126300487720 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		947582281A9C126300487720 /* Bring Me FoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bring Me FoodTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -362,24 +357,15 @@
 		947582111A9C126300487720 /* Bring Me Food */ = {
 			isa = PBXGroup;
 			children = (
-				947BA3841ACF26650005D763 /* ViewDriverAndDropOffLocationViewController.h */,
-				947BA3851ACF26650005D763 /* ViewDriverAndDropOffLocationViewController.m */,
-				947BA3861ACF26650005D763 /* ViewDriverAndDropOffLocationViewController.xib */,
-				947BA37D1ACDB4AE0005D763 /* ViewOrderDetailsViewController.h */,
-				947BA37E1ACDB4AE0005D763 /* ViewOrderDetailsViewController.m */,
-				947BA37F1ACDB4AE0005D763 /* ViewOrderDetailsViewController.xib */,
 				94D11AAB1AE6E82500D83B51 /* Create Order */,
 				94D11AAC1AE6E83400D83B51 /* Existing Orders */,
 				94739D151ABA346200406819 /* Choose ViewControllers */,
 				947BA37C1ACDB4570005D763 /* Table View Cells */,
-				94739D161ABA349500406819 /* Custom Objects */,
 				947582161A9C126300487720 /* AppDelegate.h */,
 				947582171A9C126300487720 /* AppDelegate.m */,
 				94A128091AB53A00005FC639 /* Login Files */,
-				947582191A9C126300487720 /* ViewController.h */,
-				9475821A1A9C126300487720 /* ViewController.m */,
+				94739D161ABA349500406819 /* Custom Objects */,
 				9430E89E1AB3A3A40038738F /* ApiConfigurations.plist */,
-				9475821C1A9C126300487720 /* Main.storyboard */,
 				9475821F1A9C126300487720 /* Images.xcassets */,
 				947582211A9C126300487720 /* LaunchScreen.xib */,
 				946068BA1A9D18DE006664A2 /* Misc Icons */,
@@ -505,9 +491,9 @@
 		94D11AAC1AE6E83400D83B51 /* Existing Orders */ = {
 			isa = PBXGroup;
 			children = (
-				9456EDB41AA2A9CC003D167E /* ExistingOrdersViewController.h */,
-				9456EDB51AA2A9CC003D167E /* ExistingOrdersViewController.m */,
-				9456EDB61AA2A9CC003D167E /* ExistingOrdersViewController.xib */,
+				94D11AB51AE70A0000D83B51 /* All Existing Orders TableView */,
+				94D11AB61AE70A0F00D83B51 /* Order Details */,
+				94D11AB71AE70A1B00D83B51 /* Locations on Map */,
 			);
 			name = "Existing Orders";
 			sourceTree = "<group>";
@@ -590,6 +576,36 @@
 				9475823A1A9C130B00487720 /* LogInViewController.xib */,
 			);
 			name = "New Account";
+			sourceTree = "<group>";
+		};
+		94D11AB51AE70A0000D83B51 /* All Existing Orders TableView */ = {
+			isa = PBXGroup;
+			children = (
+				9456EDB41AA2A9CC003D167E /* ExistingOrdersViewController.h */,
+				9456EDB51AA2A9CC003D167E /* ExistingOrdersViewController.m */,
+				9456EDB61AA2A9CC003D167E /* ExistingOrdersViewController.xib */,
+			);
+			name = "All Existing Orders TableView";
+			sourceTree = "<group>";
+		};
+		94D11AB61AE70A0F00D83B51 /* Order Details */ = {
+			isa = PBXGroup;
+			children = (
+				947BA37D1ACDB4AE0005D763 /* ViewOrderDetailsViewController.h */,
+				947BA37E1ACDB4AE0005D763 /* ViewOrderDetailsViewController.m */,
+				947BA37F1ACDB4AE0005D763 /* ViewOrderDetailsViewController.xib */,
+			);
+			name = "Order Details";
+			sourceTree = "<group>";
+		};
+		94D11AB71AE70A1B00D83B51 /* Locations on Map */ = {
+			isa = PBXGroup;
+			children = (
+				947BA3841ACF26650005D763 /* ViewDriverAndDropOffLocationViewController.h */,
+				947BA3851ACF26650005D763 /* ViewDriverAndDropOffLocationViewController.m */,
+				947BA3861ACF26650005D763 /* ViewDriverAndDropOffLocationViewController.xib */,
+			);
+			name = "Locations on Map";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -685,7 +701,6 @@
 				94A1280E1AB53CFB005FC639 /* ChooseAddressViewController.xib in Resources */,
 				949661971ABB09BD0030661A /* CustomizeRestaurantItemViewController.xib in Resources */,
 				9411974E1AC899770002FDEE /* OrdersTableViewCell.xib in Resources */,
-				9475821E1A9C126300487720 /* Main.storyboard in Resources */,
 				946068B61A9D13A0006664A2 /* phone1-50.png in Resources */,
 				9443CCF01AA0F23600C5CC70 /* user_dark_male4-50.png in Resources */,
 				947BA3811ACDB4AE0005D763 /* ViewOrderDetailsViewController.xib in Resources */,
@@ -722,7 +737,6 @@
 				9475845B1A9CFDE700487720 /* UIColor+CIELAB.m in Sources */,
 				9411974D1AC899770002FDEE /* OrdersTableViewCell.m in Sources */,
 				9408CBB81AE069D2000AC589 /* CustomIOSAlertView.m in Sources */,
-				9475821B1A9C126300487720 /* ViewController.m in Sources */,
 				9475845A1A9CFDE700487720 /* UIColor+Chameleon.m in Sources */,
 				947584581A9CFDE700487720 /* ChameleonStatusBar.m in Sources */,
 				9475845C1A9CFDE700487720 /* UIViewController+Chameleon.m in Sources */,
@@ -767,14 +781,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9475821C1A9C126300487720 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9475821D1A9C126300487720 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		947582211A9C126300487720 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
