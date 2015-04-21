@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "ViewDriverAndDropOffLocationViewController.h"
+#import "RestaurantItemTableViewCell.h"
+#import "RestaurantItem.h"
 #import "Order.h"
 
 @interface ViewOrderDetailsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>

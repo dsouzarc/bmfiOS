@@ -7,8 +7,6 @@
 //
 
 #import "ViewOrderDetailsViewController.h"
-#import "RestaurantItemTableViewCell.h"
-#import "RestaurantItem.h"
 
 @interface ViewOrderDetailsViewController ()
 
@@ -26,6 +24,8 @@
 @property (strong, nonatomic) IBOutlet UITextView *additionalDetails;
 
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *allUILabels;
+
+@property (strong, nonatomic) ViewDriverAndDropOffLocationViewController *mapViewController;
 
 @property (nonatomic, strong) Order *order;
 
@@ -45,6 +45,11 @@ static NSString *orderItemIdentifier = @"menuItemCell";
     
     if(self) {
         self.order = order;
+        
+        //Initialize only if the order has been claimed
+        if(self.order.orderStatus != 0) {
+            self.mapViewController = [[ViewDriverAndDropOffLocationViewController alloc] initWithNibName:@"ViewDriverAndDropOffLocationViewController" bundle:[NSBundle mainBundle] order:self.order];
+        }
     }
     
     return self;
@@ -54,9 +59,10 @@ static NSString *orderItemIdentifier = @"menuItemCell";
     [super viewDidLoad];
     
     [self.myItemsTableView registerNib:[UINib nibWithNibName:@"RestaurantItemTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:orderItemIdentifier];
+    self.myItemsTableView.allowsSelection = NO;
     
     self.orderStatus.text = [NSString stringWithFormat:@"Status: %@", self.order.statusToString];
-    self.orderStatus.textColor = self.order.
+    self.orderStatus.textColor = self.order.getOrderStatusColor;
     
     self.myDeliveryTime.text = [NSString stringWithFormat:@"Time To Be Delivered At: %@", [self getNiceDate:self.order.timeToBeDeliveredAt]];
     self.myDeliveryTime.adjustsFontSizeToFitWidth = YES;
@@ -74,10 +80,59 @@ static NSString *orderItemIdentifier = @"menuItemCell";
         self.driverLocationOnMapButton.enabled = NO;
     }
     else {
+        self.estimatedDeliveryTime.text = [NSString stringWithFormat:@"Estimated Delivery Time: %@", [self getNiceDate:self.order.estimatedDeliveryTime]];
+        self.estimatedDeliveryTime.adjustsFontSizeToFitWidth = YES;
         
+        self.driverNamed.text = [NSString stringWithFormat:@"Driver Name: %@", self.order.driverName];
+        [self.driverPhone setTitle:[NSString stringWithFormat:@"Call Driver: %@", self.order.driverPhoneNumber] forState:UIControlStateNormal];
     }
-
 }
+
+- (NSString*) getNiceDate:(NSDate*)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"HH:mm"];
+    
+    NSString *time = [dateFormatter stringFromDate:date];
+    
+    //If it is today, just say
+    BOOL isToday = [[NSCalendar currentCalendar] isDateInToday:date];
+    
+    
+    if(isToday) {
+        return [NSString stringWithFormat:@"Today @: %@", time];
+    }
+    else {
+        [dateFormatter setDateFormat:@"MM/dd"];
+        return [NSString stringWithFormat:@"%@ on %@", time, [dateFormatter stringFromDate:date]];
+    }
+}
+
+- (IBAction)callDriver:(id)sender {
+    NSURL *callPhone = [NSURL URLWithString:[NSString stringWithFormat:@"telPrompt:%@", self.order.driverPhoneNumber]];
+    
+    if([[UIApplication sharedApplication] canOpenURL:callPhone]) {
+        [[UIApplication sharedApplication] openURL:callPhone];
+    }
+    else {
+        UIAlertView *errorDialog = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Sorry, but we were unable to open the phone app" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [errorDialog show];
+    }
+}
+
+- (IBAction)showDriverLocationOnMap:(id)sender {
+    [self setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    [self presentViewController:self.mapViewController animated:YES completion:nil];
+}
+
+- (IBAction)goBack:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+/****************************/
+//    TABLEVIEW DELEGATES
+/****************************/
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -106,34 +161,4 @@ static NSString *orderItemIdentifier = @"menuItemCell";
     return 1;
 }
 
-- (NSString*) getNiceDate:(NSDate*)date
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"HH:mm"];
-    
-    NSString *time = [dateFormatter stringFromDate:date];
-    
-    //If it is today, just say
-    BOOL isToday = [[NSCalendar currentCalendar] isDateInToday:date];
-    
-    
-    if(isToday) {
-        return [NSString stringWithFormat:@"Today @: %@", time];
-    }
-    else {
-        [dateFormatter setDateFormat:@"MM/dd"];
-        
-        return [NSString stringWithFormat:@"%@ on %@", time, [dateFormatter stringFromDate:date]];
-    }
-}
-
-- (IBAction)callDriver:(id)sender {
-}
-
-- (IBAction)showDriverLocationOnMap:(id)sender {
-}
-
-- (IBAction)goBack:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 @end
