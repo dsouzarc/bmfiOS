@@ -16,7 +16,7 @@
 @property (nonatomic, strong) NSString *ordererName;
 @property (nonatomic, strong) NSString *ordererPhoneNumber;
 
-@property (nonatomic, strong) PFObject *deliveryAddress;
+@property (nonatomic, strong) PFGeoPoint *deliveryAddress;
 @property (nonatomic, strong) NSString *deliveryAddressString;
 @property (nonatomic, strong) NSString *additionalDetails;
 
