@@ -25,6 +25,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *orderCost;
 @property (strong, nonatomic) IBOutlet UITextView *additionalDetails;
 
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *allUILabels;
+
 @property (nonatomic, strong) Order *order;
 
 - (IBAction)callDriver:(id)sender;
@@ -53,20 +55,28 @@ static NSString *orderItemIdentifier = @"menuItemCell";
     
     [self.myItemsTableView registerNib:[UINib nibWithNibName:@"RestaurantItemTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:orderItemIdentifier];
     
-    self.orderStatus.text = self.order.statusToString;
+    self.orderStatus.text = [NSString stringWithFormat:@"Status: %@", self.order.statusToString];
+    self.orderStatus.textColor = self.order.
+    
     self.myDeliveryTime.text = [NSString stringWithFormat:@"Time To Be Delivered At: %@", [self getNiceDate:self.order.timeToBeDeliveredAt]];
-    self.myPhoneNumber.text = self.order.ordererPhoneNumber;
-    self.deliveryAddress.text = self.order.deliveryAddressString;
-    self.restaurantName.text = self.order.restaurantName;
-    self.orderCost.text = self.order.orderCost;
-    self.additionalDetails.text = self.order.additionalDetails;
+    self.myDeliveryTime.adjustsFontSizeToFitWidth = YES;
+    self.myPhoneNumber.text = [NSString stringWithFormat:@"My Phone #: %@", self.order.ordererPhoneNumber];
+    self.deliveryAddress.text = [NSString stringWithFormat:@"Delivery Address: %@", self.order.deliveryAddressString];
+    self.restaurantName.text = [NSString stringWithFormat:@"Restaurant Name: %@", self.order.restaurantName];
+    self.orderCost.text = [NSString stringWithFormat:@"Order Cost: %@", self.order.orderCost];
+    self.additionalDetails.text = [NSString stringWithFormat:@"Additional Details: %@", self.order.additionalDetails];
     
     //UNCLAIMED
     if(self.order.orderStatus == 0) {
         self.estimatedDeliveryTime.text = @"Estimated Delivery Time: N/A";
+        self.driverNamed.text = @"Driver Name: N/A";
+        self.driverPhone.enabled = NO;
+        self.driverLocationOnMapButton.enabled = NO;
+    }
+    else {
         
     }
-    
+
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -111,16 +121,10 @@ static NSString *orderItemIdentifier = @"menuItemCell";
         return [NSString stringWithFormat:@"Today @: %@", time];
     }
     else {
-        [dateFormatter setDateFormat:@"dd/MM"];
+        [dateFormatter setDateFormat:@"MM/dd"];
         
         return [NSString stringWithFormat:@"%@ on %@", time, [dateFormatter stringFromDate:date]];
     }
-}
-
-- (IBAction)backToExistingOrders:(id)sender {
-    [self setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-    [self dismissViewControllerAnimated:YES completion:^(void){}];
-    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (IBAction)callDriver:(id)sender {
@@ -130,5 +134,6 @@ static NSString *orderItemIdentifier = @"menuItemCell";
 }
 
 - (IBAction)goBack:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
