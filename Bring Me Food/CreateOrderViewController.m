@@ -283,7 +283,9 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
                 //Show the chooser
                 self.chooseRestaurant = [[ChooseRestaurantViewController alloc] initWithNibName:@"ChooseRestaurantViewController" bundle:[NSBundle mainBundle] restaurants:self.allRestaurants];
                 self.chooseRestaurant.delegate = self;
-                [self.chooseRestaurant showInView:self.view shouldAnimate:YES];
+                self.modalPresentationStyle = UIModalPresentationPopover;
+                [self presentViewController:self.chooseRestaurant animated:YES completion:nil];
+                //[self.chooseRestaurant showInView:self.view shouldAnimate:YES];
                 
                 [self.loadingBouncingBalls hide];
             }
@@ -346,6 +348,9 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
     //Delegate from "ChooseRestaurantViewController"
     self.chosenRestaurant = chosenRestaurant;
     self.restaurantNameLabel.text = chosenRestaurant;
+    
+    [self.chosenMenuItems removeAllObjects];
+    [self.chosenItemsTableView reloadData];
 }
 
 - (IBAction)cancelNewOrder:(id)sender {

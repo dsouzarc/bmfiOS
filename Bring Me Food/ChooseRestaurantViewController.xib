@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseRestaurantViewController">
@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TRk-VE-g11">
-                    <rect key="frame" x="8" y="8" width="359" height="651"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="k2D-ft-xaC"/>
@@ -26,12 +26,10 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="TRk-VE-g11" secondAttribute="centerY" id="8n7-HU-Hbf"/>
-                <constraint firstItem="TRk-VE-g11" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="HSl-qn-ymP"/>
-                <constraint firstAttribute="trailing" secondItem="TRk-VE-g11" secondAttribute="trailing" constant="8" id="Vhh-PN-aV4"/>
-                <constraint firstItem="TRk-VE-g11" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="iHP-Gf-a14"/>
-                <constraint firstAttribute="bottom" secondItem="TRk-VE-g11" secondAttribute="bottom" constant="8" id="qyM-24-xZa"/>
-                <constraint firstAttribute="centerX" secondItem="TRk-VE-g11" secondAttribute="centerX" id="w2N-jE-FFm"/>
+                <constraint firstItem="TRk-VE-g11" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6Oh-Sg-BHp"/>
+                <constraint firstItem="TRk-VE-g11" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8ZX-uO-k3a"/>
+                <constraint firstAttribute="bottom" secondItem="TRk-VE-g11" secondAttribute="bottom" id="Mhg-ca-5xy"/>
+                <constraint firstAttribute="trailing" secondItem="TRk-VE-g11" secondAttribute="trailing" id="nzb-aU-y46"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="245.5" y="305.5"/>

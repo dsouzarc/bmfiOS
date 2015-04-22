@@ -46,7 +46,9 @@
     //Tell CreateOrderViewController which Restaurant was chosen
     [self.delegate chooseRestaurantViewController:self didFinishChoosing:chosenRestaurant];
     
-    [self removeAnimate];
+    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self removeAnimate];
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
