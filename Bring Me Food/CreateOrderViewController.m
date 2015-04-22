@@ -303,8 +303,8 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
                                                                                  bundle:[NSBundle mainBundle]
                                                                             restaurants:self.allRestaurants];
         self.chooseRestaurant.delegate = self;
-        [self.chooseRestaurant showInView:self.view shouldAnimate:YES];
-        
+        self.modalPresentationStyle = UIModalPresentationPopover;
+        [self presentViewController:self.chooseRestaurant animated:YES completion:nil];
         [self.loadingBouncingBalls hide];
     }
 }
@@ -509,8 +509,14 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
 //    TEXTVIEW DELEGATES
 /****************************/
 
+static NSString *additionalDetails = @"Additional Details";
+
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
+    if([self.additionalDetails.text isEqualToString:additionalDetails]) {
+        self.additionalDetails.text = @"";
+    }
+    
     //Add some glow effect
     textView.layer.cornerRadius=8.0f;
     textView.layer.masksToBounds=YES;
@@ -529,6 +535,10 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
     
     if(textView == self.additionalDetails) {
         [self animateText:textView up:NO];
+    }
+    
+    if(self.additionalDetails.text.length == 0) {
+        self.additionalDetails.text = additionalDetails;
     }
 }
 
