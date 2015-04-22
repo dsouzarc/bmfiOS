@@ -19,6 +19,6 @@
 #import "PQFBouncingBalls.h"
 #import "UICKeyChainStore.h"
 
-@interface CreateOrderViewController : UIViewController <ChooseRestaurantNameDelegate, ChooseAddressDelegate, ChooseMenuItemsDelegate, UITableViewDataSource, UITableViewDelegate, CustomizeRestaurantItemDelegate, UITextViewDelegate, UIGestureRecognizerDelegate>
+@interface CreateOrderViewController : UIViewController <ChooseRestaurantNameDelegate, ChooseAddressDelegate, ChooseMenuItemsDelegate, UITableViewDataSource, UITableViewDelegate, CustomizeRestaurantItemDelegate, UITextViewDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate>
 
 @end

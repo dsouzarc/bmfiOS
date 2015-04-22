@@ -43,8 +43,12 @@
 @property (nonatomic, strong) NSString *chosenRestaurant;
 @property (nonatomic, strong) NSMutableArray *chosenMenuItems;
 
+@property double deliveryCost;
+
 @property (nonatomic, strong) NSIndexPath *selectedRow;
 @property NSInteger chosenMenuItemToCustomizeIndex;
+
+@property (strong, nonatomic) UIAlertView *confirmDeliveryCostAlert;
 
 @end
 
@@ -125,9 +129,38 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
         NSLog(@"Name problem");
     }
     
+    [self.loadingBouncingBalls show];
     
-    //TODO: CONFIRMATION + CALCULATE ORDER COST WITH SHIPPING + DELETE
+    NSDictionary *params = @{@"restaurantName": self.restaurantNameLabel.text,
+                             @"myLocation": self.chosenAddress,
+                             @"numberOfItems": [NSNumber numberWithInt:self.chosenMenuItems.count]};
     
+    
+    [PFCloud callFunctionInBackground:@"deliveryCost" withParameters:params block:^(NSDictionary *results, NSError *error) {
+        if(error) {
+            self.deliveryCost = 15.00;
+        }
+        else {
+            self.deliveryCost = [results[@"cost"] doubleValue];
+        }
+        
+        NSString *message = [NSString stringWithFormat:@"The delivery cost is $%.2f. Would you like to proceed with this order?", self.deliveryCost];
+        
+        self.confirmDeliveryCostAlert = [[UIAlertView alloc] initWithTitle:@"Delivery Cost" message:message delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Proceed", nil];
+        [self.confirmDeliveryCostAlert show];
+        [self.loadingBouncingBalls hide];
+    }];
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(alertView == self.confirmDeliveryCostAlert) {
+        NSLog(@"Confirmed");
+    }
+}
+
+- (void) placeOrder
+{
     NSDictionary *orderInformation = @{@"restaurantName": self.chosenRestaurant,
                                        @"ordererName": self.myNameTextField.text,
                                        @"ordererPhoneNumber": self.myPhoneTextField.text,
@@ -149,9 +182,7 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
             [self showAlert:@"Error placing order" alertMessage:@"Sorry, something went wrong while placing your order" buttonName:@"Try again"];
         }
     }];
-    
     NSLog(@"GUCCI");
-    
 }
 
 - (void) customizedRestaurantItemViewController:(CustomizeRestaurantItemViewController *)customizeRestaurantItemViewController customizedMenuItem:(RestaurantItem *)customizedMenuItem
@@ -534,7 +565,5 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
 {
     [self.view endEditing:YES];
 }
-
-
 
 @end
