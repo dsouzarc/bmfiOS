@@ -34,6 +34,7 @@
 @property (nonatomic, strong) ChooseMenuItemsViewController *chooseMenuItems;
 @property (nonatomic, strong) CustomizeRestaurantItemViewController *customizeMenuItemViewController;
 
+@property double orderCost;
 //Data from Parse
 @property (nonatomic, strong) NSArray *allRestaurants;
 @property (nonatomic, strong) NSMutableArray *allMenuItems;
@@ -142,6 +143,7 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
         }
         else {
             self.deliveryCost = [results[@"cost"] doubleValue];
+            self.deliveryCost += self.orderCost;
         }
         
         NSString *message = [NSString stringWithFormat:@"The delivery cost is $%.2f. Would you like to proceed with this order?", self.deliveryCost];
@@ -156,6 +158,7 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
 {
     if(alertView == self.confirmDeliveryCostAlert) {
         NSLog(@"Confirmed");
+        [self placeOrder];
     }
 }
 
@@ -384,6 +387,8 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
                 NSLog(@"ERROR PARSING ITEM COST: %@", item.description);
             }
         }
+        
+        self.orderCost = estimatedCost;
         
         self.orderCostLabel.text = [NSString stringWithFormat:@"$%.2f", estimatedCost];
     }

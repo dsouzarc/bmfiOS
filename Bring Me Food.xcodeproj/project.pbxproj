@@ -74,6 +74,7 @@
 		94A128071AB4C337005FC639 /* ChooseRestaurantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A128051AB4C337005FC639 /* ChooseRestaurantViewController.xib */; };
 		94A1280D1AB53CFB005FC639 /* ChooseAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A1280B1AB53CFB005FC639 /* ChooseAddressViewController.m */; };
 		94A1280E1AB53CFB005FC639 /* ChooseAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A1280C1AB53CFB005FC639 /* ChooseAddressViewController.xib */; };
+		94A538B81AE8510400CD9560 /* Check_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A538B71AE8510400CD9560 /* Check_mark.png */; };
 		94D11AC41AE70D2C00D83B51 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D11ABE1AE70D2C00D83B51 /* Bolts.framework */; };
 		94D11AC51AE70D2C00D83B51 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D11ABF1AE70D2C00D83B51 /* Parse.framework */; };
 		94D11AC61AE70D2C00D83B51 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D11AC01AE70D2C00D83B51 /* ParseCrashReporting.framework */; };
@@ -198,6 +199,7 @@
 		94A1280A1AB53CFB005FC639 /* ChooseAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAddressViewController.h; sourceTree = "<group>"; };
 		94A1280B1AB53CFB005FC639 /* ChooseAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAddressViewController.m; sourceTree = "<group>"; };
 		94A1280C1AB53CFB005FC639 /* ChooseAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseAddressViewController.xib; sourceTree = "<group>"; };
+		94A538B71AE8510400CD9560 /* Check_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Check_mark.png; sourceTree = "<group>"; };
 		94D11ABE1AE70D2C00D83B51 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		94D11ABF1AE70D2C00D83B51 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		94D11AC01AE70D2C00D83B51 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 		94D11AAB1AE6E82500D83B51 /* Create Order */ = {
 			isa = PBXGroup;
 			children = (
+				94A538B71AE8510400CD9560 /* Check_mark.png */,
 				94591EDB1AB26A6800D62C0A /* CreateOrderViewController.h */,
 				94591EDC1AB26A6800D62C0A /* CreateOrderViewController.m */,
 				94591EDD1AB26A6800D62C0A /* CreateOrderViewController.xib */,
@@ -701,6 +704,7 @@
 				94A128071AB4C337005FC639 /* ChooseRestaurantViewController.xib in Resources */,
 				94739D1B1ABA41B100406819 /* RestaurantItemTableViewCell.xib in Resources */,
 				9475823C1A9C130B00487720 /* LogInViewController.xib in Resources */,
+				94A538B81AE8510400CD9560 /* Check_mark.png in Resources */,
 				94591EDF1AB26A6800D62C0A /* CreateOrderViewController.xib in Resources */,
 				94A1280E1AB53CFB005FC639 /* ChooseAddressViewController.xib in Resources */,
 				949661971ABB09BD0030661A /* CustomizeRestaurantItemViewController.xib in Resources */,
