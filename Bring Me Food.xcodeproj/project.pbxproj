@@ -75,6 +75,8 @@
 		94A1280D1AB53CFB005FC639 /* ChooseAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A1280B1AB53CFB005FC639 /* ChooseAddressViewController.m */; };
 		94A1280E1AB53CFB005FC639 /* ChooseAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A1280C1AB53CFB005FC639 /* ChooseAddressViewController.xib */; };
 		94A538B81AE8510400CD9560 /* Check_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A538B71AE8510400CD9560 /* Check_mark.png */; };
+		94AFC8AF1AF1056C0000D4F5 /* LatestOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AFC8AD1AF1056C0000D4F5 /* LatestOrderViewController.m */; };
+		94AFC8B01AF1056C0000D4F5 /* LatestOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AFC8AE1AF1056C0000D4F5 /* LatestOrderViewController.xib */; };
 		94D11AC41AE70D2C00D83B51 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D11ABE1AE70D2C00D83B51 /* Bolts.framework */; };
 		94D11AC51AE70D2C00D83B51 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D11ABF1AE70D2C00D83B51 /* Parse.framework */; };
 		94D11AC61AE70D2C00D83B51 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D11AC01AE70D2C00D83B51 /* ParseCrashReporting.framework */; };
@@ -200,6 +202,9 @@
 		94A1280B1AB53CFB005FC639 /* ChooseAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAddressViewController.m; sourceTree = "<group>"; };
 		94A1280C1AB53CFB005FC639 /* ChooseAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseAddressViewController.xib; sourceTree = "<group>"; };
 		94A538B71AE8510400CD9560 /* Check_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Check_mark.png; sourceTree = "<group>"; };
+		94AFC8AC1AF1056C0000D4F5 /* LatestOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LatestOrderViewController.h; sourceTree = "<group>"; };
+		94AFC8AD1AF1056C0000D4F5 /* LatestOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LatestOrderViewController.m; sourceTree = "<group>"; };
+		94AFC8AE1AF1056C0000D4F5 /* LatestOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LatestOrderViewController.xib; sourceTree = "<group>"; };
 		94D11ABE1AE70D2C00D83B51 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		94D11ABF1AE70D2C00D83B51 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		94D11AC01AE70D2C00D83B51 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -376,6 +381,9 @@
 				946068BA1A9D18DE006664A2 /* Misc Icons */,
 				9475844A1A9CDE7A00487720 /* 3rd Party Libraries */,
 				947582121A9C126300487720 /* Supporting Files */,
+				94AFC8AC1AF1056C0000D4F5 /* LatestOrderViewController.h */,
+				94AFC8AD1AF1056C0000D4F5 /* LatestOrderViewController.m */,
+				94AFC8AE1AF1056C0000D4F5 /* LatestOrderViewController.xib */,
 			);
 			path = "Bring Me Food";
 			sourceTree = "<group>";
@@ -704,6 +712,7 @@
 				94A128071AB4C337005FC639 /* ChooseRestaurantViewController.xib in Resources */,
 				94739D1B1ABA41B100406819 /* RestaurantItemTableViewCell.xib in Resources */,
 				9475823C1A9C130B00487720 /* LogInViewController.xib in Resources */,
+				94AFC8B01AF1056C0000D4F5 /* LatestOrderViewController.xib in Resources */,
 				94A538B81AE8510400CD9560 /* Check_mark.png in Resources */,
 				94591EDF1AB26A6800D62C0A /* CreateOrderViewController.xib in Resources */,
 				94A1280E1AB53CFB005FC639 /* ChooseAddressViewController.xib in Resources */,
@@ -766,6 +775,7 @@
 				9430E89C1AB3A0030038738F /* SPGooglePlacesAutocompleteUtilities.m in Sources */,
 				94591EDA1AB255E500D62C0A /* RestaurantItem.m in Sources */,
 				946068D01A9D55BC006664A2 /* PQFCirclesInTriangle.m in Sources */,
+				94AFC8AF1AF1056C0000D4F5 /* LatestOrderViewController.m in Sources */,
 				946068CF1A9D55BC006664A2 /* PQFBouncingBalls.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
