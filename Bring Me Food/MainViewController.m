@@ -10,6 +10,10 @@
 
 @interface MainViewController ()
 
+@property (strong, nonatomic) CreateOrderViewController *createOrderVC;
+@property (strong, nonatomic) LatestOrderViewController *latestOrderVC;
+@property (strong, nonatomic) ExistingOrdersViewController *existingOrderVC;
+
 @end
 
 @implementation MainViewController
@@ -24,14 +28,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if(self) {
+        self.createOrderVC = [[CreateOrderViewController alloc] initWithNibName:@"CreateOrderViewController" bundle:[NSBundle mainBundle]];
+        self.latestOrderVC = [[LatestOrderViewController alloc] initWithNibName:@"LatestOrderViewController" bundle:[NSBundle mainBundle]];
+        self.existingOrderVC = [[ExistingOrdersViewController alloc] initWithNibName:@"ExistingOrderViewController" bundle:[NSBundle mainBundle]];
+    }
+    
+    return self;
 }
-*/
 
 @end
