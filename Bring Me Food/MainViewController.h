@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExistingOrdersViewController.h"
+#import "CreateOrderViewController.h"
+#import "LatestOrderViewController.h"
 
 @interface MainViewController : UIViewController
 
