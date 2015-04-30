@@ -77,6 +77,8 @@
 		94A538B81AE8510400CD9560 /* Check_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A538B71AE8510400CD9560 /* Check_mark.png */; };
 		94AFC8AF1AF1056C0000D4F5 /* LatestOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AFC8AD1AF1056C0000D4F5 /* LatestOrderViewController.m */; };
 		94AFC8B01AF1056C0000D4F5 /* LatestOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AFC8AE1AF1056C0000D4F5 /* LatestOrderViewController.xib */; };
+		94AFC8B41AF2578D0000D4F5 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AFC8B21AF2578D0000D4F5 /* MainViewController.m */; };
+		94AFC8B51AF2578D0000D4F5 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AFC8B31AF2578D0000D4F5 /* MainViewController.xib */; };
 		94D11AC41AE70D2C00D83B51 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D11ABE1AE70D2C00D83B51 /* Bolts.framework */; };
 		94D11AC51AE70D2C00D83B51 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D11ABF1AE70D2C00D83B51 /* Parse.framework */; };
 		94D11AC61AE70D2C00D83B51 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D11AC01AE70D2C00D83B51 /* ParseCrashReporting.framework */; };
@@ -205,6 +207,9 @@
 		94AFC8AC1AF1056C0000D4F5 /* LatestOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LatestOrderViewController.h; sourceTree = "<group>"; };
 		94AFC8AD1AF1056C0000D4F5 /* LatestOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LatestOrderViewController.m; sourceTree = "<group>"; };
 		94AFC8AE1AF1056C0000D4F5 /* LatestOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LatestOrderViewController.xib; sourceTree = "<group>"; };
+		94AFC8B11AF2578D0000D4F5 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		94AFC8B21AF2578D0000D4F5 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		94AFC8B31AF2578D0000D4F5 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		94D11ABE1AE70D2C00D83B51 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		94D11ABF1AE70D2C00D83B51 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		94D11AC01AE70D2C00D83B51 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -367,6 +372,12 @@
 		947582111A9C126300487720 /* Bring Me Food */ = {
 			isa = PBXGroup;
 			children = (
+				94AFC8B11AF2578D0000D4F5 /* MainViewController.h */,
+				94AFC8B21AF2578D0000D4F5 /* MainViewController.m */,
+				94AFC8B31AF2578D0000D4F5 /* MainViewController.xib */,
+				94AFC8AC1AF1056C0000D4F5 /* LatestOrderViewController.h */,
+				94AFC8AD1AF1056C0000D4F5 /* LatestOrderViewController.m */,
+				94AFC8AE1AF1056C0000D4F5 /* LatestOrderViewController.xib */,
 				94D11AAB1AE6E82500D83B51 /* Create Order */,
 				94D11AAC1AE6E83400D83B51 /* Existing Orders */,
 				94739D151ABA346200406819 /* Choose ViewControllers */,
@@ -381,9 +392,6 @@
 				946068BA1A9D18DE006664A2 /* Misc Icons */,
 				9475844A1A9CDE7A00487720 /* 3rd Party Libraries */,
 				947582121A9C126300487720 /* Supporting Files */,
-				94AFC8AC1AF1056C0000D4F5 /* LatestOrderViewController.h */,
-				94AFC8AD1AF1056C0000D4F5 /* LatestOrderViewController.m */,
-				94AFC8AE1AF1056C0000D4F5 /* LatestOrderViewController.xib */,
 			);
 			path = "Bring Me Food";
 			sourceTree = "<group>";
@@ -724,6 +732,7 @@
 				9430E89F1AB3A3A40038738F /* ApiConfigurations.plist in Resources */,
 				947582231A9C126300487720 /* LaunchScreen.xib in Resources */,
 				947BA3881ACF26650005D763 /* ViewDriverAndDropOffLocationViewController.xib in Resources */,
+				94AFC8B51AF2578D0000D4F5 /* MainViewController.xib in Resources */,
 				946068B41A9D13A0006664A2 /* message-50.png in Resources */,
 				9443CCEC1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.xib in Resources */,
 				947582201A9C126300487720 /* Images.xcassets in Resources */,
@@ -767,6 +776,7 @@
 				9430E89B1AB3A0030038738F /* SPGooglePlacesAutocompleteQuery.m in Sources */,
 				9443CCEB1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.m in Sources */,
 				946068CE1A9D55BC006664A2 /* PQFBarsInCircle.m in Sources */,
+				94AFC8B41AF2578D0000D4F5 /* MainViewController.m in Sources */,
 				947582151A9C126300487720 /* main.m in Sources */,
 				94A128061AB4C337005FC639 /* ChooseRestaurantViewController.m in Sources */,
 				9456EDB71AA2A9CC003D167E /* ExistingOrdersViewController.m in Sources */,
