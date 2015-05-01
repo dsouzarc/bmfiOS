@@ -10,6 +10,8 @@
 
 @interface MainViewController ()
 
+@property (strong, nonatomic) UITabBarController *tabBarController;
+
 @property (strong, nonatomic) CreateOrderViewController *createOrderVC;
 @property (strong, nonatomic) LatestOrderViewController *latestOrderVC;
 @property (strong, nonatomic) ExistingOrdersViewController *existingOrderVC;
@@ -20,12 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.view.window.rootViewController = self.tabBarController;
 }
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,8 +31,16 @@
     
     if(self) {
         self.createOrderVC = [[CreateOrderViewController alloc] initWithNibName:@"CreateOrderViewController" bundle:[NSBundle mainBundle]];
+        self.createOrderVC.tabBarItem.title = @"Create Order";
+        
         self.latestOrderVC = [[LatestOrderViewController alloc] initWithNibName:@"LatestOrderViewController" bundle:[NSBundle mainBundle]];
+        self.latestOrderVC.tabBarItem.title = @"Last Order";
+        
         self.existingOrderVC = [[ExistingOrdersViewController alloc] initWithNibName:@"ExistingOrderViewController" bundle:[NSBundle mainBundle]];
+        self.existingOrderVC.tabBarItem.title = @"Recent Orders";
+        
+        NSArray *tabs = [NSArray arrayWithObjects:self.existingOrderVC, self.latestOrderVC, self.createOrderVC, nil];
+        self.tabBarController.viewControllers = tabs;
     }
     
     return self;
