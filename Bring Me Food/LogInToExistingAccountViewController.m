@@ -9,6 +9,7 @@
 #import <Parse/Parse.h>
 #import "LogInToExistingAccountViewController.h"
 #import "UICKeyChainStore.h"
+#import "MainViewController.h"
 #import "PQFBouncingBalls.h"
 #import "ExistingOrdersViewController.h"
 
@@ -102,11 +103,11 @@
                                                 }
                                             }];
                                             
-                                            ExistingOrdersViewController *existingOrders = [[ExistingOrdersViewController alloc] initWithNibName:@"ExistingOrdersViewController" bundle:nil];
-                                            existingOrders.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                                            MainViewController *mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:[NSBundle mainBundle]];
+                                            self.modalPresentationStyle = UIModalPresentationFullScreen;
                                             
                                             AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-                                            [appDelegate.window setRootViewController:existingOrders];
+                                            [appDelegate.window setRootViewController:mainViewController];
                                             [self closePopup:sender];
                                         }
                                         else {
