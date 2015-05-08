@@ -7,7 +7,7 @@
 //
 
 #import "ChooseRestaurantViewController.h"
-#import <Parse/Parse.h>
+
 
 @interface ChooseRestaurantViewController ()
 
