@@ -17,6 +17,7 @@
 
 @interface LogInViewController () <UITextFieldDelegate>
 
+@property (strong, nonatomic) IBOutlet UILabel *createAccountTitle;
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailAddressTextField;
@@ -50,7 +51,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.createAccountTitle.adjustsFontSizeToFitWidth = YES;
     self.phoneNumberTextField.delegate = self;
     self.userNameTextField.delegate = self;
     self.emailAddressTextField.delegate = self;
