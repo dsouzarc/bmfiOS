@@ -108,6 +108,7 @@
                                             
                                             AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
                                             [appDelegate.window setRootViewController:mainViewController];
+                                            [self presentViewController:mainViewController animated:YES completion:nil];
                                             [self closePopup:sender];
                                         }
                                         else {

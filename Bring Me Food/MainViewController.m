@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.window.rootViewController = self.tabBarController;
+    [self.view addSubview:self.tabBarController.view];
 }
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -30,16 +30,19 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if(self) {
+        
         self.createOrderVC = [[CreateOrderViewController alloc] initWithNibName:@"CreateOrderViewController" bundle:[NSBundle mainBundle]];
         self.createOrderVC.tabBarItem.title = @"Create Order";
         
         self.latestOrderVC = [[LatestOrderViewController alloc] initWithNibName:@"LatestOrderViewController" bundle:[NSBundle mainBundle]];
         self.latestOrderVC.tabBarItem.title = @"Last Order";
         
-        self.existingOrderVC = [[ExistingOrdersViewController alloc] initWithNibName:@"ExistingOrderViewController" bundle:[NSBundle mainBundle]];
+        self.existingOrderVC = [[ExistingOrdersViewController alloc] initWithNibName:@"ExistingOrdersViewController" bundle:[NSBundle mainBundle]];
         self.existingOrderVC.tabBarItem.title = @"Recent Orders";
-        
+
         NSArray *tabs = [NSArray arrayWithObjects:self.existingOrderVC, self.latestOrderVC, self.createOrderVC, nil];
+        
+        self.tabBarController = [[UITabBarController alloc] init];
         self.tabBarController.viewControllers = tabs;
     }
     
