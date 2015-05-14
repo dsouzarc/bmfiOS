@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) UITabBarController *tabBarController;
 
-@property (strong, nonatomic) CreateOrderViewController *createOrderVC;
+@property (strong, nonatomic) ChooseRestaurantViewController *chooseRestaurantVC;
 @property (strong, nonatomic) LatestOrderViewController *latestOrderVC;
 @property (strong, nonatomic) ExistingOrdersViewController *existingOrderVC;
 
@@ -31,8 +31,8 @@
     
     if(self) {
         
-        self.createOrderVC = [[CreateOrderViewController alloc] initWithNibName:@"CreateOrderViewController" bundle:[NSBundle mainBundle]];
-        self.createOrderVC.tabBarItem.title = @"Create Order";
+        self.chooseRestaurantVC = [[ChooseRestaurantViewController alloc] initWithNibName:@"ChooseRestaurantViewController" bundle:[NSBundle mainBundle]];
+        self.chooseRestaurantVC.tabBarItem.title = @"Create Order";
         
         self.latestOrderVC = [[LatestOrderViewController alloc] initWithNibName:@"LatestOrderViewController" bundle:[NSBundle mainBundle]];
         self.latestOrderVC.tabBarItem.title = @"Last Order";
@@ -40,7 +40,7 @@
         self.existingOrderVC = [[ExistingOrdersViewController alloc] initWithNibName:@"ExistingOrdersViewController" bundle:[NSBundle mainBundle]];
         self.existingOrderVC.tabBarItem.title = @"Recent Orders";
 
-        NSArray *tabs = [NSArray arrayWithObjects:self.existingOrderVC, self.latestOrderVC, self.createOrderVC, nil];
+        NSArray *tabs = [NSArray arrayWithObjects:self.existingOrderVC, self.latestOrderVC, self.chooseRestaurantVC, nil];
         
         self.tabBarController = [[UITabBarController alloc] init];
         self.tabBarController.viewControllers = tabs;

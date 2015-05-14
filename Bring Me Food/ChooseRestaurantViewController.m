@@ -8,11 +8,11 @@
 
 #import "ChooseRestaurantViewController.h"
 
-
 @interface ChooseRestaurantViewController ()
 
-@property (strong, nonatomic) NSArray *restaurants;
+@property (strong, nonatomic) NSMutableArray *restaurants;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) PQFBouncingBalls *loadingAnimation;
 
 @end
 
@@ -25,6 +25,33 @@
     return self;
 }
 
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    self.loadingAnimation = [[PQFBouncingBalls alloc] initLoaderOnView:self.view];
+    self.loadingAnimation.loaderColor = [UIColor blueColor];
+    
+    self.restaurants = [[NSMutableArray alloc] init];
+    
+    [self.loadingAnimation show];
+    
+    //Get
+    [PFCloud callFunctionInBackground:@"getRestaurants" withParameters:nil block:^(NSArray *response, NSError *error) {
+        if(!error) {
+    
+            //Cache it
+            [self.restaurants addObjectsFromArray:response];
+            [self.loadingAnimation hide];
+            [self.tableView reloadData];
+        }
+        else {
+            NSLog(@"ERROR\t%@", error.description);
+        }
+    }];
+
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -39,7 +66,7 @@
     return self.restaurants.count;
 }
 
-- (void) tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *chosenRestaurant = [self.restaurants objectAtIndex:indexPath.row];
     
