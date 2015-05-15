@@ -66,6 +66,21 @@
     tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReceived:)];
     [tapGesture setDelegate:self];
     [self.view addGestureRecognizer:tapGesture];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+        
+        //If we do not have a valid wifi connect
+        if(![self validInternetConnection]) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^void() {
+                UIAlertView *noInternetConnection = [[UIAlertView alloc]
+                                                     initWithTitle:@"No Internet Connection"
+                                                     message:@"Sorry, a valid Internet connection is needed to use Bring Me Food"
+                                                     delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [noInternetConnection show];
+            });
+        }
+    });
 }
 
 
@@ -230,6 +245,13 @@
     }
     
     return YES;
+}
+
+- (BOOL) validInternetConnection
+{
+    NSURL *url = [NSURL URLWithString:@"www.google.com/m"];
+    NSData *results = [NSData dataWithContentsOfURL:url];
+    return results;
 }
 
 /****************************/
