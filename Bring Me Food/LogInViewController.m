@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (weak, nonatomic) IBOutlet UILabel *signInLabel;
 
+@property (strong, nonatomic) UIAlertView *noInternetConnection;
+
 @property (strong, nonatomic) PQFCirclesInTriangle *loadingCircles;
 @property (strong, nonatomic) UICKeyChainStore *keyChain;
 
@@ -73,16 +75,23 @@
         if(![self validInternetConnection]) {
             
             dispatch_async(dispatch_get_main_queue(), ^void() {
-                UIAlertView *noInternetConnection = [[UIAlertView alloc]
+                self.noInternetConnection = [[UIAlertView alloc]
                                                      initWithTitle:@"No Internet Connection"
                                                      message:@"Sorry, a valid Internet connection is needed to use Bring Me Food"
                                                      delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                [noInternetConnection show];
+                [self.noInternetConnection show];
             });
         }
     });
 }
 
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(alertView == self.noInternetConnection) {
+        NSString *urlToWifiSettings = @"prefs:root=General&path=Wifi";
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlToWifiSettings]];
+    }
+}
 
 - (void)signInLabelClicked
 {
