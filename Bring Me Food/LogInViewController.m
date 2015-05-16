@@ -258,9 +258,8 @@
 
 - (BOOL) validInternetConnection
 {
-    NSURL *url = [NSURL URLWithString:@"www.google.com/m"];
-    NSData *results = [NSData dataWithContentsOfURL:url];
-    return results;
+    NSString *URL = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://www.google.com"]];
+    return (URL != NULL ) ? YES : NO;
 }
 
 /****************************/
