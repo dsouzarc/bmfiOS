@@ -235,7 +235,10 @@ static NSString* cellIdentifier = @"Cell";
     self.customizeMenuItemViewController = [[CustomizeRestaurantItemViewController alloc] initWithNibName:@"CustomizeRestaurantItemViewController" bundle:[NSBundle mainBundle] restaurantName:self.restaurantName menuItem:item];
     
     self.customizeMenuItemViewController.delegate = self;
-    [self.customizeMenuItemViewController showInView:self.view shouldAnimate:YES];
+    
+    //[self.customizeMenuItemViewController showInView:self.view shouldAnimate:YES];
+    self.modalPresentationStyle = UIModalPresentationPopover;
+    [self presentViewController:self.customizeMenuItemViewController animated:YES completion:nil];
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

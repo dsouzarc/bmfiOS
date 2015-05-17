@@ -182,7 +182,9 @@ static NSString *customPlaceHolder = @"Type your customized order details here";
 }
 
 - (IBAction)cancelAddingItem:(id)sender {
-    [self removeAnimate];
+    //[self removeAnimate];
+    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)addItemToOrder:(id)sender {
