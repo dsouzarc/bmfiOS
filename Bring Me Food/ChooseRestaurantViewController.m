@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic) NSMutableArray *restaurants;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) ChooseMenuItemsViewController *chooseMenuItemsVC;
 @property (strong, nonatomic) PQFBouncingBalls *loadingAnimation;
 
 @end
@@ -21,7 +23,7 @@
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil restaurants:(NSArray *)restaurants
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    self.restaurants = [[NSArray alloc] initWithArray:restaurants];
+    self.restaurants = [[NSMutableArray alloc] initWithArray:restaurants];
     return self;
 }
 
@@ -70,11 +72,15 @@
 {
     NSString *chosenRestaurant = [self.restaurants objectAtIndex:indexPath.row];
     
+    self.chooseMenuItemsVC = [[ChooseMenuItemsViewController alloc] initWithNibName:@"ChooseMenuItemsViewController" bundle:[NSBundle mainBundle] restaurantName:chosenRestaurant];
+    self.modalPresentationStyle = UIModalPresentationPopover;
+    [self presentViewController:self.chooseMenuItemsVC animated:YES completion:nil];
+    
     //Tell CreateOrderViewController which Restaurant was chosen
-    [self.delegate chooseRestaurantViewController:self didFinishChoosing:chosenRestaurant];
+    /*[self.delegate chooseRestaurantViewController:self didFinishChoosing:chosenRestaurant];
     
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];*/
     //[self removeAnimate];
 }
 

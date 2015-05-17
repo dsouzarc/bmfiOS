@@ -15,6 +15,7 @@
 @property (strong, nonatomic) ChooseRestaurantViewController *chooseRestaurantVC;
 @property (strong, nonatomic) LatestOrderViewController *latestOrderVC;
 @property (strong, nonatomic) ExistingOrdersViewController *existingOrderVC;
+@property (strong, nonatomic) IBOutlet UIView *mainView;
 
 @end
 
@@ -22,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view addSubview:self.tabBarController.view];
+    [self.mainView addSubview:self.tabBarController.view];
 }
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

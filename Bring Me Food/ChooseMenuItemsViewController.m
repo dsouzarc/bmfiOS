@@ -8,6 +8,8 @@
 
 #import "ChooseMenuItemsViewController.h"
 #import "RestaurantItem.h"
+#import <Parse/Parse.h>
+#import "PQFBouncingBalls.h"
 #import "RestaurantItemTableViewCell.h"
 
 @interface ChooseMenuItemsViewController ()
@@ -22,6 +24,8 @@
 @property (strong, nonatomic) NSArray *restaurantMenuItems;
 @property (strong, nonatomic) NSMutableArray *chosenItems;
 @property (strong, nonatomic) NSMutableArray *searchResults;
+
+@property (strong, nonatomic) PQFBouncingBalls *bouncingBalls;
 
 @property (strong, nonatomic) CustomizeRestaurantItemViewController *customizeMenuItemViewController;
 
@@ -45,6 +49,57 @@ static NSString* cellIdentifier = @"Cell";
     }
     
     return self;
+}
+
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil restaurantName:(NSString *)restaurantName
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    self.bouncingBalls = [[PQFBouncingBalls alloc] initLoaderOnView:self.view];
+    self.restaurantName = restaurantName;
+    
+    self.chosenItems = [[NSMutableArray alloc] init];
+    self.restaurantMenuItems = [[NSArray alloc] init];
+    self.searchResults = [[NSMutableArray alloc] init];
+    
+    [self updateMenuItems];
+    
+    return self;
+}
+
+- (void) updateMenuItems
+{
+    [self.bouncingBalls show];
+    
+    NSLog(@"We here");
+    
+    [PFCloud callFunctionInBackground:@"getMenuItems" withParameters:@{@"restaurantName": self.restaurantName} block:^(NSArray *results, NSError *error) {
+        
+        if(error) {
+            [[[UIAlertView alloc] initWithTitle:@"Uh oh" message:@"Sorry, something went wrong while fetching the menu" delegate:nil cancelButtonTitle:@"Try again" otherButtonTitles:nil, nil] show];
+            return;
+        }
+        
+        if(self.chosenItems == nil) {
+            self.chosenItems = [[NSMutableArray alloc] init];
+        }
+        
+        NSMutableArray *menuItems = [[NSMutableArray alloc] init];
+        
+        for(NSDictionary *menuItem in results) {
+            RestaurantItem *item = [[RestaurantItem alloc] initWithEverything:[menuItem objectForKey:@"restaurantName"]
+                                                                     itemName:[menuItem objectForKey:@"itemName"]
+                                                                     itemCost:[menuItem objectForKey:@"itemCost"]
+                                                              itemDescription:[menuItem objectForKey:@"itemDescription"]];
+            [menuItems addObject:item];
+        }
+        
+        self.restaurantMenuItems = [[NSMutableArray alloc] initWithArray:menuItems];
+        self.searchResults = [[NSMutableArray alloc] initWithArray:menuItems];
+        
+        [self.menuItemsTableView reloadData];
+        [self.bouncingBalls hide];
+    }];
 }
 
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
