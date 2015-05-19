@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "Order.h"
 #import "ChooseMenuItemsVIewController.h"
 #import "PQFBouncingBalls.h"
 

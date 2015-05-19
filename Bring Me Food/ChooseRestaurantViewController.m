@@ -72,7 +72,10 @@
 {
     NSString *chosenRestaurant = [self.restaurants objectAtIndex:indexPath.row];
     
-    self.chooseMenuItemsVC = [[ChooseMenuItemsViewController alloc] initWithNibName:@"ChooseMenuItemsViewController" bundle:[NSBundle mainBundle] restaurantName:chosenRestaurant];
+    Order *order = [[Order alloc] init];
+    order.restaurantName = chosenRestaurant;
+    
+    self.chooseMenuItemsVC = [[ChooseMenuItemsViewController alloc] initWithNibName:@"ChooseMenuItemsViewController" bundle:[NSBundle mainBundle] order:order];
     self.modalPresentationStyle = UIModalPresentationPopover;
     [self presentViewController:self.chooseMenuItemsVC animated:YES completion:nil];
     

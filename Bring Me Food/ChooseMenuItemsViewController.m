@@ -7,11 +7,6 @@
 //
 
 #import "ChooseMenuItemsViewController.h"
-#import "RestaurantItem.h"
-#import <Parse/Parse.h>
-#import "PQFBouncingBalls.h"
-#import "NameAndPhoneViewController.h"
-#import "RestaurantItemTableViewCell.h"
 
 @interface ChooseMenuItemsViewController ()
 
@@ -22,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *menuItemsTableView;
 
 @property (strong, nonatomic) NSString *restaurantName;
+@property (strong, nonatomic) Order *order;
 @property (strong, nonatomic) NSArray *restaurantMenuItems;
 @property (strong, nonatomic) NSMutableArray *chosenItems;
 @property (strong, nonatomic) NSMutableArray *searchResults;
@@ -48,17 +44,21 @@ static NSString* cellIdentifier = @"Cell";
         self.searchResults = [[NSMutableArray alloc] initWithArray:restaurantMenuItems];
         self.chosenItems = [[NSMutableArray alloc] initWithArray:chosenMenuItems];
         self.restaurantName = restaurantName;
+        
+        self.order = [[Order alloc] init];
+        self.order.restaurantName = restaurantName;
     }
     
     return self;
 }
 
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil restaurantName:(NSString *)restaurantName
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil order:(Order *)order
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     self.bouncingBalls = [[PQFBouncingBalls alloc] initLoaderOnView:self.view];
-    self.restaurantName = restaurantName;
+    self.order = order;
+    self.restaurantName = order.restaurantName;
     
     self.chosenItems = [[NSMutableArray alloc] init];
     self.restaurantMenuItems = [[NSArray alloc] init];
@@ -239,7 +239,7 @@ static NSString* cellIdentifier = @"Cell";
     self.customizeMenuItemViewController.delegate = self;
     
     self.modalPresentationStyle = UIModalPresentationPopover;
-    [self.parentViewController presentViewController:self.customizeMenuItemViewController animated:YES completion:nil];
+    [self presentViewController:self.customizeMenuItemViewController animated:YES completion:nil];
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -249,8 +249,10 @@ static NSString* cellIdentifier = @"Cell";
 
 - (IBAction)doneAddingNewItems:(id)sender {
     [self.delegate chooseMenuItemsViewController:self chosenItems:self.chosenItems];
-    //[self dismissViewControllerAnimated:YES completion:nil];
-    self.nameAndPersonViewController = [[NameAndPhoneViewController alloc] initWithNibName:@"NameAndPhoneViewController" bundle:[NSBundle mainBundle] restaurantMenuItems:self.restaurantMenuItems chosenMenuItems:self.chosenItems restaurantName:self.restaurantName];
+    
+    self.order.chosenItems = self.chosenItems;
+
+    self.nameAndPersonViewController = [[NameAndPhoneViewController alloc] initWithNibName:@"NameAndPhoneViewController" bundle:[NSBundle mainBundle] order:self.order];
     
     self.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self presentViewController:self.nameAndPersonViewController animated:YES completion:nil];

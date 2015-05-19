@@ -11,6 +11,13 @@
 
 @implementation Order
 
+- (instancetype) init
+{
+    //Intentionally blank constructor
+    self = [super init];
+    return self;
+}
+
 - (instancetype) initWithEverything:(NSString *)orderId ordererName:(NSString *)ordererName ordererPhone:(NSString *)ordererPhone deliveryAddress:(PFObject *)deliveryAddress deliveryAddressString:(NSString *)deliveryAddressString orderStatus:(NSInteger)orderStatus timeToBeDeliveredAt:(NSDate *)timeToBeDeliveredAt estimatedDeliveryTime:(NSDate *)estimatedDeliveryTime orderedAt:(NSDate *)orderedAt orderCost:(NSString *)orderCost driverName:(NSString *)driverName driverPhone:(NSString *)driverPhone driverLocation:(PFGeoPoint *)driverLocation restaurantName:(NSString *)restaurantName restaurantLocation:(PFGeoPoint *)restaurantLocation chosenItems:(NSArray *)chosenItems additionalDetails:(NSString *)additionalDetails
 {
     self = [super init];

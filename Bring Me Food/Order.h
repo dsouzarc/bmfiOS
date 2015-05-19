@@ -36,6 +36,8 @@
 
 @property (nonatomic, strong) NSArray *chosenItems;
 
+- (instancetype) init;
+
 - (instancetype) initWithEverything:(NSString*)orderId
                         ordererName:(NSString*)ordererName
                        ordererPhone:(NSString*)ordererPhone

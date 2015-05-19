@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomizeRestaurantItemViewController.h"
+#import "RestaurantItem.h"
+#import <Parse/Parse.h>
+#import "PQFBouncingBalls.h"
+#import "NameAndPhoneViewController.h"
+#import "RestaurantItemTableViewCell.h"
+#import "Order.h"
 
 @class ChooseMenuItemsViewController;
 
@@ -21,7 +27,7 @@
 
 @property (weak, nonatomic) id<ChooseMenuItemsDelegate> delegate;
 
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil restaurantName:(NSString*)restaurantName;
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil order:(Order*)order;
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil restaurantMenuItems:(NSArray*)restaurantMenuItems chosenMenuItems:(NSMutableArray*)chosenItems restaurantName:(NSString*)restaurantName;
 

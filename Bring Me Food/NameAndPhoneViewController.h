@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "RestaurantItem.h"
+#import "Order.h"
 
 @interface NameAndPhoneViewController : UIViewController <UITextFieldDelegate>
 
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil restaurantMenuItems:(NSArray *)restaurantMenuItems chosenMenuItems:(NSMutableArray *)chosenItems restaurantName:(NSString *)restaurantName;
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil order:(Order*)order;
 
 @end

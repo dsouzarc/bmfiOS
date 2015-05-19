@@ -13,9 +13,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *name;
 @property (strong, nonatomic) IBOutlet UITextField *phoneNumber;
 
-@property (strong, nonatomic) NSArray *restaurantMenuItems;
-@property (strong, nonatomic) NSMutableArray *chosenItems;
-@property (strong, nonatomic) NSString *restaurantName;
+@property (strong, nonatomic) Order *order;
 
 - (IBAction)nextButton:(id)sender;
 
@@ -23,14 +21,11 @@
 
 @implementation NameAndPhoneViewController
 
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil restaurantMenuItems:(NSArray *)restaurantMenuItems chosenMenuItems:(NSMutableArray *)chosenItems restaurantName:(NSString *)restaurantName
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil order:(Order *)order
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
-    self.restaurantMenuItems = restaurantMenuItems;
-    self.chosenItems = chosenItems;
-    self.restaurantName = restaurantName;
-    
+    self.order = order;
     return self;
 }
 
