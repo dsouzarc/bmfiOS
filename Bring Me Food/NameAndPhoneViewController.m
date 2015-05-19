@@ -14,7 +14,13 @@
 @property (strong, nonatomic) IBOutlet UITextField *phoneNumber;
 
 @property (strong, nonatomic) Order *order;
+@property (strong, nonatomic) UICKeyChainStore *keychain;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *saveButtonOriginal;
 
+@property (strong, nonatomic) LocationAndTimeViewController *locationAndTimeVC;
+
+- (IBAction)saveButton:(id)sender;
+- (IBAction)cancelButton:(id)sender;
 - (IBAction)nextButton:(id)sender;
 
 @end
@@ -26,6 +32,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     self.order = order;
+    self.keychain = [[UICKeyChainStore alloc] init];
+    
     return self;
 }
 
@@ -36,6 +44,9 @@
                                                                                            action:@selector(tapReceived:)];
     [tapGestureRecognizer setDelegate:self];
     [self.view addGestureRecognizer:tapGestureRecognizer];
+    
+    [self.name setText:self.keychain[@"name"]];
+    [self.phoneNumber setText:self.keychain[@"phoneNumber"]];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
@@ -45,6 +56,7 @@
     textField.layer.masksToBounds=YES;
     textField.layer.borderColor=[[UIColor blueColor]CGColor];
     textField.layer.borderWidth= 2.0f;
+    [self.saveButtonOriginal setTitle:@"Save"];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -67,8 +79,25 @@
     [UIView commitAnimations];
 }
 
+- (IBAction)saveButton:(id)sender {
+    self.keychain[@"name"] = self.name.text;
+    self.keychain[@"phoneNumber"] = self.phoneNumber.text;
+    [self.saveButtonOriginal setTitle: @"Saved"];
+}
+
+- (IBAction)cancelButton:(id)sender {
+    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (IBAction)nextButton:(id)sender {
+    self.order.ordererName = self.name.text;
+    self.order.ordererPhoneNumber = self.phoneNumber.text;
     
+    self.locationAndTimeVC = [[LocationAndTimeViewController alloc] initWithNibName:@"LocationAndTimeViewController" bundle:[NSBundle mainBundle] order:self.order];
+    
+    self.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:self.locationAndTimeVC animated:YES completion:nil];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

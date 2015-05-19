@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="name" destination="6bV-gI-l2d" id="k1p-M0-VUJ"/>
                 <outlet property="phoneNumber" destination="Od6-fC-l2m" id="haY-7m-ezv"/>
+                <outlet property="saveButtonOriginal" destination="2Hr-u6-9ut" id="1Tx-nR-nDn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="43e-Ck-TuB"/>
             </connections>
         </placeholder>
@@ -54,6 +55,23 @@
                         <action selector="nextButton:" destination="-1" eventType="touchUpInside" id="2cH-hn-DgG"/>
                     </connections>
                 </button>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yX8-BY-opH">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <items>
+                        <navigationItem title="Your Information" id="BgD-BV-2wF">
+                            <barButtonItem key="leftBarButtonItem" title="Back" id="CCr-rZ-8RL">
+                                <connections>
+                                    <action selector="cancelButton:" destination="-1" id="uYg-o4-UPf"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" title="Save" id="2Hr-u6-9ut">
+                                <connections>
+                                    <action selector="saveButton:" destination="-1" id="DSZ-de-nKU"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -61,6 +79,7 @@
                 <constraint firstItem="6bV-gI-l2d" firstAttribute="top" secondItem="3q9-cH-Z3W" secondAttribute="bottom" constant="8" id="7l2-6B-PbL"/>
                 <constraint firstAttribute="centerY" secondItem="Od6-fC-l2m" secondAttribute="centerY" id="AfC-Y7-Vmi"/>
                 <constraint firstItem="3q9-cH-Z3W" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Dnm-tR-vK3"/>
+                <constraint firstItem="yX8-BY-opH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Gnp-DU-jK2"/>
                 <constraint firstItem="Od6-fC-l2m" firstAttribute="top" secondItem="MzC-Kd-wjx" secondAttribute="bottom" constant="8" id="Id5-oF-9cV"/>
                 <constraint firstAttribute="trailing" secondItem="3q9-cH-Z3W" secondAttribute="trailing" constant="16" id="JGT-qT-E3Q"/>
                 <constraint firstItem="Od6-fC-l2m" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="SwH-8n-qri"/>
@@ -69,6 +88,8 @@
                 <constraint firstItem="IFd-nk-UwM" firstAttribute="top" secondItem="Od6-fC-l2m" secondAttribute="bottom" constant="48" id="eQT-r9-QnM"/>
                 <constraint firstAttribute="trailing" secondItem="Od6-fC-l2m" secondAttribute="trailing" constant="16" id="ha4-ec-vmr"/>
                 <constraint firstItem="MzC-Kd-wjx" firstAttribute="top" secondItem="6bV-gI-l2d" secondAttribute="bottom" constant="24" id="qDM-Jm-wpb"/>
+                <constraint firstItem="yX8-BY-opH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tnH-gw-ptP"/>
+                <constraint firstAttribute="trailing" secondItem="yX8-BY-opH" secondAttribute="trailing" id="wyF-X0-1sw"/>
                 <constraint firstItem="6bV-gI-l2d" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="xRV-H1-iPj"/>
                 <constraint firstAttribute="trailing" secondItem="IFd-nk-UwM" secondAttribute="trailing" constant="32" id="xcg-j8-5CD"/>
             </constraints>

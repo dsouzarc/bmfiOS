@@ -1,18 +1,16 @@
 //
-//  NameAndPhoneViewController.h
+//  LocationAndTimeViewController.h
 //  Bring Me Food
 //
-//  Created by Ryan D'souza on 5/18/15.
+//  Created by Ryan D'souza on 5/19/15.
 //  Copyright (c) 2015 Ryan D'souza. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "RestaurantItem.h"
 #import "Order.h"
 #import "UICKeyChainStore.h"
-#import "LocationAndTimeViewController.h"
 
-@interface NameAndPhoneViewController : UIViewController <UITextFieldDelegate>
+@interface LocationAndTimeViewController : UIViewController
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil order:(Order*)order;
 

@@ -87,6 +87,8 @@
 		94D11AC91AE70D2C00D83B51 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D11AC31AE70D2C00D83B51 /* ParseUI.framework */; };
 		94D512621B0A5FC70062C688 /* NameAndPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D512601B0A5FC70062C688 /* NameAndPhoneViewController.m */; };
 		94D512631B0A5FC70062C688 /* NameAndPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D512611B0A5FC70062C688 /* NameAndPhoneViewController.xib */; };
+		94D512671B0BD0390062C688 /* LocationAndTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D512651B0BD0390062C688 /* LocationAndTimeViewController.m */; };
+		94D512681B0BD0390062C688 /* LocationAndTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D512661B0BD0390062C688 /* LocationAndTimeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -221,6 +223,9 @@
 		94D5125F1B0A5FC70062C688 /* NameAndPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameAndPhoneViewController.h; sourceTree = "<group>"; };
 		94D512601B0A5FC70062C688 /* NameAndPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameAndPhoneViewController.m; sourceTree = "<group>"; };
 		94D512611B0A5FC70062C688 /* NameAndPhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameAndPhoneViewController.xib; sourceTree = "<group>"; };
+		94D512641B0BD0390062C688 /* LocationAndTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationAndTimeViewController.h; sourceTree = "<group>"; };
+		94D512651B0BD0390062C688 /* LocationAndTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationAndTimeViewController.m; sourceTree = "<group>"; };
+		94D512661B0BD0390062C688 /* LocationAndTimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationAndTimeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,6 +382,9 @@
 		947582111A9C126300487720 /* Bring Me Food */ = {
 			isa = PBXGroup;
 			children = (
+				94D512641B0BD0390062C688 /* LocationAndTimeViewController.h */,
+				94D512651B0BD0390062C688 /* LocationAndTimeViewController.m */,
+				94D512661B0BD0390062C688 /* LocationAndTimeViewController.xib */,
 				94D5125F1B0A5FC70062C688 /* NameAndPhoneViewController.h */,
 				94D512601B0A5FC70062C688 /* NameAndPhoneViewController.m */,
 				94D512611B0A5FC70062C688 /* NameAndPhoneViewController.xib */,
@@ -729,6 +737,7 @@
 				94739D1B1ABA41B100406819 /* RestaurantItemTableViewCell.xib in Resources */,
 				9475823C1A9C130B00487720 /* LogInViewController.xib in Resources */,
 				94AFC8B01AF1056C0000D4F5 /* LatestOrderViewController.xib in Resources */,
+				94D512681B0BD0390062C688 /* LocationAndTimeViewController.xib in Resources */,
 				94A538B81AE8510400CD9560 /* Check_mark.png in Resources */,
 				94591EDF1AB26A6800D62C0A /* CreateOrderViewController.xib in Resources */,
 				94A1280E1AB53CFB005FC639 /* ChooseAddressViewController.xib in Resources */,
@@ -779,6 +788,7 @@
 				947582181A9C126300487720 /* AppDelegate.m in Sources */,
 				947BA3871ACF26650005D763 /* ViewDriverAndDropOffLocationViewController.m in Sources */,
 				9430E89A1AB3A0030038738F /* SPGooglePlacesAutocompletePlace.m in Sources */,
+				94D512671B0BD0390062C688 /* LocationAndTimeViewController.m in Sources */,
 				94739D121ABA343400406819 /* ChooseMenuItemsViewController.m in Sources */,
 				947584491A9CDE0D00487720 /* UICKeyChainStore.m in Sources */,
 				94739D1A1ABA41B100406819 /* RestaurantItemTableViewCell.m in Sources */,
