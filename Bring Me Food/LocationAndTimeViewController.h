@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Order.h"
+#import <Parse/Parse.h>
+#import "ChooseAddressViewController.h"
 #import "UICKeyChainStore.h"
 
-@interface LocationAndTimeViewController : UIViewController
+@interface LocationAndTimeViewController : UIViewController <ChooseAddressDelegate>
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil order:(Order*)order;
 
