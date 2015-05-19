@@ -85,6 +85,8 @@
 		94D11AC71AE70D2C00D83B51 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D11AC11AE70D2C00D83B51 /* ParseFacebookUtils.framework */; };
 		94D11AC81AE70D2C00D83B51 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D11AC21AE70D2C00D83B51 /* ParseFacebookUtilsV4.framework */; };
 		94D11AC91AE70D2C00D83B51 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D11AC31AE70D2C00D83B51 /* ParseUI.framework */; };
+		94D512621B0A5FC70062C688 /* NameAndPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D512601B0A5FC70062C688 /* NameAndPhoneViewController.m */; };
+		94D512631B0A5FC70062C688 /* NameAndPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D512611B0A5FC70062C688 /* NameAndPhoneViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -216,6 +218,9 @@
 		94D11AC11AE70D2C00D83B51 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		94D11AC21AE70D2C00D83B51 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		94D11AC31AE70D2C00D83B51 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		94D5125F1B0A5FC70062C688 /* NameAndPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameAndPhoneViewController.h; sourceTree = "<group>"; };
+		94D512601B0A5FC70062C688 /* NameAndPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameAndPhoneViewController.m; sourceTree = "<group>"; };
+		94D512611B0A5FC70062C688 /* NameAndPhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameAndPhoneViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,6 +377,9 @@
 		947582111A9C126300487720 /* Bring Me Food */ = {
 			isa = PBXGroup;
 			children = (
+				94D5125F1B0A5FC70062C688 /* NameAndPhoneViewController.h */,
+				94D512601B0A5FC70062C688 /* NameAndPhoneViewController.m */,
+				94D512611B0A5FC70062C688 /* NameAndPhoneViewController.xib */,
 				94AFC8B11AF2578D0000D4F5 /* MainViewController.h */,
 				94AFC8B21AF2578D0000D4F5 /* MainViewController.m */,
 				94AFC8B31AF2578D0000D4F5 /* MainViewController.xib */,
@@ -737,6 +745,7 @@
 				9443CCEC1AA0EB0E00C5CC70 /* LogInToExistingAccountViewController.xib in Resources */,
 				947582201A9C126300487720 /* Images.xcassets in Resources */,
 				946068B91A9D164D006664A2 /* lock_filled-50.png in Resources */,
+				94D512631B0A5FC70062C688 /* NameAndPhoneViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,6 +773,7 @@
 				9411974D1AC899770002FDEE /* OrdersTableViewCell.m in Sources */,
 				9408CBB81AE069D2000AC589 /* CustomIOSAlertView.m in Sources */,
 				9475845A1A9CFDE700487720 /* UIColor+Chameleon.m in Sources */,
+				94D512621B0A5FC70062C688 /* NameAndPhoneViewController.m in Sources */,
 				947584581A9CFDE700487720 /* ChameleonStatusBar.m in Sources */,
 				9475845C1A9CFDE700487720 /* UIViewController+Chameleon.m in Sources */,
 				947582181A9C126300487720 /* AppDelegate.m in Sources */,

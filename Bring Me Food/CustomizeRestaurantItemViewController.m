@@ -182,7 +182,6 @@ static NSString *customPlaceHolder = @"Type your customized order details here";
 }
 
 - (IBAction)cancelAddingItem:(id)sender {
-    //[self removeAnimate];
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -199,6 +198,7 @@ static NSString *customPlaceHolder = @"Type your customized order details here";
                                                          customizedDescription:description];
     
     [self.delegate customizedRestaurantItemViewController:self customizedMenuItem:newItem];
-    [self removeAnimate];
+    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

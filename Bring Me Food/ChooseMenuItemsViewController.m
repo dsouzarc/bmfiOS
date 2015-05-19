@@ -10,6 +10,7 @@
 #import "RestaurantItem.h"
 #import <Parse/Parse.h>
 #import "PQFBouncingBalls.h"
+#import "NameAndPhoneViewController.h"
 #import "RestaurantItemTableViewCell.h"
 
 @interface ChooseMenuItemsViewController ()
@@ -28,6 +29,7 @@
 @property (strong, nonatomic) PQFBouncingBalls *bouncingBalls;
 
 @property (strong, nonatomic) CustomizeRestaurantItemViewController *customizeMenuItemViewController;
+@property (strong, nonatomic) NameAndPhoneViewController *nameAndPersonViewController;
 
 @property NSIndexPath *selectedRow;
 
@@ -236,9 +238,8 @@ static NSString* cellIdentifier = @"Cell";
     
     self.customizeMenuItemViewController.delegate = self;
     
-    //[self.customizeMenuItemViewController showInView:self.view shouldAnimate:YES];
     self.modalPresentationStyle = UIModalPresentationPopover;
-    [self presentViewController:self.customizeMenuItemViewController animated:YES completion:nil];
+    [self.parentViewController presentViewController:self.customizeMenuItemViewController animated:YES completion:nil];
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -248,7 +249,11 @@ static NSString* cellIdentifier = @"Cell";
 
 - (IBAction)doneAddingNewItems:(id)sender {
     [self.delegate chooseMenuItemsViewController:self chosenItems:self.chosenItems];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    self.nameAndPersonViewController = [[NameAndPhoneViewController alloc] initWithNibName:@"NameAndPhoneViewController" bundle:[NSBundle mainBundle] restaurantMenuItems:self.restaurantMenuItems chosenMenuItems:self.chosenItems restaurantName:self.restaurantName];
+    
+    self.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self presentViewController:self.nameAndPersonViewController animated:YES completion:nil];
 }
 
 - (IBAction)cancelAddingNewItems:(id)sender {
