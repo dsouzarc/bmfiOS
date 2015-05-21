@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSString *dropOffAddress;
 
 @property (strong, nonatomic) ChooseAddressViewController *chooseAddressViewController;
+@property (strong, nonatomic) CreateOrderViewController *createOrderViewController;
 
 @end
 
@@ -79,6 +80,10 @@
 - (IBAction)nextButton:(id)sender {
     self.order.deliveryAddress = self.dropOffPoint;
     self.order.deliveryAddressString = self.dropOffAddress;
+    
+    self.createOrderViewController = [[CreateOrderViewController alloc] initWithNibName:@"CreateOrderViewController" bundle:[NSBundle mainBundle] order:self.order];
+    self.modalPresentationStyle = UIModalPresentationPageSheet;
+    [self presentViewController:self.createOrderViewController animated:YES completion:nil];
 }
 
 - (IBAction)saveButton:(id)sender {

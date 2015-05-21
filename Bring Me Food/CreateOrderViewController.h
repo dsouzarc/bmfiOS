@@ -12,6 +12,7 @@
 #import "ChooseRestaurantViewController.h"
 #import "CustomizeRestaurantItemViewController.h"
 #import "ChooseMenuItemsViewController.h"
+#import "Order.h"
 #import "RestaurantItemTableViewCell.h"
 
 #import <Parse/Parse.h>
@@ -20,5 +21,7 @@
 #import "UICKeyChainStore.h"
 
 @interface CreateOrderViewController : UIViewController <ChooseRestaurantNameDelegate, ChooseAddressDelegate, ChooseMenuItemsDelegate, UITableViewDataSource, UITableViewDelegate, CustomizeRestaurantItemDelegate, UITextViewDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate>
+
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil order:(Order *)order;
 
 @end

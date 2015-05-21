@@ -51,9 +51,22 @@
 
 @property (strong, nonatomic) UIAlertView *confirmDeliveryCostAlert;
 
+@property (strong, nonatomic) Order *order;
+
 @end
 
 @implementation CreateOrderViewController
+
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil order:(Order *)order
+{
+    self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if(self) {
+        self.order = order;
+    }
+    
+    return self;
+}
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
