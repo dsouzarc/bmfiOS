@@ -10,6 +10,7 @@
 
 #import "ChooseAddressViewController.h"
 #import "ChooseRestaurantViewController.h"
+#import "ChooseMenuItemsViewController.h"
 #import "CustomizeRestaurantItemViewController.h"
 #import "ChooseMenuItemsViewController.h"
 #import "Order.h"
@@ -20,7 +21,7 @@
 #import "PQFBouncingBalls.h"
 #import "UICKeyChainStore.h"
 
-@interface CreateOrderViewController : UIViewController <ChooseRestaurantNameDelegate, ChooseAddressDelegate, ChooseMenuItemsDelegate, UITableViewDataSource, UITableViewDelegate, CustomizeRestaurantItemDelegate, UITextViewDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate>
+@interface CreateOrderViewController : UIViewController <ChooseAddressDelegate, UITableViewDataSource, UITableViewDelegate, CustomizeRestaurantItemDelegate, UITextViewDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate>
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil order:(Order *)order;
 

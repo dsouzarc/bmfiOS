@@ -89,6 +89,7 @@
 		94D512631B0A5FC70062C688 /* NameAndPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D512611B0A5FC70062C688 /* NameAndPhoneViewController.xib */; };
 		94D512671B0BD0390062C688 /* LocationAndTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D512651B0BD0390062C688 /* LocationAndTimeViewController.m */; };
 		94D512681B0BD0390062C688 /* LocationAndTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D512661B0BD0390062C688 /* LocationAndTimeViewController.xib */; };
+		94D5126E1B0E79CD0062C688 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94D5126D1B0E79CD0062C688 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,6 +227,7 @@
 		94D512641B0BD0390062C688 /* LocationAndTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationAndTimeViewController.h; sourceTree = "<group>"; };
 		94D512651B0BD0390062C688 /* LocationAndTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationAndTimeViewController.m; sourceTree = "<group>"; };
 		94D512661B0BD0390062C688 /* LocationAndTimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationAndTimeViewController.xib; sourceTree = "<group>"; };
+		94D5126D1B0E79CD0062C688 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -408,6 +410,7 @@
 				946068BA1A9D18DE006664A2 /* Misc Icons */,
 				9475844A1A9CDE7A00487720 /* 3rd Party Libraries */,
 				947582121A9C126300487720 /* Supporting Files */,
+				94D5126D1B0E79CD0062C688 /* Main.storyboard */,
 			);
 			path = "Bring Me Food";
 			sourceTree = "<group>";
@@ -735,6 +738,7 @@
 				9443CCEE1AA0F18F00C5CC70 /* lock_dark-50.png in Resources */,
 				94A128071AB4C337005FC639 /* ChooseRestaurantViewController.xib in Resources */,
 				94739D1B1ABA41B100406819 /* RestaurantItemTableViewCell.xib in Resources */,
+				94D5126E1B0E79CD0062C688 /* Main.storyboard in Resources */,
 				9475823C1A9C130B00487720 /* LogInViewController.xib in Resources */,
 				94AFC8B01AF1056C0000D4F5 /* LatestOrderViewController.xib in Resources */,
 				94D512681B0BD0390062C688 /* LocationAndTimeViewController.xib in Resources */,
