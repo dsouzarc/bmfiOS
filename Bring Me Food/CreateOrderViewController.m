@@ -24,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *myPhoneTextField;
 @property (strong, nonatomic) IBOutlet UIDatePicker *deliveryTimeDatePicker;
 @property (strong, nonatomic) IBOutlet UITextView *additionalDetails;
+@property (strong, nonatomic) IBOutlet UIButton *changeRestaurantButton;
 
 @property (strong, nonatomic) PQFBouncingBalls *loadingBouncingBalls;
 @property (strong, nonatomic) UICKeyChainStore *keyChain;
@@ -111,6 +112,22 @@
     self.additionalDetails.layer.borderWidth= 2.0f;
     [self.additionalDetails canBecomeFirstResponder];
     self.additionalDetails.userInteractionEnabled = YES;
+    
+    self.restaurantNameLabel.adjustsFontSizeToFitWidth = YES;
+    self.addressLabel.adjustsFontSizeToFitWidth = YES;
+    self.changeRestaurantButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    if(self.order) {
+        self.restaurantNameLabel.text = self.order.restaurantName;
+        self.chosenRestaurant = self.order.restaurantName;
+        
+        self.addressLabel.text = self.order.deliveryAddressString;
+        self.chosenMenuItems = [NSMutableArray arrayWithArray:self.order.chosenItems];
+        self.deliveryCost = [self.order.orderCost doubleValue];
+        self.orderCostLabel.text = [NSString stringWithFormat:@"$%.2f", self.deliveryCost];
+        
+        //[self.deliveryTimeDatePicker setDate:self.order.timeToBeDeliveredAt animated:YES];
+        
+    }
 }
 
 - (void) tapReceived:(UIGestureRecognizer*)gestureRecognizer
@@ -232,11 +249,13 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
     
     self.chooseMenuItems = [[ChooseMenuItemsViewController alloc] initWithNibName:@"ChooseMenuItemsViewController"
                                                                            bundle:[NSBundle mainBundle]
-                                                              restaurantMenuItems:self.allMenuItems
-                                                                  chosenMenuItems:self.chosenMenuItems
-                                                                   restaurantName:self.chosenRestaurant];
+                                                                            order:self.order];
+    self.chooseMenuItems.delegate = self;
+    [self setModalPresentationStyle:UIModalPresentationFormSheet];
+    [self presentViewController:self.chooseMenuItems animated:YES completion:nil];
+    [self.loadingBouncingBalls hide];
     
-    if(self.allMenuItems == nil) {
+    if(self.allMenuItems == nil && 5 == 6) {
         [self.loadingBouncingBalls show];
         
         [PFCloud callFunctionInBackground:@"getMenuItems" withParameters:@{@"restaurantName": self.chosenRestaurant} block:^(NSArray *results, NSError *error) {
@@ -274,12 +293,12 @@ static NSString *additionalOrderDetailsString = @"Additional Details";
         }];
     }
     
-    else {
+    /*else {
         //[self.chooseMenuItems showInView:self.view shouldAnimate:YES];
         self.chooseMenuItems.delegate = self;
         [self setModalPresentationStyle:UIModalPresentationPopover];
         [self presentViewController:self.chooseMenuItems animated:YES completion:nil];
-    }
+    }*/
 }
 
 - (IBAction)chooseRestaurantButton:(id)sender {

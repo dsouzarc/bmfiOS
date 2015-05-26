@@ -44,9 +44,6 @@ static NSString* cellIdentifier = @"Cell";
         self.searchResults = [[NSMutableArray alloc] initWithArray:restaurantMenuItems];
         self.chosenItems = [[NSMutableArray alloc] initWithArray:chosenMenuItems];
         self.restaurantName = restaurantName;
-        
-        self.order = [[Order alloc] init];
-        self.order.restaurantName = restaurantName;
     }
     
     return self;
@@ -54,11 +51,19 @@ static NSString* cellIdentifier = @"Cell";
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil order:(Order *)order
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil restaurantName:order.restaurantName];
     
-    self.bouncingBalls = [[PQFBouncingBalls alloc] initLoaderOnView:self.view];
     self.order = order;
-    self.restaurantName = order.restaurantName;
+    [self.chosenItems addObjectsFromArray:order.chosenItems];
+    
+    return self;
+}
+
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil restaurantName:(NSString*)restaurantName
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self.bouncingBalls = [[PQFBouncingBalls alloc] initLoaderOnView:self.view];
+    self.restaurantName = restaurantName;
     
     self.chosenItems = [[NSMutableArray alloc] init];
     self.restaurantMenuItems = [[NSArray alloc] init];
@@ -250,12 +255,22 @@ static NSString* cellIdentifier = @"Cell";
 - (IBAction)doneAddingNewItems:(id)sender {
     [self.delegate chooseMenuItemsViewController:self chosenItems:self.chosenItems];
     
-    self.order.chosenItems = self.chosenItems;
-
-    self.nameAndPersonViewController = [[NameAndPhoneViewController alloc] initWithNibName:@"NameAndPhoneViewController" bundle:[NSBundle mainBundle] order:self.order];
-    
-    self.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    [self presentViewController:self.nameAndPersonViewController animated:YES completion:nil];
+    if(!self.order) {
+        self.order = [[Order alloc] init];
+        self.order.restaurantName = self.restaurantName;
+        self.order.chosenItems = self.chosenItems;
+        self.nameAndPersonViewController = [[NameAndPhoneViewController alloc] initWithNibName:@"NameAndPhoneViewController" bundle:[NSBundle mainBundle] order:self.order];
+        
+        self.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        NSLog(@"FALSE");
+        [self presentViewController:self.nameAndPersonViewController animated:YES completion:nil];
+    }
+    else {
+        self.order.chosenItems = self.chosenItems;
+        self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        NSLog(@"YES");
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (IBAction)cancelAddingNewItems:(id)sender {
